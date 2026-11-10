@@ -1,1 +1,0 @@
-Solana Token-2022 prototype for HTFP transfer fees, permissionless tax recovery, atomic burn/swap processing and proportional SOL redemption. Local integration in progress.
