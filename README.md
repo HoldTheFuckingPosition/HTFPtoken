@@ -24,6 +24,8 @@ flowchart TD
     H -->|"Process: burn 3/8"| B["Token-2022: reduced HTFP supply"]
     H -->|"Process: sell gross 5/8"| P["Raydium CPMM: HTFP / wSOL"]
     P -->|"HTFP settles proceeds as native SOL"| V["HTFP SOL reserve"]
+    L["20% of LGE contributions"] --> V
+    D["Direct SOL deposits"] --> V
     U["HTFP holder"] -->|"Redeem: authorize HTFP burn"| R["HTFP program"]
     R -->|"Burn authorized amount"| B
     V -->|"HTFP pays proportional SOL redemption"| U
@@ -31,7 +33,28 @@ flowchart TD
 
 **Tax recovery and processing.** Anyone can call the recovery and processing operations with valid inputs. Recovered taxes enter fixed HTFP custody. Processing burns **3/8** and sells the remaining **gross 5/8** through the fixed pool; the sale transfer remains subject to the HTFP tax. Actual native SOL proceeds go to the fixed reserve. Callers cannot redirect the recovered taxes or swap proceeds. Burn, sale and settlement are designed to complete atomically.
 
-**Holder redemption.** A holder authorizes a burn of their HTFP and receives `floor(V × A / S)` lamports: V is spendable reserve SOL in lamports, A is the authorized amount in token base units, and S is supply before the burn. Redemption burns the full authorized amount and works independently of the pool. Its value changes with reserve balance and token supply.
+## The SOL vault
+
+The vault is the protocol's native SOL reserve. It receives:
+
+- **20% of LGE contributions** as initial backing.
+- **Actual SOL proceeds from processing taxes:** 3/8 of recovered HTFP is burned; the gross 5/8 is sold through Raydium, and the resulting SOL goes into the vault after applicable fees.
+- **Direct SOL deposits**, which also become backing while HTFP supply is positive.
+
+Taxable trading and transfers generate HTFP fees. Those fees must be recovered and successfully processed before they add SOL to the vault; trading volume alone does not automatically credit it. The 5/8 fraction describes a token amount, not a guaranteed SOL return. Creator and Burn & Earn income goes to the founder wallet as described below.
+
+### Pool trading and vault redemption
+
+Holders have two intended routes:
+
+- **Trade through Raydium:** buy or sell HTFP at the pool's market price after trading opens, subject to liquidity, pool status and applicable fees.
+- **Redeem through the vault:** authorize a full burn of A HTFP base units and receive `floor(V × A / S)` lamports, where V is spendable vault SOL in lamports and S is pre-burn supply in token base units. This route is independent of pool trading and requires valid authorization, positive supply, a positive payout and satisfaction of the holder's minimum.
+
+### How activity strengthens backing
+
+Successful tax processing adds SOL to the vault while reducing HTFP supply through the 3/8 burn. With positive remaining supply, this increases **SOL backing per remaining HTFP**: more SOL backs a smaller token supply. Redemptions pay SOL out and burn the authorized HTFP, reducing both reserve and supply proportionally, subject to integer rounding.
+
+The Raydium market price can rise or fall. Selling the 5/8 portion into the pool adds HTFP and removes SOL, which creates downward price pressure. Growing vault backing does not guarantee a continuously rising pool price. This distinction follows from [Raydium's constant-product swap calculation](https://github.com/raydium-io/raydium-cp-swap/blob/master/programs/cp-swap/src/curve/constant_product.rs).
 
 ## Token and launch design
 
