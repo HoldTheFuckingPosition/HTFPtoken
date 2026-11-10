@@ -1,8 +1,26 @@
 # HTFP — Hold The Fucking Position
 
-HTFP is a Solana Token-2022 project that connects transfer fees, token burns and a native SOL reserve. Holders can burn HTFP to redeem a proportional share of the reserve.
+**HTFP is designed as a SOL-backed token with on-chain redemption through its vault.** Once the protocol is initialized and funded, holders can burn HTFP to redeem a proportional share of the vault's spendable SOL under the redemption rules below. This redemption value depends on the actual SOL available and total token supply before the burn, rather than a fixed SOL price.
 
 **Under development.** This page describes the intended architecture. Public deployment and final liquidity integration remain pending.
+
+## How the 8% tax works
+
+Example: **100 HTFP transferred after the 8% fee becomes active**.
+
+```mermaid
+flowchart TD
+    A["100 HTFP transferred"] --> R["92 HTFP to recipient"]
+    A --> T["8 HTFP withheld as tax"]
+    T --> C["Recover and Process"]
+    C -->|"3/8 of tax: 3 HTFP"| B["Burned"]
+    C -->|"5/8 of tax: 5 HTFP gross"| P["Sold through Raydium"]
+    P -->|"Actual net SOL proceeds"| V["SOL vault"]
+```
+
+The initial 8% tax is split into a nominal **3% of the transferred HTFP burned** and **5% offered for sale to fund the vault**. The split takes place when collected taxes are recovered and successfully processed.
+
+The sale transfer is also taxed: 5 HTFP gross gives 4.6 HTFP net input and 0.4 HTFP withheld for later recovery, before Raydium fees. Native integer rounding applies. These are HTFP amounts; the SOL credited to the vault depends on actual swap execution.
 
 ## Programs and their roles
 
