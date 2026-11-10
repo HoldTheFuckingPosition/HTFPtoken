@@ -1,0 +1,8 @@
+[workspace]
+members = ["kernel", "wallet"]
+resolver = "2"
+[profile.release]
+overflow-checks = true
+panic = "abort"
+lto = "fat"
+codegen-units = 1

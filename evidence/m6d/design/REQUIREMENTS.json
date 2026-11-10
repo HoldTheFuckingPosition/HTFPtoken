@@ -1,0 +1,557 @@
+{
+  "assurance": {
+    "assessments": {
+      "actual_booked_R_change": "UNASSESSED",
+      "actual_native_harvest_withdraw_and_recovered_receipt": "UNASSESSED",
+      "current_public_deployment_and_future_execution": "UNASSESSED",
+      "custody_withholding_spendable_and_booked_R_coverage": "UNASSESSED",
+      "execution_context_fee_payer_and_consent": "UNASSESSED",
+      "frozen_source_native_compatibility": "UNASSESSED",
+      "inventory_state_inflight_and_transaction_fee_barrier": "UNASSESSED",
+      "packet_compute_account_loading_wallet_fit": "UNASSESSED",
+      "protected_account_runtime_owners_executable_flags": "UNASSESSED",
+      "source_owners_mints_state_extensions": "UNASSESSED",
+      "source_withholding_and_absent_closed_representation": "UNASSESSED"
+    },
+    "authorization_verified": false,
+    "evidence_level": "OFFLINE_STATIC_ONLY",
+    "execution_guaranteed": false,
+    "holder_signature_required_by_recover": false,
+    "production_readiness": "NOT_ASSESSED",
+    "public_verification": "NOT_PERFORMED",
+    "receipt_verified": false,
+    "signatures_verified": false,
+    "tax_authority_outer_signature_required_by_recover": false
+  },
+  "body": {
+    "account_rule": "Exactly6+count; current local handler bound32 is not a packet/compute/wallet/public resource proof.",
+    "bytes": "8",
+    "header_hex": "485446500101",
+    "local_count_range_inclusive": {
+      "maximum": "32",
+      "minimum": "0"
+    },
+    "rule": "Count0 valid;33/256/65535 parse as u16 but fail the current local Recover initial guard. Decode rejects count>32 as INVALID_WIRE_COUNT before6+n count comparison, not a runtime eligibility finding. Raw u16 representability is not accepted-source count.",
+    "source_count_offset": "6",
+    "source_count_type": "u16LE"
+  },
+  "cli": {
+    "arguments": "Exactly one explicit pathname; no flags/help mode/stdin/default request/output file/fetch. A --help probe is CLI_USAGE/2. A pathname beginning with - is CLI_USAGE; ./-name is an explicit pathname.",
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=clients python3 -B -m htfp_recover REQUEST.json",
+    "file": "Read-only nonblocking open, fstat opened descriptor before read, require regular file; symlink resolving to regular target allowed; close every descriptor. Read only explicitly supplied request and fixed packaged profile.",
+    "input_max_bytes": "16384",
+    "input_read_limit_bytes": "16385",
+    "json": "Strict UTF8/no BOM; no duplicate keys, JSON numeric literals or nonfinite constants. Check unpaired Unicode surrogates in all decoded keys/strings before depth/string checks. Invalid scalar=>INVALID_TEXT; any decoded key/string>1024characters=>INVALID_SHAPE at $. Container root depth1, max4.",
+    "max_container_depth": "4",
+    "max_decoded_string_characters": "1024",
+    "output_certificate": "REPORT_BOUND.json and ANALYTICAL_ENVELOPE.json; exact closed-schema independent all-input bound, not only a witness.",
+    "output_max_bytes": "65536",
+    "stdout": "Exactly json.dumps(report,ensure_ascii=True,sort_keys=True,indent=2)+LF, UTF8. Empty stderr for fixed errors; no OS details/traceback/arbitrary input echo."
+  },
+  "document_status": "SEALED_STAGE_A_CANDIDATE_AWAITING_EXACT_INDEPENDENT_REVIEW",
+  "error_source_mapping": {
+    "CLI_USAGE": [
+      "S122",
+      "S124"
+    ],
+    "DEPTH_EXCEEDED": [
+      "S122",
+      "S124"
+    ],
+    "INPUT_TOO_LARGE": [
+      "S122",
+      "S124"
+    ],
+    "INPUT_UNREADABLE": [
+      "S122",
+      "S124"
+    ],
+    "INVALID_ACCOUNT_COUNT": [
+      "F",
+      "H"
+    ],
+    "INVALID_DATA_HEX": [
+      "S122",
+      "S124"
+    ],
+    "INVALID_JSON": [
+      "S122",
+      "S124"
+    ],
+    "INVALID_PUBKEY": [
+      "S122",
+      "S124"
+    ],
+    "INVALID_SCHEMA": [
+      "S122",
+      "S124"
+    ],
+    "INVALID_SHAPE": [
+      "S122",
+      "S124"
+    ],
+    "INVALID_TEXT": [
+      "S122",
+      "S124"
+    ],
+    "INVALID_UTF8": [
+      "S122",
+      "S124"
+    ],
+    "INVALID_WIRE_COUNT": [
+      "F",
+      "H"
+    ],
+    "INVALID_WIRE_HEADER": [
+      "F",
+      "H"
+    ],
+    "INVALID_WIRE_LENGTH": [
+      "F",
+      "H"
+    ],
+    "PROFILE_UNCONFIGURED": [
+      "S122",
+      "S124"
+    ],
+    "SOURCE_BINDING_ERROR": [
+      "P",
+      "G",
+      "H",
+      "S124"
+    ],
+    "UNSUPPORTED_PROFILE": [
+      "S122",
+      "S124"
+    ]
+  },
+  "errors": [
+    {
+      "code": "CLI_USAGE",
+      "message": "Use exactly one local request file.",
+      "path": "$"
+    },
+    {
+      "code": "INPUT_UNREADABLE",
+      "message": "Input must be a readable regular file.",
+      "path": "$"
+    },
+    {
+      "code": "INPUT_TOO_LARGE",
+      "message": "Input exceeds the byte limit.",
+      "path": "$"
+    },
+    {
+      "code": "INVALID_UTF8",
+      "message": "Input must be strict UTF-8 without BOM.",
+      "path": "$"
+    },
+    {
+      "code": "INVALID_JSON",
+      "message": "Input must be strict JSON without duplicate keys or numeric literals.",
+      "path": "$"
+    },
+    {
+      "code": "INVALID_TEXT",
+      "message": "Input contains an invalid Unicode scalar.",
+      "path": "$"
+    },
+    {
+      "code": "DEPTH_EXCEEDED",
+      "message": "Input exceeds the nesting limit.",
+      "path": "$"
+    },
+    {
+      "code": "INVALID_SHAPE",
+      "message": "Input fields or types do not match the request schema.",
+      "path": "nearest declared parent or typed field"
+    },
+    {
+      "code": "INVALID_SCHEMA",
+      "message": "Unsupported request schema.",
+      "path": "schema"
+    },
+    {
+      "code": "PROFILE_UNCONFIGURED",
+      "message": "Select the explicit historical local profile.",
+      "path": "profile"
+    },
+    {
+      "code": "UNSUPPORTED_PROFILE",
+      "message": "Unsupported profile.",
+      "path": "profile"
+    },
+    {
+      "code": "SOURCE_BINDING_ERROR",
+      "message": "The fixed packaged profile failed integrity validation.",
+      "path": "$"
+    },
+    {
+      "code": "INVALID_PUBKEY",
+      "message": "Expected a canonical Base58 public key of 32 bytes.",
+      "path": "typed public-key field"
+    },
+    {
+      "code": "INVALID_DATA_HEX",
+      "message": "Expected bounded lowercase even-length hexadecimal data.",
+      "path": "descriptor.data_hex"
+    },
+    {
+      "code": "INVALID_WIRE_LENGTH",
+      "message": "Recover body must contain exactly 8 bytes.",
+      "path": "descriptor.data_hex"
+    },
+    {
+      "code": "INVALID_WIRE_HEADER",
+      "message": "Expected HTFP version 1 tag 1.",
+      "path": "descriptor.data_hex"
+    },
+    {
+      "code": "INVALID_WIRE_COUNT",
+      "message": "Recover source count exceeds the local ABI bound.",
+      "path": "descriptor.data_hex"
+    },
+    {
+      "code": "INVALID_ACCOUNT_COUNT",
+      "message": "Account count must equal six plus the body source count.",
+      "path": "descriptor.accounts"
+    }
+  ],
+  "finding_paths": {
+    "DUPLICATE_FIXED": {
+      "decode": "descriptor.accounts[i].pubkey; later fixed occurrence i1..5",
+      "encode": "unreachable: canonical fixed keys distinct"
+    },
+    "DUPLICATE_SOURCE": {
+      "decode": "descriptor.accounts[6+j].pubkey; later suffix occurrence",
+      "encode": "intent.sources[j]; later suffix occurrence"
+    },
+    "FIXED_KEY_MISMATCH": {
+      "decode": "descriptor.accounts[i].pubkey; i0..5",
+      "encode": "unreachable: fixed profile"
+    },
+    "MISSING_PRIVILEGE": {
+      "decode": "descriptor.accounts[i]; one per role failing effective minima, no signer required",
+      "encode": "unreachable: canonical role minima"
+    },
+    "PROGRAM_ID_MISMATCH": {
+      "decode": "descriptor.program_id",
+      "encode": "unreachable: fixed profile"
+    },
+    "PROTECTED_SOURCE": {
+      "decode": "descriptor.accounts[6+j].pubkey",
+      "encode": "intent.sources[j]"
+    },
+    "SOURCES_TOO_MANY": {
+      "decode": "unreachable: count>32 is structural error first",
+      "encode": "intent.sources"
+    }
+  },
+  "findings": [
+    {
+      "code": "PROGRAM_ID_MISMATCH",
+      "layer": "descriptor",
+      "message": "Program ID differs from the fixed historical profile.",
+      "source_ids": [
+        "P",
+        "G",
+        "H"
+      ]
+    },
+    {
+      "code": "FIXED_KEY_MISMATCH",
+      "layer": "descriptor",
+      "message": "Fixed account key differs from the historical profile.",
+      "source_ids": [
+        "P",
+        "G",
+        "H"
+      ]
+    },
+    {
+      "code": "DUPLICATE_FIXED",
+      "layer": "descriptor",
+      "message": "Fixed account list contains a repeated key.",
+      "source_ids": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "code": "PROTECTED_SOURCE",
+      "layer": "descriptor",
+      "message": "Explicit source uses a fixed protected protocol key.",
+      "source_ids": [
+        "F",
+        "SEC",
+        "H",
+        "P"
+      ]
+    },
+    {
+      "code": "DUPLICATE_SOURCE",
+      "layer": "descriptor",
+      "message": "Explicit source list contains a repeated key.",
+      "source_ids": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "code": "MISSING_PRIVILEGE",
+      "layer": "descriptor",
+      "message": "Descriptor privilege union does not meet the role minimum.",
+      "source_ids": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "code": "SOURCES_TOO_MANY",
+      "layer": "intent",
+      "message": "Recover intent permits at most thirty-two explicit sources.",
+      "source_ids": [
+        "F",
+        "H"
+      ]
+    }
+  ],
+  "fixed_roles": [
+    {
+      "fixed_profile_key": "config",
+      "index": "0",
+      "required_is_signer": false,
+      "required_is_writable": false,
+      "role": "config"
+    },
+    {
+      "fixed_profile_key": "inventory",
+      "index": "1",
+      "required_is_signer": false,
+      "required_is_writable": true,
+      "role": "inventory"
+    },
+    {
+      "fixed_profile_key": "mint",
+      "index": "2",
+      "required_is_signer": false,
+      "required_is_writable": true,
+      "role": "mint"
+    },
+    {
+      "fixed_profile_key": "custody",
+      "index": "3",
+      "required_is_signer": false,
+      "required_is_writable": true,
+      "role": "custody"
+    },
+    {
+      "fixed_profile_key": "tax_authority",
+      "index": "4",
+      "required_is_signer": false,
+      "required_is_writable": false,
+      "role": "tax_authority"
+    },
+    {
+      "fixed_profile_key": "token2022",
+      "index": "5",
+      "required_is_signer": false,
+      "required_is_writable": false,
+      "role": "token2022"
+    }
+  ],
+  "implementation_paths_after_review": [
+    "clients/htfp_recover/",
+    "tests/m6d/",
+    "evidence/m6d/author/"
+  ],
+  "limits": "Design512KiB; total M6D4MiB; author source/tests/evidence1.5MiB; supervisor2MiB; free2GiB. Stdlib Python3.12; zero target/native/HTTP/network/imports of old code during StageA. Future targets<=1024each role all generations, prospective serial accounting; initial<=128 recommendation, do not omit matrix obligations.",
+  "packaged_profile": {
+    "bytes": "5607",
+    "design_path": "evidence/m6d/design/PROFILE.json",
+    "future_path": "clients/htfp_recover/PROFILE.json",
+    "read_rule": "Read-only nonblocking open, fstat regular file before reads, read at most expected_size+1, close every owned descriptor; any missing/nonregular/read/size/hash failure is SOURCE_BINDING_ERROR. No caller/env/source-hash override.",
+    "sha256": "c8afce638b45fe84bbf8154ff0fd370463ce963b9e2f2b4fef694ef040d112fd"
+  },
+  "privileges": "OR each actual key flag over every descriptor occurrence before role minima. False required flags are not ceilings; all extra signer/writable flags permitted. No privilege outside descriptor assumed. Same OR applies even when a fixed alias is already invalid; it does not remove identity/duplicate/protection findings. Encoder emits per-role minimum occurrence flags; all is_signer=false.",
+  "profile_name": "LOCAL_M3_HISTORICAL_V1",
+  "protection": {
+    "duplicates": "Compare fixed positions0..5 with earlier fixed positions; one DUPLICATE_FIXED at each later occurrence whose key appeared earlier. Independently compare suffix source positions against earlier suffix sources; one DUPLICATE_SOURCE at each later occurrence. Never pairwise-many findings, sort/deduplicate/remove sources or conflate duplicate classes.",
+    "known_fixed_keys": [
+      "program",
+      "config",
+      "inventory",
+      "mint",
+      "reserve",
+      "token2022",
+      "system",
+      "custody",
+      "tax_authority"
+    ],
+    "source_rule": "Explicit source key cannot equal any canonical protected key, including Custody (implicit), H/System/Reserve even though not fixed Recover metas. Runtime owner==H/sysvar or executable exclusions remain UNASSESSED.",
+    "wrong_fixed_alias": "A source matching an arbitrary WRONG caller-supplied fixed key is not thereby canonically protected. Report the fixed identity error; do not invent PROTECTED_SOURCE or a generic source-fixed alias finding. Existing canonical keys still trigger protection."
+  },
+  "public_api": {
+    "format_report": "Unmodified report returned by the codec=>canonical UTF8 bytes. This is a serializer, not an independent validator of arbitrary caller-created report dictionaries; input/report tampering by trusted local Python code is outside JSON request handling. Output>65536 must fail visibly, never truncate.",
+    "import_time": "No filesystem IO/writes, target calls or old module imports.",
+    "process_bytes": "bytes request=>tuple(report,exit_code), same strict full request/profile contract, no IO except fixed-profile verification; wrong Python type raises TypeError(\"process_bytes requires bytes\") outside JSON grammar.",
+    "process_file": "Explicit pathname=>tuple(report,exit_code), bounded nonblocking regular-file input plus process_bytes contract."
+  },
+  "report": {
+    "decode_rule": "Preserve exact descriptor program_id/accounts/data_hex values/raw occurrence flags/order (JSON formatting is canonical). body VALID_LOCAL_BODY; any finding=>descriptor/intent NONCONFORMANT,statusNONCONFORMANT/1; none=>allCONFORMANT/0. Full6+n account_requirements always emitted.",
+    "encode_rule": "Collect all applicable protected/duplicate-source/too-many findings. Any finding=>NONCONFORMANT/1,body+descriptor NOT_PRODUCED, intent NONCONFORMANT,descriptor null,account_requirements[]. No finding=>canonical fixed identities/minimum flags plus unmodified source order; body VALID_LOCAL_BODY, descriptor+intent CONFORMANT/0.",
+    "error_keys": [
+      "code",
+      "path",
+      "message"
+    ],
+    "error_rule": "ERROR/2, operation null,profile UNCONFIGURED,error catalog object,validation all UNASSESSED,descriptor/intent null,account_requirements/findings empty. Input_sha256 exact fully read input bytes even for parsing/profile errors, null for usage/unreadable/oversized. profile_sha256/source_bindings are fixed embodied-version references even on errors, not successful trust attestations.",
+    "finding_keys": [
+      "code",
+      "path",
+      "message",
+      "source_ids"
+    ],
+    "finding_order": "ASCII ascending(path,code), at most one per pair; fixed catalog source_ids/message, no dynamic/echo text. Fixed/source duplicates are per-later-occurrence, not every pair.",
+    "intent_keys": [
+      "sources",
+      "source_count"
+    ],
+    "keys": [
+      "schema",
+      "status",
+      "operation",
+      "profile",
+      "input_sha256",
+      "profile_sha256",
+      "source_bindings",
+      "error",
+      "validation",
+      "descriptor",
+      "intent",
+      "account_requirements",
+      "findings",
+      "assurance"
+    ],
+    "normal_rule": "Normal operation/profile exact request/selected local; error null,input hash exact. Intent sources preserve order and count is decimal string; decoder sources actual metas6.., count equals body. No receipt/amount/R/price/reward quantity is computed or claimed; fixed receipt_verified=false and UNASSESSED assessments remain. All keys always present.",
+    "path_rules": "Whole parser/CLI/depth/globalstring errors at $. Unknown/missing child or bad object/list at its nearest declared container. Missing schema/mismatch=>schema; bad/missing operation=>operation. Missing branch payload=>$; profile errors=>profile; key errors exact key field; flags descriptor.accounts[i].is_signer/.is_writable. Encoder sources element path intent.sources[j].",
+    "profile_sha256": "c8afce638b45fe84bbf8154ff0fd370463ce963b9e2f2b4fef694ef040d112fd",
+    "requirement_keys": [
+      "index",
+      "role",
+      "pubkey",
+      "required_is_writable",
+      "required_is_signer",
+      "effective_is_writable",
+      "effective_is_signer",
+      "privileges_satisfied"
+    ],
+    "source_bindings": {
+      "DECISION_REGISTER.md": "9910deba190701a6bc11d91393c9d32f5b8e656027c7925fb4f13959bce1879f",
+      "HTFP_FUNCTIONAL_SPEC.md": "6f80fab441729fb742cbb6fe893e7e8944a1aa79edf0750155e848e2c4540eb9",
+      "OPEN_QUESTIONS.md": "3a8abdfc46b6117a268343811579c73a7dc8ec05b9e0f4e8c0a097e8cd71708a",
+      "SECURITY_REQUIREMENTS.md": "966ca82678f4df1cfee21c3649c29e7df304b41b46c097cb9d76a42730804602",
+      "config/m3/local_profile.json": "8c39db647774d1e24946aa8cebf00d18ee527a6af47a3c5d1c8f614b92398f6a",
+      "config/m4b/abi.json": "1a6ee1ea7a003f0b48914db22a21073985d376ad38ef824ca833134333a91234",
+      "evidence/M6D_AUTHORIZATION.json": "d0feae9293ae08d0c5a9314b267c97afa01eccafea7c873a3755875f369b2e3d",
+      "evidence/M6D_OFFLINE_RECOVER_PROPOSAL.md": "18b4baf244da1cf3417e03ce1ec04900b86b93a963c52edfcea8b5e3e073ea77",
+      "evidence/M6D_PROPOSAL_REVIEW.json": "78d019dc348956fb27c65ba9da734e7a4b4ecaf5fdaac4fc590799d85f2132e8",
+      "evidence/M6D_STAGE_A_HANDOFF.json": "8fac5339c078c3ddc2f6239702b8524ac6adcc9793bba871f3ebb25f395881bc",
+      "programs/htfp/src/lib.rs": "c4ecf74099de5175d0940f469f809f699bbbebdf69327e129e638215c16799cd",
+      "programs/htfp/src/profile.rs": "0b115a8b0321979f38459a8e93351a96c7275dbb8c94099731fdef073ab6df2a"
+    },
+    "source_bindings_meaning": "Exact PROFILE.sources path=>SHA map, not runtime rereads of current source/public state.",
+    "status_exits": {
+      "CONFORMANT": "0",
+      "ERROR": "2",
+      "NONCONFORMANT": "1"
+    },
+    "validation_keys": [
+      "body",
+      "descriptor",
+      "intent"
+    ],
+    "validation_values": {
+      "body": [
+        "VALID_LOCAL_BODY",
+        "NOT_PRODUCED",
+        "UNASSESSED"
+      ],
+      "descriptor": [
+        "CONFORMANT",
+        "NONCONFORMANT",
+        "NOT_PRODUCED",
+        "UNASSESSED"
+      ],
+      "intent": [
+        "CONFORMANT",
+        "NONCONFORMANT",
+        "UNASSESSED"
+      ]
+    }
+  },
+  "report_schema": "htfp-recover-report-v1",
+  "request": {
+    "common": {
+      "operation": "required encode|decode",
+      "profile": "optional only for fail-closed behavior: absent/null/UNCONFIGURED=>PROFILE_UNCONFIGURED. Exact LOCAL_M3_HISTORICAL_V1 enabled; other string=>UNSUPPORTED_PROFILE; other type=>INVALID_SHAPE at profile.",
+      "schema": "required exact htfp-recover-request-v1"
+    },
+    "decode": {
+      "accounts": "Explicit ordered0..39 exact meta objects; flags actual bool. Length>39=>INVALID_SHAPE at descriptor.accounts. Later body-count check permits only6..38 normal reports.",
+      "data_hex": "ASCII lowercase [0-9a-f]*, even length, at most512characters; then exact8byte body. No Base64/encoding alternative.",
+      "descriptor_keys": [
+        "program_id",
+        "accounts",
+        "data_hex"
+      ],
+      "meta_keys": [
+        "pubkey",
+        "is_signer",
+        "is_writable"
+      ],
+      "root_keys": [
+        "schema",
+        "operation",
+        "profile",
+        "descriptor"
+      ]
+    },
+    "encode": {
+      "intent_keys": [
+        "sources"
+      ],
+      "root_keys": [
+        "schema",
+        "operation",
+        "profile",
+        "intent"
+      ],
+      "sources": "Explicit required ordered list of canonical public keys. Shape admits0..33 items: length33 is SOURCES_TOO_MANY invalid intent, descriptor not produced. More than33 is INVALID_SHAPE at intent.sources. No count_override/source_count/amount/recipient/signers/route/discovery defaults."
+    }
+  },
+  "request_schema": "htfp-recover-request-v1",
+  "schema": "htfp-m6d-requirements-v1",
+  "stage": "A design only; no client code or target invocation assigned",
+  "suffix_role": {
+    "index": "6+j",
+    "rendering": "source[0],source[1] etc.; numeric index is decimal string",
+    "required_is_signer": false,
+    "required_is_writable": true,
+    "role": "source[j]"
+  },
+  "typed_fields": {
+    "counts": "No JSON count input exists. Body count is u16LE; encode derives it from the explicitly supplied list, never an override. Every report count/index is a canonical decimal string; bool/null retain type.",
+    "pubkey": "Canonical Base58 exactly32 decoded bytes,32..44characters, exact re-encoding; no curve/signability/owner/holder eligibility check. Alphabet123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz."
+  },
+  "validation_order": [
+    "CLI/file bound, strict UTF8/no BOM",
+    "Strict JSON numeric/duplicate rejection; all Unicode scalars; then max container depth4 and decoded string/key length1024",
+    "Root object and unknown keys from union; schema; operation; exact required branch root keys except optional profile; profile type/select",
+    "Fixed packaged PROFILE regular-file/size/SHA check against compiled pin",
+    "Encode intent exact shape; sources array shape/length<=33; then each public key in list order",
+    "Decode descriptor exact shape; program_id public key; accounts array shape/size<=39; each exact meta then pubkey,is_signer,is_writable in index order; data_hex grammar",
+    "Decode body exact8length, exact header, count<=32, actual6+count metas",
+    "Collect every applicable static finding; sort; encode invalid intent emits no descriptor; decode preserves complete structurally valid descriptor with findings"
+  ]
+}

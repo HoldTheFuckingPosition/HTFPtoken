@@ -1,0 +1,140 @@
+{
+  "commitment_hex": "8d21208a43f93594bd687987ea36d0bcff92d4940532721b61bdc9e0689f0075",
+  "evidence_level": "SYNTHETIC_LOCAL_HISTORICAL_PUBLIC_IDENTITIES",
+  "network_binding": "NONE; not current/Testnet/Devnet and not cryptographic network isolation",
+  "no_account_state": "No balances, owners, executable flags, membership, rent, signatures or wallet policy are included.",
+  "no_defaults_for": [
+    "source",
+    "authority",
+    "recipient",
+    "amount_base_units",
+    "minimum_lamports",
+    "authorization_route",
+    "signers"
+  ],
+  "production": "UNCONFIGURED",
+  "profile": "LOCAL_M3_HISTORICAL_V1",
+  "protected_fixed_keys": [
+    "program",
+    "config",
+    "inventory",
+    "mint",
+    "reserve",
+    "token2022",
+    "system",
+    "custody",
+    "tax_authority"
+  ],
+  "public_keys": {
+    "config": {
+      "base58": "3X4ojLotYTTwZ6ywHFfgKmQwtbSScrFRQbR7BwYQUAiH",
+      "hex": "256b19ea5f2f1d04c85585be71cda653d5ebb8c944522be26b1ad5ab93d33d26"
+    },
+    "custody": {
+      "base58": "8tBuVubhJu6eeAKaqfF8e89p3H4hKdveGqFvuRkJcLCB",
+      "hex": "751ec29eadcd0e3da75ade6796fe9118b84744f773789bb63fcf6975efb8709c"
+    },
+    "inventory": {
+      "base58": "BkB2aM129KuoQVTyAtsCMe5zD42SVp9dQqL36EmgLQ9a",
+      "hex": "9fa42e89f440b65923835442420d428920083b00331d4ae13a7ced9637ac43d5"
+    },
+    "mint": {
+      "base58": "586Z7H2vpX9qNhN2T4e9Utugie3ogjbxzGaMtM3E6HR5",
+      "hex": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c"
+    },
+    "program": {
+      "base58": "CseQKCWvi4EA2o3oa11Age4p4xKWSLuzjWCzitASrPJu",
+      "hex": "b069e31dfd2108b1cd368029bcec7384945d8185915f81893cbd1c570f7c483e"
+    },
+    "reserve": {
+      "base58": "33S4fefxDJ9Bz6KmHns37uvwcWSPQnsEyopAZ6YtJpdo",
+      "hex": "1e56dfe19f3df7ee7207281a64e0df81828811cc2293c7edb66ecc7ab0312d6a"
+    },
+    "system": {
+      "base58": "11111111111111111111111111111111",
+      "hex": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "tax_authority": {
+      "base58": "FTAKSFkg5Ssy4XNmcCEqrZt3JTDTshx19JDEfzMLdTRo",
+      "hex": "d6b740f4b2e684f29307d38b87a90e2ffc5c51bd6898870057014c965966cdd6"
+    },
+    "token2022": {
+      "base58": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "hex": "06ddf6e1ee758fde18425dbce46ccddab61afc4d83b90d27febdf928d8a18bfc"
+    }
+  },
+  "runtime_trust": "This package embodies these frozen source versions; it does not reread source documents or attest source freshness/public deployment. Runtime verifies the packaged PROFILE bytes against its compiled exact SHA256 and size, never a caller-supplied pin.",
+  "schema": "htfp-redeem-profile-v1",
+  "sources": [
+    {
+      "bytes": "2634",
+      "id": "S113",
+      "meaning": "Direct approval; local offline codec only.",
+      "path": "evidence/M6C_AUTHORIZATION.json",
+      "sha256": "71f974ac410c4d146fdfe2ebfadcbe21999bc4aad2a6174ddab72686beb4d955"
+    },
+    {
+      "bytes": "3335",
+      "id": "S114",
+      "meaning": "Stage A ownership/gates.",
+      "path": "evidence/M6C_STAGE_A_HANDOFF.json",
+      "sha256": "420591db816d528c73ca04bfd4e31ab2e6cf6470341f498fb97fb554c0c3a252"
+    },
+    {
+      "bytes": "10573",
+      "id": "PROPOSAL",
+      "meaning": "Exact approved scope.",
+      "path": "evidence/M6C_OFFLINE_REDEEM_PROPOSAL.md",
+      "sha256": "0a492a6cd5df0053e30fff842380c551e247b49b05f24a3780a3834d35288669"
+    },
+    {
+      "bytes": "68138",
+      "id": "F",
+      "meaning": "F02/F22-F26; lines245-258 wire/metas,270-289 aliases/atomicity.",
+      "path": "HTFP_FUNCTIONAL_SPEC.md",
+      "sha256": "6f80fab441729fb742cbb6fe893e7e8944a1aa79edf0750155e848e2c4540eb9"
+    },
+    {
+      "bytes": "62481",
+      "id": "SEC",
+      "meaning": "SEC09-SEC11; lines75-104 account/authority boundaries.",
+      "path": "SECURITY_REQUIREMENTS.md",
+      "sha256": "966ca82678f4df1cfee21c3649c29e7df304b41b46c097cb9d76a42730804602"
+    },
+    {
+      "bytes": "36535",
+      "id": "D",
+      "meaning": "D27/D32 existing authorization and explicit destination.",
+      "path": "DECISION_REGISTER.md",
+      "sha256": "9910deba190701a6bc11d91393c9d32f5b8e656027c7925fb4f13959bce1879f"
+    },
+    {
+      "bytes": "21401",
+      "id": "H",
+      "meaning": "Lines37-48 privilege/protection;143-150 common;234-300 authorization/Redeem/dispatch.",
+      "path": "programs/htfp/src/lib.rs",
+      "sha256": "c4ecf74099de5175d0940f469f809f699bbbebdf69327e129e638215c16799cd"
+    },
+    {
+      "bytes": "4769",
+      "id": "P",
+      "meaning": "Public-only local constants; no production configuration.",
+      "path": "programs/htfp/src/profile.rs",
+      "sha256": "0b115a8b0321979f38459a8e93351a96c7275dbb8c94099731fdef073ab6df2a"
+    },
+    {
+      "bytes": "11411",
+      "id": "G",
+      "meaning": "Synthetic public local identity set/commitment; production disabled.",
+      "path": "config/m3/local_profile.json",
+      "sha256": "8c39db647774d1e24946aa8cebf00d18ee527a6af47a3c5d1c8f614b92398f6a"
+    },
+    {
+      "bytes": "16333",
+      "id": "ABI",
+      "meaning": "Lines5-8 preserved old wire; no Process scope.",
+      "path": "config/m4b/abi.json",
+      "sha256": "1a6ee1ea7a003f0b48914db22a21073985d376ad38ef824ca833134333a91234"
+    }
+  ]
+}

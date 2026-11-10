@@ -1,0 +1,335 @@
+{
+  "boundaries": [
+    "No program/test/build added in Stage A",
+    "No production mint/address/metadata/initializer selected",
+    "Local-profile feature/labels are not cryptographic public-network isolation; never deploy public test identities",
+    "Process/AMM/Volume/temporary settlement remain unavailable",
+    "Stage B requires exact review/freeze and explicit path handoff"
+  ],
+  "canonical_bumps": {
+    "config": "254",
+    "custody": "255",
+    "inventory": "255",
+    "reserve": "255",
+    "tax_authority": "255"
+  },
+  "commitment": {
+    "algorithm": "SHA-256",
+    "not_json_hash": true,
+    "ordered_fields": [
+      {
+        "encoding": "ASCII exact16; no NUL",
+        "hex": "485446505f4d335f4c4f43414c5f5631",
+        "length": "16",
+        "name": "domain",
+        "offset": "0"
+      },
+      {
+        "encoding": "u16 LE",
+        "hex": "0100",
+        "length": "2",
+        "name": "commitment_schema",
+        "offset": "16"
+      },
+      {
+        "encoding": "u8 local-only",
+        "hex": "01",
+        "length": "1",
+        "name": "build_profile_id",
+        "offset": "18"
+      },
+      {
+        "encoding": "u8",
+        "hex": "01",
+        "length": "1",
+        "name": "wire_version",
+        "offset": "19"
+      },
+      {
+        "encoding": "raw pubkey32, not base58 text",
+        "hex": "b069e31dfd2108b1cd368029bcec7384945d8185915f81893cbd1c570f7c483e",
+        "length": "32",
+        "name": "program",
+        "offset": "20"
+      },
+      {
+        "encoding": "raw pubkey32, not base58 text",
+        "hex": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+        "length": "32",
+        "name": "mint",
+        "offset": "52"
+      },
+      {
+        "encoding": "raw pubkey32, not base58 text",
+        "hex": "06ddf6e1ee758fde18425dbce46ccddab61afc4d83b90d27febdf928d8a18bfc",
+        "length": "32",
+        "name": "token2022",
+        "offset": "84"
+      },
+      {
+        "encoding": "raw pubkey32, not base58 text",
+        "hex": "0000000000000000000000000000000000000000000000000000000000000000",
+        "length": "32",
+        "name": "system",
+        "offset": "116"
+      },
+      {
+        "encoding": "raw pubkey32, not base58 text",
+        "hex": "1e56dfe19f3df7ee7207281a64e0df81828811cc2293c7edb66ecc7ab0312d6a",
+        "length": "32",
+        "name": "reserve",
+        "offset": "148"
+      },
+      {
+        "encoding": "raw pubkey32, not base58 text",
+        "hex": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a",
+        "length": "32",
+        "name": "initializer",
+        "offset": "180"
+      },
+      {
+        "encoding": "raw pubkey32, not base58 text",
+        "hex": "1f734b08db5fe86e3cb4a8f249ab638ea78a74b8b1e3fc095af765bc179a66c6",
+        "length": "32",
+        "name": "genesis_holding",
+        "offset": "212"
+      },
+      {
+        "encoding": "raw pubkey32, not base58 text",
+        "hex": "fc51cd8e6218a1a38da47ed00230f0580816ed13ba3303ac5deb911548908025",
+        "length": "32",
+        "name": "genesis_owner",
+        "offset": "244"
+      },
+      {
+        "encoding": "raw pubkey32, not base58 text",
+        "hex": "256b19ea5f2f1d04c85585be71cda653d5ebb8c944522be26b1ad5ab93d33d26",
+        "length": "32",
+        "name": "config",
+        "offset": "276"
+      },
+      {
+        "encoding": "raw pubkey32, not base58 text",
+        "hex": "9fa42e89f440b65923835442420d428920083b00331d4ae13a7ced9637ac43d5",
+        "length": "32",
+        "name": "inventory",
+        "offset": "308"
+      },
+      {
+        "encoding": "raw pubkey32, not base58 text",
+        "hex": "d6b740f4b2e684f29307d38b87a90e2ffc5c51bd6898870057014c965966cdd6",
+        "length": "32",
+        "name": "tax_authority",
+        "offset": "340"
+      },
+      {
+        "encoding": "raw pubkey32, not base58 text",
+        "hex": "751ec29eadcd0e3da75ade6796fe9118b84744f773789bb63fcf6975efb8709c",
+        "length": "32",
+        "name": "custody",
+        "offset": "372"
+      },
+      {
+        "encoding": "u64 LE",
+        "hex": "0700000000000000",
+        "length": "8",
+        "name": "native_genesis_execution_epoch",
+        "offset": "404"
+      },
+      {
+        "encoding": "u8",
+        "hex": "07",
+        "length": "1",
+        "name": "decimals",
+        "offset": "412"
+      },
+      {
+        "encoding": "u64 LE",
+        "hex": "0000e8890423c78a",
+        "length": "8",
+        "name": "initial_supply",
+        "offset": "413"
+      },
+      {
+        "encoding": "u16 LE",
+        "hex": "0000",
+        "length": "2",
+        "name": "initial_bps",
+        "offset": "421"
+      },
+      {
+        "encoding": "u16 LE",
+        "hex": "2003",
+        "length": "2",
+        "name": "scheduled_bps",
+        "offset": "423"
+      },
+      {
+        "encoding": "u64 LE",
+        "hex": "ffffffffffffffff",
+        "length": "8",
+        "name": "maximum_fee",
+        "offset": "425"
+      },
+      {
+        "encoding": "u16 LE Config/Inventory/Mint/Token",
+        "hex": "af0014001601b200",
+        "length": "8",
+        "name": "account_lengths",
+        "offset": "433"
+      },
+      {
+        "encoding": "u16 count then sorted unique u16 IDs",
+        "hex": "01000100",
+        "length": "4",
+        "name": "mint_extensions",
+        "offset": "441"
+      },
+      {
+        "encoding": "u16 count then sorted unique u16 IDs",
+        "hex": "01000200",
+        "length": "4",
+        "name": "token_extensions",
+        "offset": "445"
+      },
+      {
+        "encoding": "u8 no metadata in local fixture",
+        "hex": "00",
+        "length": "1",
+        "name": "metadata_policy",
+        "offset": "449"
+      },
+      {
+        "encoding": "u16 LE; local engineering bound",
+        "hex": "2000",
+        "length": "2",
+        "name": "maximum_recovery_sources",
+        "offset": "450"
+      },
+      {
+        "encoding": "u16 UTF-8 byte count then exact bytes",
+        "hex": "12006d332d6c6f63616c2d686f6c6465722d7631",
+        "length": "20",
+        "name": "holding_seed",
+        "offset": "452"
+      },
+      {
+        "encoding": "u8 Config/Inventory/TaxAuthority/Custody/Reserve",
+        "hex": "feffffffff",
+        "length": "5",
+        "name": "canonical_bumps",
+        "offset": "472"
+      }
+    ],
+    "preimage_hex": "485446505f4d335f4c4f43414c5f563101000101b069e31dfd2108b1cd368029bcec7384945d8185915f81893cbd1c570f7c483e3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c06ddf6e1ee758fde18425dbce46ccddab61afc4d83b90d27febdf928d8a18bfc00000000000000000000000000000000000000000000000000000000000000001e56dfe19f3df7ee7207281a64e0df81828811cc2293c7edb66ecc7ab0312d6ad75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a1f734b08db5fe86e3cb4a8f249ab638ea78a74b8b1e3fc095af765bc179a66c6fc51cd8e6218a1a38da47ed00230f0580816ed13ba3303ac5deb911548908025256b19ea5f2f1d04c85585be71cda653d5ebb8c944522be26b1ad5ab93d33d269fa42e89f440b65923835442420d428920083b00331d4ae13a7ced9637ac43d5d6b740f4b2e684f29307d38b87a90e2ffc5c51bd6898870057014c965966cdd6751ec29eadcd0e3da75ade6796fe9118b84744f773789bb63fcf6975efb8709c0700000000000000070000e8890423c78a00002003ffffffffffffffffaf0014001601b200010001000100020000200012006d332d6c6f63616c2d686f6c6465722d7631feffffffff",
+    "preimage_length": "477",
+    "sha256": "8d21208a43f93594bd687987ea36d0bcff92d4940532721b61bdc9e0689f0075"
+  },
+  "holding_derivation": {
+    "base_role": "initializer",
+    "method": "System create-with-seed address, public derivation only",
+    "owner_role": "token2022",
+    "seed_utf8": "m3-local-holder-v1"
+  },
+  "identity_source": "S29/D33 H/reserve preserved; S30/D34 one new production mint remains symbolic",
+  "initialize": {
+    "accounts": [
+      "Config W",
+      "Inventory W",
+      "M R",
+      "Custody W",
+      "TaxAuthority R",
+      "Reserve R",
+      "GenesisHolding R",
+      "Initializer W+S (payer)",
+      "Token-2022 R executable",
+      "System R executable"
+    ],
+    "data_hex": "485446500100",
+    "data_length": "6",
+    "mutable_arguments": "NONE",
+    "remaining_accounts": "NONE",
+    "tag": "0"
+  },
+  "native_genesis": {
+    "decimals": "7",
+    "final_fee_config_authority": null,
+    "final_freeze_authority": null,
+    "final_mint_authority": null,
+    "genesis_holding_close_authority": null,
+    "genesis_holding_delegate": null,
+    "genesis_holding_spendable": "10000000000000000000",
+    "initial_bps": "0",
+    "initial_supply": "10000000000000000000",
+    "maximum_fee": "18446744073709551615",
+    "mint_and_holding_withheld": "0",
+    "scheduled_bps": "800",
+    "scheduled_start_epoch": "9",
+    "synthetic_execution_epoch": "7",
+    "withheld_withdraw_authority_role": "tax_authority"
+  },
+  "production_enabled": false,
+  "profile": "LOCAL_ONLY_LITESVM_V1",
+  "public_keys": {
+    "config": {
+      "base58": "3X4ojLotYTTwZ6ywHFfgKmQwtbSScrFRQbR7BwYQUAiH",
+      "hex": "256b19ea5f2f1d04c85585be71cda653d5ebb8c944522be26b1ad5ab93d33d26"
+    },
+    "custody": {
+      "base58": "8tBuVubhJu6eeAKaqfF8e89p3H4hKdveGqFvuRkJcLCB",
+      "hex": "751ec29eadcd0e3da75ade6796fe9118b84744f773789bb63fcf6975efb8709c"
+    },
+    "genesis_holding": {
+      "base58": "37mc4KkGAPZGv3CG3xNfW7azVbDziDsRLUo4QtAMYV4q",
+      "hex": "1f734b08db5fe86e3cb4a8f249ab638ea78a74b8b1e3fc095af765bc179a66c6"
+    },
+    "genesis_owner": {
+      "base58": "Hyx62wPQGyvXCoihZq1BrbUjBRh2LuNxWiiqMkfAuSZr",
+      "hex": "fc51cd8e6218a1a38da47ed00230f0580816ed13ba3303ac5deb911548908025"
+    },
+    "initializer": {
+      "base58": "FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z",
+      "hex": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a"
+    },
+    "inventory": {
+      "base58": "BkB2aM129KuoQVTyAtsCMe5zD42SVp9dQqL36EmgLQ9a",
+      "hex": "9fa42e89f440b65923835442420d428920083b00331d4ae13a7ced9637ac43d5"
+    },
+    "mint": {
+      "base58": "586Z7H2vpX9qNhN2T4e9Utugie3ogjbxzGaMtM3E6HR5",
+      "hex": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c"
+    },
+    "program": {
+      "base58": "CseQKCWvi4EA2o3oa11Age4p4xKWSLuzjWCzitASrPJu",
+      "hex": "b069e31dfd2108b1cd368029bcec7384945d8185915f81893cbd1c570f7c483e"
+    },
+    "reserve": {
+      "base58": "33S4fefxDJ9Bz6KmHns37uvwcWSPQnsEyopAZ6YtJpdo",
+      "hex": "1e56dfe19f3df7ee7207281a64e0df81828811cc2293c7edb66ecc7ab0312d6a"
+    },
+    "system": {
+      "base58": "11111111111111111111111111111111",
+      "hex": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "tax_authority": {
+      "base58": "FTAKSFkg5Ssy4XNmcCEqrZt3JTDTshx19JDEfzMLdTRo",
+      "hex": "d6b740f4b2e684f29307d38b87a90e2ffc5c51bd6898870057014c965966cdd6"
+    },
+    "token2022": {
+      "base58": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "hex": "06ddf6e1ee758fde18425dbce46ccddab61afc4d83b90d27febdf928d8a18bfc"
+    }
+  },
+  "schema": "htfp-m3-local-genesis-profile-v1",
+  "stage": "A documentary freeze candidate; NOT IMPLEMENTED/NOT RUN",
+  "synthetic_public_identity_source": {
+    "private_material": "None persisted/read/generated during Stage A; any later test-vector signers remain artificial and in memory, never deployment keys",
+    "roles": {
+      "genesis_owner": "TEST3",
+      "initializer": "TEST1",
+      "mint": "TEST2"
+    },
+    "section": "7.1 Ed25519 test vectors1/2/3 PUBLIC KEY fields only",
+    "url": "https://www.rfc-editor.org/rfc/rfc8032.txt"
+  }
+}

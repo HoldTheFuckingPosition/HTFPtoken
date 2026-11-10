@@ -1,0 +1,25 @@
+[package]
+name = "htfp-both"
+version = "0.0.0-local-both"
+edition = "2021"
+rust-version = "1.89"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+solana-program = { version = "=2.3.0", default-features = false }
+
+[features]
+default = []
+local-m3 = []
+local-both = []
+custom-heap = []
+custom-panic = []
+
+[profile.release]
+overflow-checks = true
+panic = "abort"
+lto = "fat"
+codegen-units = 1

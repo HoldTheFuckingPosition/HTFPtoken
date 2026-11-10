@@ -1,0 +1,714 @@
+{
+  "alias_contract": {
+    "allowed": "All external-role equalities that do not use a protected fixed key or violate suffix uniqueness/authority-in-suffix are represented. This includes source=recipient, source=authority, source=signer, recipient=authority, recipient=signer, and their combinations. Descriptor conformance does not prove simultaneous native type/owner/threshold/payment compatibility.",
+    "external_roles": [
+      "source",
+      "recipient",
+      "authority",
+      "signer[j]"
+    ],
+    "forbidden": "Any external role equals one of9 profile protected keys; repeated suffix keys; authority key in suffix. No other blanket duplicate check.",
+    "runtime_unassessed": "Actual owner==PROGRAM, owner==sysvar, executable-account exclusions; source native owner/mint/state/delegate/CpiGuard; destination eligibility. AccountMeta contains no owner/data/executable information. No recipient SystemAccount or recipient signature requirement."
+  },
+  "assurance": {
+    "assessments": {
+      "authority_native_multisig_classification": "UNASSESSED",
+      "configured_membership_threshold": "UNASSESSED",
+      "cpi_guard_and_native_burn_compatibility": "UNASSESSED",
+      "current_supply_maintenance_backing": "UNASSESSED",
+      "destination_runtime_eligibility": "UNASSESSED",
+      "future_execution": "UNASSESSED",
+      "native_repeated_slot_semantics": "UNASSESSED",
+      "pda_wallet_policy_and_invocation": "UNASSESSED",
+      "protected_account_owners_and_executable_flags": "UNASSESSED",
+      "public_deployment_identity": "UNASSESSED",
+      "signatures_and_human_consent": "UNASSESSED",
+      "source_balance": "UNASSESSED",
+      "source_mint_state_extensions": "UNASSESSED",
+      "source_ownership": "UNASSESSED"
+    },
+    "authorization_verified": false,
+    "evidence_level": "OFFLINE_STATIC_ONLY",
+    "execution_guaranteed": false,
+    "production_readiness": "NOT_ASSESSED",
+    "public_verification": "NOT_PERFORMED",
+    "signatures_verified": false,
+    "wallet_policy_verified": false
+  },
+  "body": {
+    "amount_offset": "6",
+    "body_count_rule": "kind0 requires count0; kind1 body count0..11. Full source authorize rejects kind1/count0 at lib.rs240; low-level decode preserves it only to report SIGNERS_REQUIRED. Body grammar is not full program validity.",
+    "bytes": "56",
+    "count_offset": "55",
+    "endianness": "u64 unsigned little-endian",
+    "header_hex": "485446500102",
+    "kind_offset": "54",
+    "kind_values": [
+      "0",
+      "1"
+    ],
+    "minimum_offset": "14",
+    "recipient_offset": "22"
+  },
+  "case_matrix": "MATRIX.json is the mandatory initial case-ID list. Every case must map to a retained actual target invocation/result or explicit unmet obligation; no skipped positive PASS. Independent oracle cases may satisfy matching obligations by explicit mapping, no duplicate required call just for naming.",
+  "cli": {
+    "arguments": "Exactly one pathname; no flags, stdin, help mode, URL fetch or output file. A help probe is CLI_USAGE/2.",
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=clients python3 -B -m htfp_redeem REQUEST.json",
+    "file": "read-only nonblocking open; fstat before reading; regular file only; symlink to regular target allowed; no input-requested external reads",
+    "input_max_bytes": "16384",
+    "json": "strict UTF-8/no BOM; no duplicate keys, JSON numeric literals, nonfinite constants or unpaired surrogates; scalar-string limit1024 Unicode characters; any overlong decoded string/key=>INVALID_SHAPE at $; nearest declared parent for unknown-field errors",
+    "max_container_depth": "4",
+    "output_max_bytes": "32768",
+    "read_limit_bytes": "16385",
+    "stdout": "Exactly one ensure_ascii=true sort_keys=true indent=2 JSON object plus LF; stderr empty for specified errors. No traceback/OS text/input echo."
+  },
+  "error_source_mapping": {
+    "CLI_USAGE": [
+      "S113",
+      "S114"
+    ],
+    "DEPTH_EXCEEDED": [
+      "S113",
+      "S114"
+    ],
+    "INPUT_TOO_LARGE": [
+      "S113",
+      "S114"
+    ],
+    "INPUT_UNREADABLE": [
+      "S113",
+      "S114"
+    ],
+    "INVALID_ACCOUNT_COUNT": [
+      "F",
+      "H"
+    ],
+    "INVALID_DATA_HEX": [
+      "S113",
+      "S114"
+    ],
+    "INVALID_JSON": [
+      "S113",
+      "S114"
+    ],
+    "INVALID_PUBKEY": [
+      "S113",
+      "S114"
+    ],
+    "INVALID_SCHEMA": [
+      "S113",
+      "S114"
+    ],
+    "INVALID_SHAPE": [
+      "S113",
+      "S114"
+    ],
+    "INVALID_TEXT": [
+      "S113",
+      "S114"
+    ],
+    "INVALID_U64": [
+      "S113",
+      "S114"
+    ],
+    "INVALID_UTF8": [
+      "S113",
+      "S114"
+    ],
+    "INVALID_WIRE_COUNT": [
+      "F",
+      "H"
+    ],
+    "INVALID_WIRE_HEADER": [
+      "F",
+      "H"
+    ],
+    "INVALID_WIRE_KIND": [
+      "F",
+      "H"
+    ],
+    "INVALID_WIRE_LENGTH": [
+      "F",
+      "H"
+    ],
+    "PROFILE_UNCONFIGURED": [
+      "S113",
+      "S114"
+    ],
+    "SOURCE_BINDING_ERROR": [
+      "P",
+      "G",
+      "H",
+      "S114"
+    ],
+    "UNSUPPORTED_PROFILE": [
+      "S113",
+      "S114"
+    ]
+  },
+  "errors": [
+    {
+      "code": "CLI_USAGE",
+      "message": "Use exactly one local request file.",
+      "path": "$"
+    },
+    {
+      "code": "INPUT_UNREADABLE",
+      "message": "Input must be a readable regular file.",
+      "path": "$"
+    },
+    {
+      "code": "INPUT_TOO_LARGE",
+      "message": "Input exceeds the byte limit.",
+      "path": "$"
+    },
+    {
+      "code": "INVALID_UTF8",
+      "message": "Input must be strict UTF-8 without BOM.",
+      "path": "$"
+    },
+    {
+      "code": "INVALID_JSON",
+      "message": "Input must be strict JSON without duplicate keys or numeric literals.",
+      "path": "$"
+    },
+    {
+      "code": "INVALID_TEXT",
+      "message": "Input contains an invalid Unicode scalar.",
+      "path": "$"
+    },
+    {
+      "code": "DEPTH_EXCEEDED",
+      "message": "Input exceeds the nesting limit.",
+      "path": "$"
+    },
+    {
+      "code": "INVALID_SHAPE",
+      "message": "Input fields or types do not match the request schema.",
+      "path": "nearest declared parent or typed field"
+    },
+    {
+      "code": "INVALID_SCHEMA",
+      "message": "Unsupported request schema.",
+      "path": "schema"
+    },
+    {
+      "code": "PROFILE_UNCONFIGURED",
+      "message": "Select the explicit historical local profile.",
+      "path": "profile"
+    },
+    {
+      "code": "UNSUPPORTED_PROFILE",
+      "message": "Unsupported profile.",
+      "path": "profile"
+    },
+    {
+      "code": "SOURCE_BINDING_ERROR",
+      "message": "The fixed packaged profile failed integrity validation.",
+      "path": "$"
+    },
+    {
+      "code": "INVALID_U64",
+      "message": "Expected a canonical decimal u64 string.",
+      "path": "typed quantity field"
+    },
+    {
+      "code": "INVALID_PUBKEY",
+      "message": "Expected a canonical Base58 public key of 32 bytes.",
+      "path": "typed public-key field"
+    },
+    {
+      "code": "INVALID_DATA_HEX",
+      "message": "Expected bounded lowercase even-length hexadecimal data.",
+      "path": "descriptor.data_hex"
+    },
+    {
+      "code": "INVALID_WIRE_LENGTH",
+      "message": "Redeem body must contain exactly 56 bytes.",
+      "path": "descriptor.data_hex"
+    },
+    {
+      "code": "INVALID_WIRE_HEADER",
+      "message": "Expected HTFP version 1 tag 2.",
+      "path": "descriptor.data_hex"
+    },
+    {
+      "code": "INVALID_WIRE_KIND",
+      "message": "Unsupported authorization kind.",
+      "path": "descriptor.data_hex"
+    },
+    {
+      "code": "INVALID_WIRE_COUNT",
+      "message": "Invalid Redeem body signer count.",
+      "path": "descriptor.data_hex"
+    },
+    {
+      "code": "INVALID_ACCOUNT_COUNT",
+      "message": "Account count must equal nine plus the body signer count.",
+      "path": "descriptor.accounts"
+    }
+  ],
+  "finding_paths": {
+    "AMOUNT_ZERO": {
+      "decode": "descriptor.data_hex",
+      "encode": "intent.amount_base_units"
+    },
+    "AUTHORITY_IN_SUFFIX": {
+      "decode": "descriptor.accounts[9+j].pubkey",
+      "encode": "intent.signers[j]"
+    },
+    "DUPLICATE_SIGNER": {
+      "decode": "descriptor.accounts[9+j].pubkey; repeated occurrence after first",
+      "encode": "intent.signers[j]; repeated occurrence after first"
+    },
+    "FIXED_KEY_MISMATCH": {
+      "decode": "descriptor.accounts[i].pubkey; i in0,1,2,4,7,8",
+      "encode": "unreachable: fixed profile"
+    },
+    "MISSING_PRIVILEGE": {
+      "decode": "descriptor.accounts[i]; one per role whose effective union lacks any required bit",
+      "encode": "unreachable: exact role minima generated"
+    },
+    "PROGRAM_ID_MISMATCH": {
+      "decode": "descriptor.program_id",
+      "encode": "unreachable: fixed profile"
+    },
+    "PROTECTED_KEY": {
+      "decode": "descriptor.accounts[i].pubkey; i in3,5,6,9..",
+      "encode": "intent.source|intent.recipient|intent.authority|intent.signers[j]"
+    },
+    "RECIPIENT_MISMATCH": {
+      "decode": "descriptor.accounts[5].pubkey",
+      "encode": "unreachable: one explicit recipient"
+    },
+    "ROUTE_KIND_MISMATCH": {
+      "decode": "route_claim",
+      "encode": "unreachable: kind derived from declared route"
+    },
+    "ROUTE_SIGNERS_FORBIDDEN": {
+      "decode": "unreachable: InvalidWireCount first",
+      "encode": "intent.signers"
+    },
+    "ROUTE_UNRESOLVED": {
+      "decode": "route_claim",
+      "encode": "unreachable: explicit route required"
+    },
+    "SIGNERS_REQUIRED": {
+      "decode": "descriptor.accounts",
+      "encode": "intent.signers"
+    },
+    "SIGNERS_TOO_MANY": {
+      "decode": "unreachable: InvalidWireCount first",
+      "encode": "intent.signers"
+    }
+  },
+  "findings": [
+    {
+      "code": "AMOUNT_ZERO",
+      "layer": "intent",
+      "message": "Amount must be positive.",
+      "source_ids": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "code": "ROUTE_SIGNERS_FORBIDDEN",
+      "layer": "intent",
+      "message": "Kind-zero intent requires an empty signer suffix.",
+      "source_ids": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "code": "SIGNERS_REQUIRED",
+      "layer": "intent",
+      "message": "Native multisig intent requires at least one supplied signer.",
+      "source_ids": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "code": "SIGNERS_TOO_MANY",
+      "layer": "intent",
+      "message": "Native multisig intent permits at most eleven supplied signers.",
+      "source_ids": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "code": "ROUTE_KIND_MISMATCH",
+      "layer": "intent",
+      "message": "Declared authorization route differs from the body kind.",
+      "source_ids": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "code": "ROUTE_UNRESOLVED",
+      "layer": "intent",
+      "message": "Authorization route is explicitly unresolved.",
+      "source_ids": [
+        "F",
+        "SEC",
+        "H"
+      ]
+    },
+    {
+      "code": "PROGRAM_ID_MISMATCH",
+      "layer": "descriptor",
+      "message": "Program ID differs from the fixed historical profile.",
+      "source_ids": [
+        "P",
+        "G",
+        "H"
+      ]
+    },
+    {
+      "code": "FIXED_KEY_MISMATCH",
+      "layer": "descriptor",
+      "message": "Fixed account key differs from the historical profile.",
+      "source_ids": [
+        "P",
+        "G",
+        "H"
+      ]
+    },
+    {
+      "code": "RECIPIENT_MISMATCH",
+      "layer": "descriptor",
+      "message": "Body recipient differs from account five.",
+      "source_ids": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "code": "PROTECTED_KEY",
+      "layer": "descriptor",
+      "message": "External role uses a fixed protected protocol key.",
+      "source_ids": [
+        "F",
+        "SEC",
+        "H",
+        "P"
+      ]
+    },
+    {
+      "code": "DUPLICATE_SIGNER",
+      "layer": "descriptor",
+      "message": "Supplied signer suffix contains a repeated key.",
+      "source_ids": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "code": "AUTHORITY_IN_SUFFIX",
+      "layer": "descriptor",
+      "message": "Authority cannot be its own supplied signer suffix.",
+      "source_ids": [
+        "F",
+        "H"
+      ]
+    },
+    {
+      "code": "MISSING_PRIVILEGE",
+      "layer": "descriptor",
+      "message": "Descriptor privilege union does not meet the role minimum.",
+      "source_ids": [
+        "F",
+        "H"
+      ]
+    }
+  ],
+  "fixed_roles": [
+    {
+      "fixed_profile_key": "config",
+      "index": "0",
+      "required_is_signer": false,
+      "required_is_writable": false,
+      "role": "config"
+    },
+    {
+      "fixed_profile_key": "inventory",
+      "index": "1",
+      "required_is_signer": false,
+      "required_is_writable": true,
+      "role": "inventory"
+    },
+    {
+      "fixed_profile_key": "mint",
+      "index": "2",
+      "required_is_signer": false,
+      "required_is_writable": true,
+      "role": "mint"
+    },
+    {
+      "fixed_profile_key": null,
+      "index": "3",
+      "required_is_signer": false,
+      "required_is_writable": true,
+      "role": "source"
+    },
+    {
+      "fixed_profile_key": "reserve",
+      "index": "4",
+      "required_is_signer": false,
+      "required_is_writable": true,
+      "role": "reserve"
+    },
+    {
+      "fixed_profile_key": null,
+      "index": "5",
+      "required_is_signer": false,
+      "required_is_writable": true,
+      "role": "recipient"
+    },
+    {
+      "fixed_profile_key": null,
+      "index": "6",
+      "required_is_signer": "kind==0",
+      "required_is_writable": false,
+      "role": "authority"
+    },
+    {
+      "fixed_profile_key": "token2022",
+      "index": "7",
+      "required_is_signer": false,
+      "required_is_writable": false,
+      "role": "token2022"
+    },
+    {
+      "fixed_profile_key": "system",
+      "index": "8",
+      "required_is_signer": false,
+      "required_is_writable": false,
+      "role": "system"
+    }
+  ],
+  "implementation_paths_after_review": [
+    "clients/htfp_redeem/",
+    "tests/m6c/",
+    "evidence/m6c/author/"
+  ],
+  "packaged_profile": {
+    "bytes": "5205",
+    "design_path": "evidence/m6c/design/PROFILE.json",
+    "future_path": "clients/htfp_redeem/PROFILE.json",
+    "read_rule": "Read-only nonblocking open/fstat regular-file check, at most expected size+1 and close every descriptor; any failure is SOURCE_BINDING_ERROR. No profile URL/path/env override.",
+    "sha256": "8817cb8ee14f5f93cf1956b262be5e06605ee5707329f774b673017fef35dd2d"
+  },
+  "privileges": "Required values are minima. Effective flag for every occurrence of key k is OR of that flag over this descriptor accounts. Missing false flags are never errors; true extras allowed. No signature or privilege from outside descriptor inferred. Canonical encoder emits exactly role-minimum flags per occurrence, not a deduplicated/reordered account list. Decoder preserves actual occurrence flags and reports their key union.",
+  "profile_name": "LOCAL_M3_HISTORICAL_V1",
+  "protected_fixed_keys": [
+    "program",
+    "config",
+    "inventory",
+    "mint",
+    "reserve",
+    "token2022",
+    "system",
+    "custody",
+    "tax_authority"
+  ],
+  "report": {
+    "error_report": "statusERROR,operation null,profile UNCONFIGURED,validation all UNASSESSED,descriptor/intent null,account_requirements/findings empty. input_sha256 exact input bytes when fully read within limit else null. profile_sha256/source_bindings always fixed embodied-version references, not successful trust attestations.",
+    "error_shape": [
+      "code",
+      "path",
+      "message"
+    ],
+    "finding_order": "ascending(path,code), lexicographic ASCII; no duplicate(code,path); fixed messages only",
+    "finding_shape": [
+      "code",
+      "path",
+      "message",
+      "source_ids"
+    ],
+    "intent_keys": [
+      "source",
+      "authority",
+      "recipient",
+      "amount_base_units",
+      "minimum_lamports",
+      "authorization_route",
+      "authorization_kind",
+      "supplied_signer_count",
+      "signers"
+    ],
+    "keys": [
+      "schema",
+      "status",
+      "operation",
+      "profile",
+      "input_sha256",
+      "profile_sha256",
+      "source_bindings",
+      "error",
+      "validation",
+      "descriptor",
+      "intent",
+      "account_requirements",
+      "findings",
+      "assurance"
+    ],
+    "normal_report": "profile LOCAL_M3_HISTORICAL_V1 and operation exact request; error null; input_sha256 exact original file bytes; all keys always present; descriptor copied exactly for decode, canonical for valid encode; intent source/authority from metas3/6, recipient from body, signers from suffix; route from declared claim only. No payout quote fields.",
+    "normal_rules": {
+      "decode": "Preserve all descriptor strings/flags/order exactly after structural validation. body VALID_INITIAL_BODY; descriptor NONCONFORMANT iff any layer=descriptor finding. Intent NONCONFORMANT if any finding other than ROUTE_UNRESOLVED, else UNRESOLVED for route null, else CONFORMANT. Status follows intent; any nonconformance outranks unresolved. account_requirements always all9+n roles, boolean signer requirement resolved from kind.",
+      "descriptor_object_preservation": "Decode retains exact program_id/accounts/data_hex values and their account order/flags; JSON object key order is canonically sorted in stdout, not a lossless copy of input JSON formatting.",
+      "encode_invalid_intent": "NONCONFORMANT/1, descriptor null, account_requirements[], intent normalized with route-derived kind and supplied count, body/descriptor NOT_PRODUCED and intent NONCONFORMANT; collect all alias/suffix/amount findings before refusing output. No invalid instruction emitted.",
+      "encode_valid": "CONFORMANT/0; descriptor exact fixed roles+suffix with role-minimum occurrence flags; body VALID_INITIAL_BODY, descriptor/intent CONFORMANT.",
+      "error_paths": "Missing required child/unknown key/bad object or list => nearest declared containing object/list path. Invalid operation=>operation; invalid route=>intent.authorization_route or route_claim; flag type=>descriptor.accounts[i].is_signer or .is_writable. All parser/depth/globalstring errors at $. Schema missing/mismatch=>schema. Missing branch payload or route_claim=>$.",
+      "finding_source_arrays": "Exact catalog arrays; never change them based on current alias/claimed route. Findings are request-relative fixed paths.",
+      "source_bindings": "Exact PROFILE.sources path=>sha256 map; no additional dynamic paths or caller assertions."
+    },
+    "profile_sha256": "8817cb8ee14f5f93cf1956b262be5e06605ee5707329f774b673017fef35dd2d",
+    "requirement_keys": [
+      "index",
+      "role",
+      "pubkey",
+      "required_is_writable",
+      "required_is_signer",
+      "effective_is_writable",
+      "effective_is_signer",
+      "privileges_satisfied"
+    ],
+    "source_bindings": {
+      "DECISION_REGISTER.md": "9910deba190701a6bc11d91393c9d32f5b8e656027c7925fb4f13959bce1879f",
+      "HTFP_FUNCTIONAL_SPEC.md": "6f80fab441729fb742cbb6fe893e7e8944a1aa79edf0750155e848e2c4540eb9",
+      "SECURITY_REQUIREMENTS.md": "966ca82678f4df1cfee21c3649c29e7df304b41b46c097cb9d76a42730804602",
+      "config/m3/local_profile.json": "8c39db647774d1e24946aa8cebf00d18ee527a6af47a3c5d1c8f614b92398f6a",
+      "config/m4b/abi.json": "1a6ee1ea7a003f0b48914db22a21073985d376ad38ef824ca833134333a91234",
+      "evidence/M6C_AUTHORIZATION.json": "71f974ac410c4d146fdfe2ebfadcbe21999bc4aad2a6174ddab72686beb4d955",
+      "evidence/M6C_OFFLINE_REDEEM_PROPOSAL.md": "0a492a6cd5df0053e30fff842380c551e247b49b05f24a3780a3834d35288669",
+      "evidence/M6C_STAGE_A_HANDOFF.json": "420591db816d528c73ca04bfd4e31ab2e6cf6470341f498fb97fb554c0c3a252",
+      "programs/htfp/src/lib.rs": "c4ecf74099de5175d0940f469f809f699bbbebdf69327e129e638215c16799cd",
+      "programs/htfp/src/profile.rs": "0b115a8b0321979f38459a8e93351a96c7275dbb8c94099731fdef073ab6df2a"
+    },
+    "status_exits": {
+      "CONFORMANT": "0",
+      "ERROR": "2",
+      "NONCONFORMANT": "1",
+      "UNRESOLVED": "1"
+    },
+    "valid_values": {
+      "body": [
+        "VALID_INITIAL_BODY",
+        "NOT_PRODUCED",
+        "UNASSESSED"
+      ],
+      "descriptor": [
+        "CONFORMANT",
+        "NONCONFORMANT",
+        "NOT_PRODUCED",
+        "UNASSESSED"
+      ],
+      "intent": [
+        "CONFORMANT",
+        "NONCONFORMANT",
+        "UNRESOLVED",
+        "UNASSESSED"
+      ]
+    },
+    "validation_shape": [
+      "body",
+      "descriptor",
+      "intent"
+    ]
+  },
+  "report_schema": "htfp-redeem-report-v1",
+  "request": {
+    "common": {
+      "operation": "required encode|decode",
+      "profile": "optional; missing/null/UNCONFIGURED => PROFILE_UNCONFIGURED; LOCAL_M3_HISTORICAL_V1 only enabled; other string => UNSUPPORTED_PROFILE; other type => INVALID_SHAPE",
+      "schema": "required exact request_schema"
+    },
+    "decode": {
+      "all_except_profile_required": true,
+      "data_hex": "ASCII lowercase [0-9a-f]*, even length, at most512characters (256bytes); body length checked separately. No base64/encoding alternative.",
+      "descriptor_keys": [
+        "program_id",
+        "accounts",
+        "data_hex"
+      ],
+      "meta_keys": [
+        "pubkey",
+        "is_signer",
+        "is_writable"
+      ],
+      "metas": "Required ordered list of0..21 exact meta objects; pubkey canonical; flags actual booleans; size>21 INVALID_SHAPE. Count checked against body later.",
+      "root_keys": [
+        "schema",
+        "operation",
+        "profile",
+        "descriptor",
+        "route_claim"
+      ],
+      "route_claim": "owner|pda|native_multisig or explicit null. Unknown enum/type => INVALID_SHAPE at route_claim. Null never inferred from body/keys/flags."
+    },
+    "encode": {
+      "all_intent_fields_required": true,
+      "authorization_route": [
+        "owner",
+        "pda",
+        "native_multisig"
+      ],
+      "intent_keys": [
+        "source",
+        "authority",
+        "recipient",
+        "amount_base_units",
+        "minimum_lamports",
+        "authorization_route",
+        "signers"
+      ],
+      "public_key_fields": [
+        "source",
+        "authority",
+        "recipient"
+      ],
+      "root_keys": [
+        "schema",
+        "operation",
+        "profile",
+        "intent"
+      ],
+      "signers": "Required ordered list of canonical pubkeys, maximum12 for bounded rejected-count characterization; >12 INVALID_SHAPE at intent.signers. Zero and twelve are invalid-intent cases, not silent coercions.",
+      "u64_fields": [
+        "amount_base_units",
+        "minimum_lamports"
+      ]
+    }
+  },
+  "request_schema": "htfp-redeem-request-v1",
+  "schema": "htfp-m6c-requirements-v1",
+  "stage": "A design only; target calls 0; implementation gated",
+  "suffix_role": {
+    "index": "9+j",
+    "rendering": "role signer[0],signer[1] etc.; index decimal9+j string; resolved required flags booleans.",
+    "required_is_signer": true,
+    "required_is_writable": false,
+    "role": "signer[j]"
+  },
+  "typed_fields": {
+    "count_output": "Every amount/count/index/version/tag returned as a decimal string; booleans/null remain their types.",
+    "pubkey": "Canonical Base58 of exactly32bytes: alphabet123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz, exact re-encoding equality,32..44characters. No curve/signability/ownership test.",
+    "u64": "ASCII 0|[1-9][0-9]{0,19}, numeric value<=18446744073709551615. JSON numbers/bools/null/whitespace/signs/fraction/exponent/leading zeros rejected; minimum0 valid, amount0 intent-invalid."
+  },
+  "validation_order": [
+    "CLI/file byte bound and strict UTF8",
+    "strict JSON/numeric/duplicates then Unicode-scalar check then container depth/string bounds",
+    "root object/unknown keys at root then schema then operation; required branch root keys; profile type/select",
+    "fixed packaged PROFILE exact byte-length and SHA256 vs compiled trust pin; no caller-supplied source/hash override",
+    "encode: intent object unknown/missing keys; source,authority,recipient pubkeys; amount,minimum u64; route enum; signers list/type then each key in order",
+    "decode: route_claim then descriptor unknown/missing keys; program_id; accounts array and each exact object/pubkey/is_signer/is_writable in order; data_hex",
+    "decode body: exact length, header, kind, count0 coupling/count<=11, actual9+count account length",
+    "collect all applicable static findings; deterministic sorting; encode emits descriptor only if none; decode preserves structurally valid descriptor even when nonconformant"
+  ],
+  "verification": "Finite stdlib constructive generation plus independently literal golden bytes/meta/source evidence. No hypothesis/new package/shrinking/exhaustiveness. Full-intent roundtrip cannot recover owner/PDA route from kind0; compare wire-field projection and separately route_claim. Each externally initiated encode/decode/helper/CLI/help/error/retry prospectively counted,1024perrole cumulative, recommended<=128initial. Product has no agent budget/ledger."
+}

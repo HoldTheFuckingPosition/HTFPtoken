@@ -1,0 +1,84 @@
+{
+  "allocation": {
+    "complete": false,
+    "entitlement_reference": null,
+    "final_distribution_wallet_remaining_base_units": "0",
+    "lge_base_units": null,
+    "marketing_base_units": null,
+    "method": "MANUAL",
+    "pool_base_units": "3500000000000000000",
+    "recipients_reference": null,
+    "remainder_reference": null,
+    "team_base_units": null
+  },
+  "assertions": [],
+  "funding": {
+    "pool_lamports": null,
+    "raised_lamports": null,
+    "reserve_lamports": null,
+    "rounding_rule_reference": null
+  },
+  "identity": {
+    "extensions_description": null,
+    "genesis_sha256": null,
+    "initializer": null,
+    "metadata_mutability": null,
+    "metadata_reference": null,
+    "mint": null,
+    "program_id": "CseQKCWvi4EA2o3oa11Age4p4xKWSLuzjWCzitASrPJu",
+    "reserve": "33S4fefxDJ9Bz6KmHns37uvwcWSPQnsEyopAZ6YtJpdo"
+  },
+  "market": {
+    "burn_earn_personal_wallet": null,
+    "config_reference": null,
+    "creator_fee_mode": "BothToken",
+    "creator_fee_ppm": "500",
+    "creator_personal_wallet": null,
+    "distribution_active_fee_bps": "0",
+    "extra_margin_seconds": null,
+    "htfp_receipts_tax_exempt": false,
+    "initial_lp_mechanism": "OFFICIAL_BURN_AND_EARN",
+    "initial_received_lp_lock_fraction": {
+      "denominator": "1",
+      "numerator": "1"
+    },
+    "locker_reference": null,
+    "opening_target": "E_PLUS_2_PLUS_UNSPECIFIED_HOURS",
+    "opening_timestamp": null,
+    "ordinary_fee_ppm": "2500",
+    "pool_funding_active_fee_bps": "0",
+    "slip_policy_reference": null
+  },
+  "mint": {
+    "activation_epoch": null,
+    "decimals": "7",
+    "final_discretionary_withdrawal": false,
+    "final_economic_override": false,
+    "final_emergency_pause": false,
+    "final_fee_configuration_authority": "NONE",
+    "final_freeze_authority": "NONE",
+    "final_human_upgrade": false,
+    "final_mint_authority": "NONE",
+    "final_withheld_withdraw_authority": "CODE_RESTRICTED_PDA",
+    "initial_fee_bps": "0",
+    "initial_supply_base_units": "10000000000000000000",
+    "maximum_fee_base_units": "18446744073709551615",
+    "mint_count": "1",
+    "plan": "NEW",
+    "scheduled_fee_bps": "800",
+    "scheduling_epoch": null,
+    "token_standard": "Token-2022"
+  },
+  "schema": "HTFP_LAUNCH_DOSSIER_V1",
+  "volume": {
+    "alpha": null,
+    "capacity_gross_base_units": null,
+    "global_control": true,
+    "initial_credit_gross_base_units": null,
+    "per_call_control": true,
+    "prestart_policy_reference": null,
+    "refill_gross_base_units_per_second": null,
+    "refill_start_timestamp": null,
+    "structure": null
+  }
+}

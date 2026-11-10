@@ -1,0 +1,521 @@
+{
+  "schema": "HTFP_BOTH_PROCESSING_BINDING_V1",
+  "profile": "LOCAL_BOTH_LGE_V1",
+  "bytes": 1282,
+  "sha256": "500ea2fb0195ac5527572b226428f903b03ab164c73efc5ae565e08ecf5cb57e",
+  "hex": "485446505f424f54485f4c4f435f563101008d21208a43f93594bd687987ea36d0bcff92d4940532721b61bdc9e0689f00751900b069e31dfd2108b1cd368029bcec7384945d8185915f81893cbd1c570f7c483e3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c06ddf6e1ee758fde18425dbce46ccddab61afc4d83b90d27febdf928d8a18bfc00000000000000000000000000000000000000000000000000000000000000001e56dfe19f3df7ee7207281a64e0df81828811cc2293c7edb66ecc7ab0312d6ad75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a1f734b08db5fe86e3cb4a8f249ab638ea78a74b8b1e3fc095af765bc179a66c6fc51cd8e6218a1a38da47ed00230f0580816ed13ba3303ac5deb911548908025256b19ea5f2f1d04c85585be71cda653d5ebb8c944522be26b1ad5ab93d33d269fa42e89f440b65923835442420d428920083b00331d4ae13a7ced9637ac43d5d6b740f4b2e684f29307d38b87a90e2ffc5c51bd6898870057014c965966cdd6751ec29eadcd0e3da75ade6796fe9118b84744f773789bb63fcf6975efb8709cb89899792dca5234796fe77462b031df463f5ffeae367c5c0ffb246e1cb7ce0c40ccefb95c1e29767b6e03168559a0b8f829d878b619470933ee8a4a48763c8c06ddf6e1d765a193d9cbe146ceeb79ac1cb485ed5f5b37913a8cf5857eff00a9069b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f0000000000106a7d517187bd16635dad40455fdc2c0c124c68f215675a5dbbacb5f08000000ab53ab772724caf0b6a150d55ce2c8cf302e51a1aeafcac5428c9a7433d9f72a7881ccf2cbbf5601a89168b987bfb42e332deaf3fa33e196443e8783f85aa5e0b47c87a50c77a6b530a25019d953ec95ab765bd516936f4683f6fa3123e989e9543580484d6a4b2b1d321705849cde143b0213dc43a982d8a6f4230980734555c2ed0a2dc59232da03a26424943d1321a15e99fc4fa8bdc4d188d63f0c372cf6b5898b2d2d4c6dbd573cb48c798c52bf48daa5f2725a17be74fceaf4f27cfba24ca19dd445505be1e4e1417f7075ebe89c3a81ab397878c96df15f9508c5df8da854b2d662aa8ff5a412af7e87000b72958f72e82d4c39b42b4b2173d30f4f7e30a9273dda17d7b3513889af1dab1185d9facc4756a6edf36c42f30ba228d8d1f0f41a00b18f011f00000000b781b71d230a9910de4d3c103e72608f597fc73c83ee207242ac82b708382a6a60d90a00b18f011f000000008190d3f7ceb6cb7a7a8d8924bff89f9f611e15ce1f806f2b6237f3311a98f69738a80100599b011f00000000e5e7aed11ad3969eea2aa76c8b4d2e73ea25be7e6b5cce989b7710cf5452496e648e13d02ec2e8555d751e38980e01faa5cbb47c2e7d7262f3a2103caa3afa023b5ca2f3187261cc048e2353789242067c3aff19cab67168f86dbbd29d99f21c0100000000000000e80300000000000000e40b5402000000404b4c0000000000030000000000000000f15365000000000000dec9747f92300058850c02000000c409000000000000c409000000000000c0d4010000000000409c0000000000000100af00140059001601b2007d02ec00eb0f010304050102ca481f4e8389fbd1ba799d89dc320898c346f611af9685760020658c5de1db7b871eddaa6df3dd8dff7dadbfe2d277d95d2208838c144b4f584c107ac7094bcd20030900000000000000ffffffffffffffff",
+  "fields": [
+    {
+      "name": "domain",
+      "offset": 0,
+      "bytes": 16,
+      "encoding": "ASCII16",
+      "hex": "485446505f424f54485f4c4f435f5631"
+    },
+    {
+      "name": "schema",
+      "offset": 16,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "0100"
+    },
+    {
+      "name": "M3_genesis_commitment",
+      "offset": 18,
+      "bytes": 32,
+      "encoding": "SHA256raw32",
+      "hex": "8d21208a43f93594bd687987ea36d0bcff92d4940532721b61bdc9e0689f0075"
+    },
+    {
+      "name": "key_count",
+      "offset": 50,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "1900"
+    },
+    {
+      "name": "key_program",
+      "offset": 52,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "b069e31dfd2108b1cd368029bcec7384945d8185915f81893cbd1c570f7c483e"
+    },
+    {
+      "name": "key_mint",
+      "offset": 84,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c"
+    },
+    {
+      "name": "key_token2022",
+      "offset": 116,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "06ddf6e1ee758fde18425dbce46ccddab61afc4d83b90d27febdf928d8a18bfc"
+    },
+    {
+      "name": "key_system",
+      "offset": 148,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "key_reserve",
+      "offset": 180,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "1e56dfe19f3df7ee7207281a64e0df81828811cc2293c7edb66ecc7ab0312d6a"
+    },
+    {
+      "name": "key_initializer",
+      "offset": 212,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a"
+    },
+    {
+      "name": "key_genesis_holding",
+      "offset": 244,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "1f734b08db5fe86e3cb4a8f249ab638ea78a74b8b1e3fc095af765bc179a66c6"
+    },
+    {
+      "name": "key_genesis_owner",
+      "offset": 276,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "fc51cd8e6218a1a38da47ed00230f0580816ed13ba3303ac5deb911548908025"
+    },
+    {
+      "name": "key_config",
+      "offset": 308,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "256b19ea5f2f1d04c85585be71cda653d5ebb8c944522be26b1ad5ab93d33d26"
+    },
+    {
+      "name": "key_inventory",
+      "offset": 340,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "9fa42e89f440b65923835442420d428920083b00331d4ae13a7ced9637ac43d5"
+    },
+    {
+      "name": "key_tax_authority",
+      "offset": 372,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "d6b740f4b2e684f29307d38b87a90e2ffc5c51bd6898870057014c965966cdd6"
+    },
+    {
+      "name": "key_custody",
+      "offset": 404,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "751ec29eadcd0e3da75ade6796fe9118b84744f773789bb63fcf6975efb8709c"
+    },
+    {
+      "name": "key_amm",
+      "offset": 436,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "b89899792dca5234796fe77462b031df463f5ffeae367c5c0ffb246e1cb7ce0c"
+    },
+    {
+      "name": "key_amm_config",
+      "offset": 468,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "40ccefb95c1e29767b6e03168559a0b8f829d878b619470933ee8a4a48763c8c"
+    },
+    {
+      "name": "key_legacy_token",
+      "offset": 500,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "06ddf6e1d765a193d9cbe146ceeb79ac1cb485ed5f5b37913a8cf5857eff00a9"
+    },
+    {
+      "name": "key_wsol_mint",
+      "offset": 532,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "069b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001"
+    },
+    {
+      "name": "key_instructions_sysvar",
+      "offset": 564,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "06a7d517187bd16635dad40455fdc2c0c124c68f215675a5dbbacb5f08000000"
+    },
+    {
+      "name": "key_amm_authority",
+      "offset": 596,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "ab53ab772724caf0b6a150d55ce2c8cf302e51a1aeafcac5428c9a7433d9f72a"
+    },
+    {
+      "name": "key_pool",
+      "offset": 628,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "7881ccf2cbbf5601a89168b987bfb42e332deaf3fa33e196443e8783f85aa5e0"
+    },
+    {
+      "name": "key_lp_mint",
+      "offset": 660,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "b47c87a50c77a6b530a25019d953ec95ab765bd516936f4683f6fa3123e989e9"
+    },
+    {
+      "name": "key_vault_wsol",
+      "offset": 692,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "543580484d6a4b2b1d321705849cde143b0213dc43a982d8a6f4230980734555"
+    },
+    {
+      "name": "key_vault_htfp",
+      "offset": 724,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "c2ed0a2dc59232da03a26424943d1321a15e99fc4fa8bdc4d188d63f0c372cf6"
+    },
+    {
+      "name": "key_observation",
+      "offset": 756,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "b5898b2d2d4c6dbd573cb48c798c52bf48daa5f2725a17be74fceaf4f27cfba2"
+    },
+    {
+      "name": "key_volume",
+      "offset": 788,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "4ca19dd445505be1e4e1417f7075ebe89c3a81ab397878c96df15f9508c5df8d"
+    },
+    {
+      "name": "key_settle_authority",
+      "offset": 820,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "a854b2d662aa8ff5a412af7e87000b72958f72e82d4c39b42b4b2173d30f4f7e"
+    },
+    {
+      "name": "CPMM_full_code_sha256",
+      "offset": 852,
+      "bytes": 32,
+      "encoding": "SHA256raw32",
+      "hex": "30a9273dda17d7b3513889af1dab1185d9facc4756a6edf36c42f30ba228d8d1"
+    },
+    {
+      "name": "CPMM_full_code_bytes",
+      "offset": 884,
+      "bytes": 4,
+      "encoding": "ILE",
+      "hex": "f0f41a00"
+    },
+    {
+      "name": "CPMM_capture_slot",
+      "offset": 888,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "b18f011f00000000"
+    },
+    {
+      "name": "Token2022_full_code_sha256",
+      "offset": 896,
+      "bytes": 32,
+      "encoding": "SHA256raw32",
+      "hex": "b781b71d230a9910de4d3c103e72608f597fc73c83ee207242ac82b708382a6a"
+    },
+    {
+      "name": "Token2022_full_code_bytes",
+      "offset": 928,
+      "bytes": 4,
+      "encoding": "ILE",
+      "hex": "60d90a00"
+    },
+    {
+      "name": "Token2022_capture_slot",
+      "offset": 932,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "b18f011f00000000"
+    },
+    {
+      "name": "legacyToken_full_code_sha256",
+      "offset": 940,
+      "bytes": 32,
+      "encoding": "SHA256raw32",
+      "hex": "8190d3f7ceb6cb7a7a8d8924bff89f9f611e15ce1f806f2b6237f3311a98f697"
+    },
+    {
+      "name": "legacyToken_full_code_bytes",
+      "offset": 972,
+      "bytes": 4,
+      "encoding": "ILE",
+      "hex": "38a80100"
+    },
+    {
+      "name": "legacyToken_capture_slot",
+      "offset": 976,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "599b011f00000000"
+    },
+    {
+      "name": "ATA_full_code_sha256",
+      "offset": 984,
+      "bytes": 32,
+      "encoding": "SHA256raw32",
+      "hex": "e5e7aed11ad3969eea2aa76c8b4d2e73ea25be7e6b5cce989b7710cf5452496e"
+    },
+    {
+      "name": "ATA_container_sha256",
+      "offset": 1016,
+      "bytes": 32,
+      "encoding": "SHA256raw32",
+      "hex": "648e13d02ec2e8555d751e38980e01faa5cbb47c2e7d7262f3a2103caa3afa02"
+    },
+    {
+      "name": "config0_data_sha256",
+      "offset": 1048,
+      "bytes": 32,
+      "encoding": "SHA256raw32",
+      "hex": "3b5ca2f3187261cc048e2353789242067c3aff19cab67168f86dbbd29d99f21c"
+    },
+    {
+      "name": "alpha_num",
+      "offset": 1080,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "0100000000000000"
+    },
+    {
+      "name": "alpha_den",
+      "offset": 1088,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "e803000000000000"
+    },
+    {
+      "name": "C_base",
+      "offset": 1096,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "00e40b5402000000"
+    },
+    {
+      "name": "refill_N",
+      "offset": 1104,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "404b4c0000000000"
+    },
+    {
+      "name": "scale_D",
+      "offset": 1112,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "0300000000000000"
+    },
+    {
+      "name": "start_timestamp",
+      "offset": 1120,
+      "bytes": 8,
+      "encoding": "qLE",
+      "hex": "00f1536500000000"
+    },
+    {
+      "name": "initial_pool_HTFP",
+      "offset": 1128,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "0000dec9747f9230"
+    },
+    {
+      "name": "initial_pool_wSOL",
+      "offset": 1136,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "0058850c02000000"
+    },
+    {
+      "name": "trade_ppm",
+      "offset": 1144,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "c409000000000000"
+    },
+    {
+      "name": "creator_ppm",
+      "offset": 1152,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "c409000000000000"
+    },
+    {
+      "name": "protocol_ppm",
+      "offset": 1160,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "c0d4010000000000"
+    },
+    {
+      "name": "fund_ppm",
+      "offset": 1168,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "409c000000000000"
+    },
+    {
+      "name": "initialize_creator_mode",
+      "offset": 1176,
+      "bytes": 2,
+      "encoding": "Borsh Some(1), BothToken(0)",
+      "hex": "0100"
+    },
+    {
+      "name": "Config_bytes",
+      "offset": 1178,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "af00"
+    },
+    {
+      "name": "Inventory_bytes",
+      "offset": 1180,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "1400"
+    },
+    {
+      "name": "Volume_bytes",
+      "offset": 1182,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "5900"
+    },
+    {
+      "name": "Mint_bytes",
+      "offset": 1184,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "1601"
+    },
+    {
+      "name": "Custody_bytes",
+      "offset": 1186,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "b200"
+    },
+    {
+      "name": "Pool_bytes",
+      "offset": 1188,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "7d02"
+    },
+    {
+      "name": "AMMConfig_bytes",
+      "offset": 1190,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "ec00"
+    },
+    {
+      "name": "Observation_bytes",
+      "offset": 1192,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "eb0f"
+    },
+    {
+      "name": "wire_tags",
+      "offset": 1194,
+      "bytes": 4,
+      "encoding": "wireversion1 Process3 InitProcessing4 Finalize5",
+      "hex": "01030405"
+    },
+    {
+      "name": "guard_bits",
+      "offset": 1198,
+      "bytes": 2,
+      "encoding": "inflight1 barrier2",
+      "hex": "0102"
+    },
+    {
+      "name": "native_fixture_manifest_sha256",
+      "offset": 1200,
+      "bytes": 32,
+      "encoding": "SHA256raw32",
+      "hex": "ca481f4e8389fbd1ba799d89dc320898c346f611af9685760020658c5de1db7b"
+    },
+    {
+      "name": "profile_manifest_sha256",
+      "offset": 1232,
+      "bytes": 32,
+      "encoding": "SHA256raw32 exact PROFILE.json bytes, no circular digest",
+      "hex": "871eddaa6df3dd8dff7dadbfe2d277d95d2208838c144b4f584c107ac7094bcd"
+    },
+    {
+      "name": "HTFP_active_bps",
+      "offset": 1264,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "2003"
+    },
+    {
+      "name": "HTFP_active_epoch",
+      "offset": 1266,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "0900000000000000"
+    },
+    {
+      "name": "HTFP_maximum_fee",
+      "offset": 1274,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "ffffffffffffffff"
+    }
+  ],
+  "ordered_key_roles": [
+    "program",
+    "mint",
+    "token2022",
+    "system",
+    "reserve",
+    "initializer",
+    "genesis_holding",
+    "genesis_owner",
+    "config",
+    "inventory",
+    "tax_authority",
+    "custody",
+    "amm",
+    "amm_config",
+    "legacy_token",
+    "wsol_mint",
+    "instructions_sysvar",
+    "amm_authority",
+    "pool",
+    "lp_mint",
+    "vault_wsol",
+    "vault_htfp",
+    "observation",
+    "volume",
+    "settle_authority"
+  ],
+  "runtime_binding": "New constant preimage SHA, every ordered key and all field constants checked by new H; Volume bytes11..43 bind this new commitment, old OnlyToken0 Volume rejected7018",
+  "native_hash_limit": "Native ELF hashes bind host fixture/source association. H checks fixed executable program IDs and config-data hash; no claim that H authenticates upgradeable-loader ELF content on a public network."
+}

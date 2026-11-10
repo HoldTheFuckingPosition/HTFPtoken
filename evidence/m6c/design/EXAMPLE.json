@@ -1,0 +1,14 @@
+{
+  "intent": {
+    "amount_base_units": "9",
+    "authority": "Hyx62wPQGyvXCoihZq1BrbUjBRh2LuNxWiiqMkfAuSZr",
+    "authorization_route": "owner",
+    "minimum_lamports": "0",
+    "recipient": "FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z",
+    "signers": [],
+    "source": "37mc4KkGAPZGv3CG3xNfW7azVbDziDsRLUo4QtAMYV4q"
+  },
+  "operation": "encode",
+  "profile": "LOCAL_M3_HISTORICAL_V1",
+  "schema": "htfp-redeem-request-v1"
+}

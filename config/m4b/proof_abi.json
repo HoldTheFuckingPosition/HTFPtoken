@@ -1,0 +1,163 @@
+{
+  "schema": "htfp-m4b-isolated-proof-abi-v1",
+  "status": "DESIGN_ONLY_NO_HELPER_IMPLEMENTATION_OR_RUNTIME",
+  "program_role": "proof_program",
+  "wallet_role": "wallet_program",
+  "wire_prefix_ascii": "M4BPRF01",
+  "wire_prefix_hex": "4d34425052463031",
+  "tag_offset": 8,
+  "integer_encoding": "little-endian, exact length/no suffix",
+  "identity_scope": "Only own distinct proof PDAs/programs, never H signer/state; immutable public binding from processing_binding.json. Fixed synthetic controller initializer signs every helper/wallet entry. This is a proof-fixture restriction, not H caller policy.",
+  "accounts_by_list": {
+    "bootstrap": [
+      "controller WS",
+      "proof_guard W",
+      "proof_volume W",
+      "proof_record W",
+      "proof_reserve W",
+      "proof_marker W",
+      "system R"
+    ],
+    "probe": [
+      "controller WS",
+      "proof_guard W",
+      "proof_volume W",
+      "proof_record W",
+      "proof_marker W",
+      "instructions_sysvar R",
+      "system R"
+    ],
+    "callback_probe": [
+      "controller WS",
+      "proof_guard W",
+      "proof_volume W",
+      "proof_record W",
+      "proof_marker W",
+      "instructions_sysvar R",
+      "system R",
+      "proof_program RX",
+      "wallet_program RX"
+    ],
+    "open_close": [
+      "controller RS",
+      "proof_guard W",
+      "proof_volume W",
+      "proof_record W",
+      "proof_reserve W",
+      "proof_temp_sequence W",
+      "proof_settle_authority R",
+      "storage_payer WS",
+      "legacy_token RX",
+      "wsol_mint R",
+      "system R",
+      "instructions_sysvar R"
+    ],
+    "finish": [
+      "controller RS",
+      "proof_guard W",
+      "proof_volume W",
+      "proof_record W",
+      "instructions_sysvar R"
+    ]
+  },
+  "tags": {
+    "0": {
+      "name": "Bootstrap",
+      "bytes": 9,
+      "payload": "none",
+      "accounts": "bootstrap"
+    },
+    "1": {
+      "name": "ProcessProbe",
+      "bytes": 10,
+      "payload": "fail_after_marker:u8 at9, legal0/1",
+      "accounts": "probe"
+    },
+    "2": {
+      "name": "RecoverProbe",
+      "bytes": 9,
+      "payload": "none",
+      "accounts": "probe"
+    },
+    "3": {
+      "name": "RedeemProbe",
+      "bytes": 9,
+      "payload": "none",
+      "accounts": "probe"
+    },
+    "4": {
+      "name": "OpenSettlement",
+      "bytes": 9,
+      "payload": "none",
+      "accounts": "open_close"
+    },
+    "5": {
+      "name": "CloseSettlement",
+      "bytes": 10,
+      "payload": "fail_boundary:u8 at9;0 normal,1 afterclose,2 afterDrefund,3 afterPrestore",
+      "accounts": "open_close"
+    },
+    "6": {
+      "name": "FinalizeProbe",
+      "bytes": 17,
+      "payload": "frame_nonce:u64LE at9",
+      "accounts": "finish"
+    },
+    "7": {
+      "name": "CallbackProbe",
+      "bytes": 10,
+      "payload": "callback:u8 at9;0 direct selfRecover,1 restricted walletRecover,2 restricted walletFinalize",
+      "accounts": "callback_probe"
+    },
+    "8": {
+      "name": "DeliberateFailure",
+      "bytes": 9,
+      "payload": "none, always8108",
+      "accounts": "probe"
+    }
+  },
+  "guard_state": "20 bytes; ASCII M4BGRD01 at0,versionu16LE1 at8,bumpu8 at10,guardu8 at11,probe_recovery_counteru64LE at12. Mirror bits0/1, not real R.",
+  "volume_state": "abi.json Volume89 under own proof_volume PDA, compiled processing binding; credit/time fixed at bootstrap; probes change only sequence/frame.",
+  "record_state": "abi.json ProofSettlementRecord256, reserved52. Idle phase0: header/version/bump/binding retained and all fields after binding zero. Phase1 open stores complete checked sequence/P/L/D/W0/prebalances/keys; actual_receipt_O initially0. Phase2 closed stores measured O and observed balances. Final successful tail resets fields after binding to0/phase0.",
+  "bootstrap_semantics": "Fresh System/data0 own PDAs only; native payer transfers/allocate/assign for guard20/volume89/record256 at current rent. Native System fund reserve/marker to current rent minimum(data0) so later1-lamport markers do not create non-rent-exempt accounts. No initialized money/token injection. Replay rejects.",
+  "probe_semantics": "Authenticate final direct FinalizeProbe17byte/five-role tail using real sysvar and stackheight rules analogous to H. Inactive0 initializes frame with tailnonce=sequence+1; active2 validates same nonce/cleanup, 0<fence_nonce<=sequence. Set3, genuine System transfer1lamport controller->fixedmarker, optional fixed deliberate error, sequence++, return2. Every ProcessProbe/CallbackProbe rejects open recordphase1 before effects. No burn/swap/HTFP-R mutation.",
+  "recover_semantics": "Requireguard0/no activeframe; guard1 around genuine System transfer1lamport controller->marker; increment only local probe_recovery_counter; restore0. guardbit0=>8104,barrier=>8105. No H Recover/native fee withdrawal.",
+  "redeem_semantics": "Requireprior0/2; setprior|1, native System transfer1lamport controller->marker, restoreprior; no actual HTFP redemption/payout modeled.",
+  "settlement_semantics": "Requireactiveguard2 and matching actual final proof tail. Open only phase0 and sequence>0, temp derives [m4b-proof-wsol,M,(volume.sequence-1)u64LE] under proof_program; native setup exactly SETTLEMENT.md using own reserve/settle/temp and arbitrary compatible storage_payer. Freeze temp sequence in phase1 record. Close only phase1/same payer,temp,record,frame; setguard3 around CPIs; derive O from actual native lamport+token deltas, close/refundD/restoreP, phase2/guard2. No sequence/credit change. No second opening in phase2 before final. Active Final requires0<fence_nonce<=sequence, rejects phase1, permits recordphase0/2, clears frame and completed record with no CPI. Idleguard0 Final requires inactive zero frame, recordphase0 with zero fields afterbinding, nonce=sequence+1 (nooverflow); succeeds without write/event. These checks are additional helper lifecycle constraints; future H Process settles internally and needs no record account.",
+  "callbacks": "Only fixed native selfInvoke RecoverProbe, fixed wallet RecoverProbe or fixed wallet FinalizeProbe while guard3; no arbitrary bytes/metas/signers/program. Native reentrancy rejection before handler is valid observed result; bit0 custom error must not be fabricated. Any actual CPI error's fatal/recoverable disposition is measured, no successful caught-error TX assumed.",
+  "wallet_wire": "ASCII M4BWAL01 (8 bytes), scenario:u8 at8, frame_nonce:u64LE at9; exactly17bytes. Accounts callback_probe nine-role list including fixed proof and wallet executables; recursion depth bound2 checked by actual stackheight. Only propagated controller signer, never invoke_signed/arbitrary seeds.",
+  "wallet_scenarios": {
+    "0": "ProcessProbe normal",
+    "1": "ProcessProbe then RecoverProbe attempt ignoring returned error",
+    "2": "ProcessProbe then early FinalizeProbe attempt ignoring returned error",
+    "3": "ProcessProbe then DeliberateFailure",
+    "4": "nested wallet scenario0 once then return",
+    "5": "FinalizeProbe only (CPI, must reject)",
+    "6": "no child invocation, successful no-op",
+    "7": "failed ProcessProbe attempt ignoring returned error",
+    "8": "RecoverProbe only callback"
+  },
+  "wallet_restrictions": "Reconstruct fixed tags/accounts from scenario. Finish child uses ordered five-role finish subset; probe child uses seven-role subset. No Open/Close/AMM/native money routing from wallet. No arbitrary payload forwarding. Only scenario4 nests exactly once into scenario0. Unknown scenario/extra bytes reject.",
+  "alias_policy": "All own fixed keys distinct. storage_payer may equal controller or another valid signing System/data0 account but cannot equal any proof state/marker/reserve/temp/authority/mint/program/sysvar; controller may be transaction fee payer. Transaction-wide ordinary writable promotion accepted; InstructionsSysvar staysread-only.",
+  "errors": {
+    "8100": "InvalidWire",
+    "8101": "IdentityOrPrivilege",
+    "8102": "StateOrBinding",
+    "8103": "Alias",
+    "8104": "InFlight",
+    "8105": "TransactionBarrierOrFrame",
+    "8106": "FinalContext",
+    "8107": "SettlementOrPostClose",
+    "8108": "DeliberateFailure",
+    "8109": "ArithmeticOrSequence"
+  },
+  "native_errors": "Propagate exact native CPI errors; attempts to ignore child error record actual runtime disposition.",
+  "events": {
+    "header": "ASCII M4BPEV01 +versionu8=1 +tagu8",
+    "1": "ProcessProbe:sequence_beforeu64LE,sequence_afteru64LE,guard_afteru8 (27bytes total)",
+    "4": "OpenSettlement:exact raw record256 (266bytes total)",
+    "5": "CloseSettlement:exact raw record256,immediate_postclose_owner32,data_lenu64LE,lamportsu64LE,reserve_after_closeu64LE (322bytes total); capture immediately after native close before D/P transfers, emit after final checks; failed TX logs never success",
+    "6": "Finalized:frame_nonceu64LE,sequenceu64LE,guard_afteru8 (27bytes total), noevent on idle no-op"
+  },
+  "evidence_limit": "Isolated helper mirror proves runtime kernels/settlement feasibility only. Actual H/native tax/R/capacity integration and sameTransaction sale recycling MUST be independently proved after StageC handoff."
+}

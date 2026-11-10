@@ -1,0 +1,357 @@
+{
+  "schema": "HTFP_LOCAL_BOTH_LGE_PROCESSING_PROFILE_V1",
+  "id": "LOCAL_BOTH_LGE_V1",
+  "production_enabled": false,
+  "new_crate": "programs/htfp-both",
+  "feature": "local-both",
+  "default_features": [],
+  "M3_genesis_profile": {
+    "path": "config/m3/local_profile.json",
+    "bytes": 11411,
+    "sha256": "8c39db647774d1e24946aa8cebf00d18ee527a6af47a3c5d1c8f614b92398f6a"
+  },
+  "M3_genesis_commitment_sha256": "8d21208a43f93594bd687987ea36d0bcff92d4940532721b61bdc9e0689f0075",
+  "M3_preimage_bytes": 477,
+  "M3_profile_rs_byte_identical": true,
+  "ordered_key_roles": [
+    "program",
+    "mint",
+    "token2022",
+    "system",
+    "reserve",
+    "initializer",
+    "genesis_holding",
+    "genesis_owner",
+    "config",
+    "inventory",
+    "tax_authority",
+    "custody",
+    "amm",
+    "amm_config",
+    "legacy_token",
+    "wsol_mint",
+    "instructions_sysvar",
+    "amm_authority",
+    "pool",
+    "lp_mint",
+    "vault_wsol",
+    "vault_htfp",
+    "observation",
+    "volume",
+    "settle_authority"
+  ],
+  "identities": {
+    "program": {
+      "base58": "CseQKCWvi4EA2o3oa11Age4p4xKWSLuzjWCzitASrPJu",
+      "hex": "b069e31dfd2108b1cd368029bcec7384945d8185915f81893cbd1c570f7c483e"
+    },
+    "mint": {
+      "base58": "586Z7H2vpX9qNhN2T4e9Utugie3ogjbxzGaMtM3E6HR5",
+      "hex": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c"
+    },
+    "token2022": {
+      "base58": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "hex": "06ddf6e1ee758fde18425dbce46ccddab61afc4d83b90d27febdf928d8a18bfc"
+    },
+    "system": {
+      "base58": "11111111111111111111111111111111",
+      "hex": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "reserve": {
+      "base58": "33S4fefxDJ9Bz6KmHns37uvwcWSPQnsEyopAZ6YtJpdo",
+      "hex": "1e56dfe19f3df7ee7207281a64e0df81828811cc2293c7edb66ecc7ab0312d6a"
+    },
+    "initializer": {
+      "base58": "FVen3X669xLzsi6N2V91DoiyzHzg1uAgqiT8jZ9nS96Z",
+      "hex": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a"
+    },
+    "genesis_holding": {
+      "base58": "37mc4KkGAPZGv3CG3xNfW7azVbDziDsRLUo4QtAMYV4q",
+      "hex": "1f734b08db5fe86e3cb4a8f249ab638ea78a74b8b1e3fc095af765bc179a66c6"
+    },
+    "genesis_owner": {
+      "base58": "Hyx62wPQGyvXCoihZq1BrbUjBRh2LuNxWiiqMkfAuSZr",
+      "hex": "fc51cd8e6218a1a38da47ed00230f0580816ed13ba3303ac5deb911548908025"
+    },
+    "config": {
+      "base58": "3X4ojLotYTTwZ6ywHFfgKmQwtbSScrFRQbR7BwYQUAiH",
+      "hex": "256b19ea5f2f1d04c85585be71cda653d5ebb8c944522be26b1ad5ab93d33d26"
+    },
+    "inventory": {
+      "base58": "BkB2aM129KuoQVTyAtsCMe5zD42SVp9dQqL36EmgLQ9a",
+      "hex": "9fa42e89f440b65923835442420d428920083b00331d4ae13a7ced9637ac43d5"
+    },
+    "tax_authority": {
+      "base58": "FTAKSFkg5Ssy4XNmcCEqrZt3JTDTshx19JDEfzMLdTRo",
+      "hex": "d6b740f4b2e684f29307d38b87a90e2ffc5c51bd6898870057014c965966cdd6"
+    },
+    "custody": {
+      "base58": "8tBuVubhJu6eeAKaqfF8e89p3H4hKdveGqFvuRkJcLCB",
+      "hex": "751ec29eadcd0e3da75ade6796fe9118b84744f773789bb63fcf6975efb8709c"
+    },
+    "amm": {
+      "base58": "DRaycpLY18LhpbydsBWbVJtxpNv9oXPgjRSfpF2bWpYb",
+      "hex": "b89899792dca5234796fe77462b031df463f5ffeae367c5c0ffb246e1cb7ce0c"
+    },
+    "amm_config": {
+      "base58": "5MxLgy9oPdTC3YgkiePHqr3EoCRD9uLVYRQS2ANAs7wy",
+      "hex": "40ccefb95c1e29767b6e03168559a0b8f829d878b619470933ee8a4a48763c8c"
+    },
+    "legacy_token": {
+      "base58": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "hex": "06ddf6e1d765a193d9cbe146ceeb79ac1cb485ed5f5b37913a8cf5857eff00a9"
+    },
+    "wsol_mint": {
+      "base58": "So11111111111111111111111111111111111111112",
+      "hex": "069b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001"
+    },
+    "instructions_sysvar": {
+      "base58": "Sysvar1nstructions1111111111111111111111111",
+      "hex": "06a7d517187bd16635dad40455fdc2c0c124c68f215675a5dbbacb5f08000000"
+    },
+    "amm_authority": {
+      "base58": "CXniRufdq5xL8t8jZAPxsPZDpuudwuJSPWnbcD5Y5Nxq",
+      "hex": "ab53ab772724caf0b6a150d55ce2c8cf302e51a1aeafcac5428c9a7433d9f72a"
+    },
+    "pool": {
+      "base58": "97Qim9xJeSaM1sYgv9Yyc2sqW8hEz1gvQ8ajrhTUw4CP",
+      "hex": "7881ccf2cbbf5601a89168b987bfb42e332deaf3fa33e196443e8783f85aa5e0"
+    },
+    "lp_mint": {
+      "base58": "D9YXBknVrvcVKtXdfWvHTN9XoZ7wMc9GndZcJ5Gsdpp8",
+      "hex": "b47c87a50c77a6b530a25019d953ec95ab765bd516936f4683f6fa3123e989e9"
+    },
+    "vault_wsol": {
+      "base58": "6fiZfoZo6j3Cg3WK5i7EdmVgMWguiJsiRc9DrEK2g1rL",
+      "hex": "543580484d6a4b2b1d321705849cde143b0213dc43a982d8a6f4230980734555"
+    },
+    "vault_htfp": {
+      "base58": "E7ujVEmA4qSqjaB6dGDYDeVj6gs4oeeB2xXjs3WsDxxd",
+      "hex": "c2ed0a2dc59232da03a26424943d1321a15e99fc4fa8bdc4d188d63f0c372cf6"
+    },
+    "observation": {
+      "base58": "DDeSP6ecmUW9KWVcyDFtWdb48FqomMwgahV8Fm1EQi33",
+      "hex": "b5898b2d2d4c6dbd573cb48c798c52bf48daa5f2725a17be74fceaf4f27cfba2"
+    },
+    "volume": {
+      "base58": "6A8vLCRAcpJi8YRZmXvbEurchzv6hPEKiHyB3fFaVy5N",
+      "hex": "4ca19dd445505be1e4e1417f7075ebe89c3a81ab397878c96df15f9508c5df8d"
+    },
+    "settle_authority": {
+      "base58": "CL6QGEfZsg9HVMy2jst4zFs6Qe8UgGthfu3wR7iV1iNR",
+      "hex": "a854b2d662aa8ff5a412af7e87000b72958f72e82d4c39b42b4b2173d30f4f7e"
+    }
+  },
+  "derivations": {
+    "amm_authority": {
+      "program": "DRaycpLY18LhpbydsBWbVJtxpNv9oXPgjRSfpF2bWpYb",
+      "seeds_hex": [
+        "7661756c745f616e645f6c705f6d696e745f617574685f73656564"
+      ],
+      "bump": 255
+    },
+    "pool": {
+      "program": "DRaycpLY18LhpbydsBWbVJtxpNv9oXPgjRSfpF2bWpYb",
+      "seeds_hex": [
+        "706f6f6c",
+        "40ccefb95c1e29767b6e03168559a0b8f829d878b619470933ee8a4a48763c8c",
+        "069b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001",
+        "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c"
+      ],
+      "bump": 255
+    },
+    "lp_mint": {
+      "program": "DRaycpLY18LhpbydsBWbVJtxpNv9oXPgjRSfpF2bWpYb",
+      "seeds_hex": [
+        "706f6f6c5f6c705f6d696e74",
+        "7881ccf2cbbf5601a89168b987bfb42e332deaf3fa33e196443e8783f85aa5e0"
+      ],
+      "bump": 254
+    },
+    "vault_wsol": {
+      "program": "DRaycpLY18LhpbydsBWbVJtxpNv9oXPgjRSfpF2bWpYb",
+      "seeds_hex": [
+        "706f6f6c5f7661756c74",
+        "7881ccf2cbbf5601a89168b987bfb42e332deaf3fa33e196443e8783f85aa5e0",
+        "069b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001"
+      ],
+      "bump": 255
+    },
+    "vault_htfp": {
+      "program": "DRaycpLY18LhpbydsBWbVJtxpNv9oXPgjRSfpF2bWpYb",
+      "seeds_hex": [
+        "706f6f6c5f7661756c74",
+        "7881ccf2cbbf5601a89168b987bfb42e332deaf3fa33e196443e8783f85aa5e0",
+        "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c"
+      ],
+      "bump": 255
+    },
+    "observation": {
+      "program": "DRaycpLY18LhpbydsBWbVJtxpNv9oXPgjRSfpF2bWpYb",
+      "seeds_hex": [
+        "6f62736572766174696f6e",
+        "7881ccf2cbbf5601a89168b987bfb42e332deaf3fa33e196443e8783f85aa5e0"
+      ],
+      "bump": 255
+    },
+    "volume": {
+      "program": "CseQKCWvi4EA2o3oa11Age4p4xKWSLuzjWCzitASrPJu",
+      "seeds_hex": [
+        "687466702d766f6c756d65",
+        "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c"
+      ],
+      "bump": 255
+    },
+    "settle_authority": {
+      "program": "CseQKCWvi4EA2o3oa11Age4p4xKWSLuzjWCzitASrPJu",
+      "seeds_hex": [
+        "687466702d736574746c652d61757468",
+        "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c"
+      ],
+      "bump": 255
+    },
+    "temp_wsol_sequence0": {
+      "program": "CseQKCWvi4EA2o3oa11Age4p4xKWSLuzjWCzitASrPJu",
+      "seeds_hex": [
+        "687466702d746d702d77736f6c",
+        "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c",
+        "0000000000000000"
+      ],
+      "bump": 255
+    }
+  },
+  "fixture_only_extra_identities": {
+    "associated_token": {
+      "base58": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+      "hex": "8c97258f4e2489f1bb3d1029148e0d830b5a1399daff1084048e7bd8dbe9f859"
+    },
+    "creation_fee_receiver": {
+      "base58": "3oE58BKVt8KuYkGxx8zBojugnymWmBiyafWgMrnb6eYy",
+      "hex": "298edee03ebe2bd642988cad48b77a6117cfeb9c18d39b14e191f5e4570d56ba"
+    },
+    "creator_wsol": {
+      "base58": "F79xg8WLExRCrYqMwHBUgK5rPVT58QoXEtUyxFgMv2wj",
+      "hex": "d1973b9a4e915249dcd29d748e5fc98a79d14b1603e4f3d0a964bd754325f772"
+    },
+    "creator_htfp": {
+      "base58": "BneesVV6L4h4s2mSapaZLKrhdsoosAVyhn5oxf2kqykZ",
+      "hex": "a046947a0aa57636208569a5ab2f866dd0b3eef01a07001d8ba2412c6d71918e"
+    },
+    "creator_lp": {
+      "base58": "94HFb1CFMYaaeaKxfZiv3ShhJZRC3HRBTebVcivU7bMG",
+      "hex": "77b49d0b472c5f20dc824531e7cea85cce6aa2201cea551c97df7deb66979edf"
+    },
+    "temp_wsol_sequence0": {
+      "base58": "DEkA9metkr974roa4yUdZmg5ZVD36mGpwfXQynSFqfFr",
+      "hex": "b5d197a0610320580e9ae14d31ee5aaa2383248287f41823911e7fc5d4b5f1f5"
+    }
+  },
+  "native_dependencies_by_reference": {
+    "path": "config/m4b/native_fixture.json",
+    "bytes": 3091,
+    "sha256": "ca481f4e8389fbd1ba799d89dc320898c346f611af9685760020658c5de1db7b"
+  },
+  "native_abi_reference": {
+    "path": "config/m4b/native_abi.json",
+    "bytes": 18255,
+    "sha256": "931db4fd5fe5230c5358d71f2232814d0a976a07ec9bfccccaf480a9df49bbbb"
+  },
+  "fees": {
+    "denominator_ppm": "1000000",
+    "trade_ppm": "2500",
+    "creator_ppm": "2500",
+    "protocol_fraction_of_trade_ppm": "120000",
+    "fund_fraction_of_trade_ppm": "40000",
+    "creator_mode_name": "BothToken",
+    "pool_creator_mode_offset": 389,
+    "pool_creator_mode_byte": 0,
+    "pool_creator_enabled_offset": 390,
+    "pool_creator_enabled_byte": 1,
+    "initialize_v2_option_hex": "0100",
+    "final_creator_500ppm_tested": false
+  },
+  "HTFP_fee": {
+    "initial_bps": "0",
+    "new_bps": "800",
+    "scheduled_at_epoch": "7",
+    "active_epoch": "9",
+    "maximum_fee": "18446744073709551615",
+    "all_mint_freeze_fee_config_authorities_revoked": true,
+    "withdraw_authority": "tax_authority",
+    "supply_base_units": "10000000000000000000",
+    "decimals": "7"
+  },
+  "volume": {
+    "alpha_numerator": 1,
+    "alpha_denominator": 1000,
+    "C_base_units": "10000000000",
+    "refill_N_scaled_per_second": "5000000",
+    "scale_D": 3,
+    "r_reduced_base_units_per_second": "5000000/3",
+    "initial_credit_scaled": "30000000000",
+    "start_timestamp": 1700000000,
+    "initial_full_C": true,
+    "start_semantics": "Fixed refill anchor, not eligibility/warmup gate; initialize credit exactly full C and last_refill=t0, then max(now,last) success semantics; no parameter setter.",
+    "production_parameters": "OPEN",
+    "native_alpha_equality_success": "NOT_RUN_INFEASIBLE_GLOBAL_CAP_DOMINATES_FIXED_35_PERCENT_POOL"
+  },
+  "LGE": {
+    "contributions_lamports": [
+      "500000000",
+      "1000000000",
+      "2000000000",
+      "3000000000",
+      "4500000000"
+    ],
+    "total_lamports": "11000000000",
+    "operational_creator_topup_outside_LGE": "1000000000",
+    "token_allocations": {
+      "participants": "5500000000000000000",
+      "pool": "3500000000000000000",
+      "team": "500000000000000000",
+      "marketing": "500000000000000000"
+    },
+    "SOL_allocations": {
+      "reserve": "2200000000",
+      "pool": "8800000000"
+    },
+    "accounting_initial_liquidity": "175499287747842",
+    "actual_initial_LP_receipt": "175499287747742",
+    "LP_retained": true,
+    "LP_burn_or_withdraw_or_locker": false
+  },
+  "clock": {
+    "initial_epoch": "7",
+    "activation_epoch": "9",
+    "initial_unix": "captured current UTC integer t0 in first setup; same retained t0 replayed for CU prefixes",
+    "activation_unix": "t0+120",
+    "opening_unix": "t0+120+14400",
+    "real_epoch_prediction": false,
+    "main_chronology": "monotone epoch/slot/unix; no epoch rewind",
+    "volume_start_anchor": "1700000000, synthetic refill anchor only, not opening gate"
+  },
+  "callers": {
+    "count": 3,
+    "generation": "new ephemeral Keypair objects in memory; no secret export",
+    "excluded_roles": [
+      "initializer",
+      "genesis_owner",
+      "mint",
+      "team",
+      "marketing",
+      "all five participants"
+    ],
+    "positive_Process_fee_payer": "same as account9; only its signature in ordinary Process+Finalize transactions",
+    "positive_Recover_fee_payer": "unrelated caller; no token authority signature or initializer co-signature",
+    "funding": "separate prior genuine System transfers from operational synthetic funding",
+    "not_a_production_allowlist": true
+  },
+  "limitations": [
+    "Historical captured2500/2500 config is experimental, not final2500/500",
+    "Mixed-provenance synthetic LiteSVM loading; current public/source/validator equivalence UNKNOWN",
+    "No production profile, live RPC, publication, real keys, deployment or public transaction",
+    "No Process caller reward; exact D reimbursement is operational restitution",
+    "No M5, locker, BurnAndEarn, LP fee/principal claim or deferred fullsuite",
+    "No actual callee callback is fabricated; runtime callback proof NOT_RUN"
+  ]
+}

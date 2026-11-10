@@ -1,0 +1,19 @@
+# Future build and local-only material. No secrets are part of M0.
+/target/
+/node_modules/
+/.venv/
+/private/
+.env
+.env.*
+!.env.example
+*.keypair.json
+
+# Local Python model/test bytecode; runs normally disable writes.
+__pycache__/
+*.py[cod]
+
+# Owned M3 offline compilation/cache outputs; captured release evidence is separate.
+/programs/htfp/target/
+/programs/htfp/.cargo-local/
+/tests/m3/**/target/
+/tests/m3/**/.cargo-local/

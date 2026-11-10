@@ -1,0 +1,559 @@
+{
+  "schema": "htfp-m4b-processing-binding-preimage-v1",
+  "profile": "LOCAL_ONLY_M4B_A_V1",
+  "length": 1768,
+  "sha256": "72586d07814aa311c24ca93ff80739636800e463a4f3b709cb0e3dbeef525f98",
+  "hex": "485446505f4d34425f4c4f43414c303101008d21208a43f93594bd687987ea36d0bcff92d4940532721b61bdc9e0689f00752a00256b19ea5f2f1d04c85585be71cda653d5ebb8c944522be26b1ad5ab93d33d26751ec29eadcd0e3da75ade6796fe9118b84744f773789bb63fcf6975efb8709c1f734b08db5fe86e3cb4a8f249ab638ea78a74b8b1e3fc095af765bc179a66c6fc51cd8e6218a1a38da47ed00230f0580816ed13ba3303ac5deb911548908025d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a9fa42e89f440b65923835442420d428920083b00331d4ae13a7ced9637ac43d53d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660cb069e31dfd2108b1cd368029bcec7384945d8185915f81893cbd1c570f7c483e1e56dfe19f3df7ee7207281a64e0df81828811cc2293c7edb66ecc7ab0312d6a0000000000000000000000000000000000000000000000000000000000000000d6b740f4b2e684f29307d38b87a90e2ffc5c51bd6898870057014c965966cdd606ddf6e1ee758fde18425dbce46ccddab61afc4d83b90d27febdf928d8a18bfcb89899792dca5234796fe77462b031df463f5ffeae367c5c0ffb246e1cb7ce0c40ccefb95c1e29767b6e03168559a0b8f829d878b619470933ee8a4a48763c8c06ddf6e1d765a193d9cbe146ceeb79ac1cb485ed5f5b37913a8cf5857eff00a9069b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f000000000018c97258f4e2489f1bb3d1029148e0d830b5a1399daff1084048e7bd8dbe9f85906a7d517187bd16635dad40455fdc2c0c124c68f215675a5dbbacb5f08000000298edee03ebe2bd642988cad48b77a6117cfeb9c18d39b14e191f5e4570d56baab53ab772724caf0b6a150d55ce2c8cf302e51a1aeafcac5428c9a7433d9f72a7881ccf2cbbf5601a89168b987bfb42e332deaf3fa33e196443e8783f85aa5e0b47c87a50c77a6b530a25019d953ec95ab765bd516936f4683f6fa3123e989e9543580484d6a4b2b1d321705849cde143b0213dc43a982d8a6f4230980734555c2ed0a2dc59232da03a26424943d1321a15e99fc4fa8bdc4d188d63f0c372cf6b5898b2d2d4c6dbd573cb48c798c52bf48daa5f2725a17be74fceaf4f27cfba2d1973b9a4e915249dcd29d748e5fc98a79d14b1603e4f3d0a964bd754325f772a046947a0aa57636208569a5ab2f866dd0b3eef01a07001d8ba2412c6d71918e77b49d0b472c5f20dc824531e7cea85cce6aa2201cea551c97df7deb66979edf8d0eea59d91eea24981b88f4b03db892dd67e851ee4526abdbd0c32e40ed0e765f711b728d4d0be26c58d3d31e766aa52bdb83703b64ebb13b426adcb4ba45964ca19dd445505be1e4e1417f7075ebe89c3a81ab397878c96df15f9508c5df8da854b2d662aa8ff5a412af7e87000b72958f72e82d4c39b42b4b2173d30f4f7eb5d197a0610320580e9ae14d31ee5aaa2383248287f41823911e7fc5d4b5f1f5b425db4f9ae5dacbe02d6902ead0b5146f898453437413addc1148ae9f0f83bf73b91bc1fd27d0f2c0efe29e1a11d812cb0ea20cc3c81439c463b5573bef08c64e1359935ef2457b0e3f46a4b93f98e50929c3c9e7237148b93572b93c9b415b4a542f3e0b3f39f8a6f86f311e70c53e7de9175851d4ff5fba7309c3625a55959d75b007e8c9e948d83eacdec01bbba5016d4ac7397de69757ada70c598eac83c0b340224bc2e5005317aa0c90ab96009e18e0410c30b60c6f8691a6f67221b14ce29d8a70f7b7b389dd0d361728cabf211cb91bb13ebd8a33d375749320b514f37444a533338be1c931d4a35b1bb2d41bf3593f943203e233778ef4fff0a2176a2d9d5343c275172d1bddc174d5ceb9aa11422104091520822cb76245ba465f30a9273dda17d7b3513889af1dab1185d9facc4756a6edf36c42f30ba228d8d1f0f41a00b18f011f00000000b781b71d230a9910de4d3c103e72608f597fc73c83ee207242ac82b708382a6a60d90a00b18f011f000000008190d3f7ceb6cb7a7a8d8924bff89f9f611e15ce1f806f2b6237f3311a98f69738a80100599b011f00000000e5e7aed11ad3969eea2aa76c8b4d2e73ea25be7e6b5cce989b7710cf5452496e648e13d02ec2e8555d751e38980e01faa5cbb47c2e7d7262f3a2103caa3afa023b5ca2f3187261cc048e2353789242067c3aff19cab67168f86dbbd29d99f21c0100000000000000e80300000000000000e40b5402000000404b4c0000000000030000000000000000f153650000000000a0724e1809000000e87648170000000101af00140059000001010304050102ca481f4e8389fbd1ba799d89dc320898c346f611af9685760020658c5de1db7bdcd918ce5f99b086980f025dbb65ca340ae3adbbe5ed4b1d321bdee8065d3081",
+  "fields": [
+    {
+      "name": "domain",
+      "offset": 0,
+      "length": 16,
+      "encoding": "ASCII16",
+      "hex": "485446505f4d34425f4c4f43414c3031"
+    },
+    {
+      "name": "schema",
+      "offset": 16,
+      "length": 2,
+      "encoding": "u16LE",
+      "hex": "0100"
+    },
+    {
+      "name": "M3_genesis_commitment",
+      "offset": 18,
+      "length": 32,
+      "encoding": "SHA256raw32",
+      "hex": "8d21208a43f93594bd687987ea36d0bcff92d4940532721b61bdc9e0689f0075"
+    },
+    {
+      "name": "key_count",
+      "offset": 50,
+      "length": 2,
+      "encoding": "u16LE",
+      "hex": "2a00"
+    },
+    {
+      "name": "key_config",
+      "offset": 52,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "256b19ea5f2f1d04c85585be71cda653d5ebb8c944522be26b1ad5ab93d33d26"
+    },
+    {
+      "name": "key_custody",
+      "offset": 84,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "751ec29eadcd0e3da75ade6796fe9118b84744f773789bb63fcf6975efb8709c"
+    },
+    {
+      "name": "key_genesis_holding",
+      "offset": 116,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "1f734b08db5fe86e3cb4a8f249ab638ea78a74b8b1e3fc095af765bc179a66c6"
+    },
+    {
+      "name": "key_genesis_owner",
+      "offset": 148,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "fc51cd8e6218a1a38da47ed00230f0580816ed13ba3303ac5deb911548908025"
+    },
+    {
+      "name": "key_initializer",
+      "offset": 180,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "d75a980182b10ab7d54bfed3c964073a0ee172f3daa62325af021a68f707511a"
+    },
+    {
+      "name": "key_inventory",
+      "offset": 212,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "9fa42e89f440b65923835442420d428920083b00331d4ae13a7ced9637ac43d5"
+    },
+    {
+      "name": "key_mint",
+      "offset": 244,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "3d4017c3e843895a92b70aa74d1b7ebc9c982ccf2ec4968cc0cd55f12af4660c"
+    },
+    {
+      "name": "key_program",
+      "offset": 276,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "b069e31dfd2108b1cd368029bcec7384945d8185915f81893cbd1c570f7c483e"
+    },
+    {
+      "name": "key_reserve",
+      "offset": 308,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "1e56dfe19f3df7ee7207281a64e0df81828811cc2293c7edb66ecc7ab0312d6a"
+    },
+    {
+      "name": "key_system",
+      "offset": 340,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "key_tax_authority",
+      "offset": 372,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "d6b740f4b2e684f29307d38b87a90e2ffc5c51bd6898870057014c965966cdd6"
+    },
+    {
+      "name": "key_token2022",
+      "offset": 404,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "06ddf6e1ee758fde18425dbce46ccddab61afc4d83b90d27febdf928d8a18bfc"
+    },
+    {
+      "name": "key_amm",
+      "offset": 436,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "b89899792dca5234796fe77462b031df463f5ffeae367c5c0ffb246e1cb7ce0c"
+    },
+    {
+      "name": "key_amm_config",
+      "offset": 468,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "40ccefb95c1e29767b6e03168559a0b8f829d878b619470933ee8a4a48763c8c"
+    },
+    {
+      "name": "key_legacy_token",
+      "offset": 500,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "06ddf6e1d765a193d9cbe146ceeb79ac1cb485ed5f5b37913a8cf5857eff00a9"
+    },
+    {
+      "name": "key_wsol_mint",
+      "offset": 532,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "069b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001"
+    },
+    {
+      "name": "key_associated_token",
+      "offset": 564,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "8c97258f4e2489f1bb3d1029148e0d830b5a1399daff1084048e7bd8dbe9f859"
+    },
+    {
+      "name": "key_instructions_sysvar",
+      "offset": 596,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "06a7d517187bd16635dad40455fdc2c0c124c68f215675a5dbbacb5f08000000"
+    },
+    {
+      "name": "key_creation_fee_receiver",
+      "offset": 628,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "298edee03ebe2bd642988cad48b77a6117cfeb9c18d39b14e191f5e4570d56ba"
+    },
+    {
+      "name": "key_amm_authority",
+      "offset": 660,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "ab53ab772724caf0b6a150d55ce2c8cf302e51a1aeafcac5428c9a7433d9f72a"
+    },
+    {
+      "name": "key_pool",
+      "offset": 692,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "7881ccf2cbbf5601a89168b987bfb42e332deaf3fa33e196443e8783f85aa5e0"
+    },
+    {
+      "name": "key_lp_mint",
+      "offset": 724,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "b47c87a50c77a6b530a25019d953ec95ab765bd516936f4683f6fa3123e989e9"
+    },
+    {
+      "name": "key_vault_wsol",
+      "offset": 756,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "543580484d6a4b2b1d321705849cde143b0213dc43a982d8a6f4230980734555"
+    },
+    {
+      "name": "key_vault_htfp",
+      "offset": 788,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "c2ed0a2dc59232da03a26424943d1321a15e99fc4fa8bdc4d188d63f0c372cf6"
+    },
+    {
+      "name": "key_observation",
+      "offset": 820,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "b5898b2d2d4c6dbd573cb48c798c52bf48daa5f2725a17be74fceaf4f27cfba2"
+    },
+    {
+      "name": "key_creator_wsol",
+      "offset": 852,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "d1973b9a4e915249dcd29d748e5fc98a79d14b1603e4f3d0a964bd754325f772"
+    },
+    {
+      "name": "key_creator_htfp",
+      "offset": 884,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "a046947a0aa57636208569a5ab2f866dd0b3eef01a07001d8ba2412c6d71918e"
+    },
+    {
+      "name": "key_creator_lp",
+      "offset": 916,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "77b49d0b472c5f20dc824531e7cea85cce6aa2201cea551c97df7deb66979edf"
+    },
+    {
+      "name": "key_other_lp",
+      "offset": 948,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "8d0eea59d91eea24981b88f4b03db892dd67e851ee4526abdbd0c32e40ed0e76"
+    },
+    {
+      "name": "key_creator_share",
+      "offset": 980,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "5f711b728d4d0be26c58d3d31e766aa52bdb83703b64ebb13b426adcb4ba4596"
+    },
+    {
+      "name": "key_volume",
+      "offset": 1012,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "4ca19dd445505be1e4e1417f7075ebe89c3a81ab397878c96df15f9508c5df8d"
+    },
+    {
+      "name": "key_settle_authority",
+      "offset": 1044,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "a854b2d662aa8ff5a412af7e87000b72958f72e82d4c39b42b4b2173d30f4f7e"
+    },
+    {
+      "name": "key_temp_wsol_sequence0",
+      "offset": 1076,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "b5d197a0610320580e9ae14d31ee5aaa2383248287f41823911e7fc5d4b5f1f5"
+    },
+    {
+      "name": "key_proof_program",
+      "offset": 1108,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "b425db4f9ae5dacbe02d6902ead0b5146f898453437413addc1148ae9f0f83bf"
+    },
+    {
+      "name": "key_wallet_program",
+      "offset": 1140,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "73b91bc1fd27d0f2c0efe29e1a11d812cb0ea20cc3c81439c463b5573bef08c6"
+    },
+    {
+      "name": "key_proof_guard",
+      "offset": 1172,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "4e1359935ef2457b0e3f46a4b93f98e50929c3c9e7237148b93572b93c9b415b"
+    },
+    {
+      "name": "key_proof_volume",
+      "offset": 1204,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "4a542f3e0b3f39f8a6f86f311e70c53e7de9175851d4ff5fba7309c3625a5595"
+    },
+    {
+      "name": "key_proof_record",
+      "offset": 1236,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "9d75b007e8c9e948d83eacdec01bbba5016d4ac7397de69757ada70c598eac83"
+    },
+    {
+      "name": "key_proof_reserve",
+      "offset": 1268,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "c0b340224bc2e5005317aa0c90ab96009e18e0410c30b60c6f8691a6f67221b1"
+    },
+    {
+      "name": "key_proof_settle_authority",
+      "offset": 1300,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "4ce29d8a70f7b7b389dd0d361728cabf211cb91bb13ebd8a33d375749320b514"
+    },
+    {
+      "name": "key_proof_marker",
+      "offset": 1332,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "f37444a533338be1c931d4a35b1bb2d41bf3593f943203e233778ef4fff0a217"
+    },
+    {
+      "name": "key_proof_temp_sequence0",
+      "offset": 1364,
+      "length": 32,
+      "encoding": "pubkey32 in explicit ordered list",
+      "hex": "6a2d9d5343c275172d1bddc174d5ceb9aa11422104091520822cb76245ba465f"
+    },
+    {
+      "name": "CPMM_full_code_sha256",
+      "offset": 1396,
+      "length": 32,
+      "encoding": "SHA256raw32",
+      "hex": "30a9273dda17d7b3513889af1dab1185d9facc4756a6edf36c42f30ba228d8d1"
+    },
+    {
+      "name": "CPMM_full_code_length",
+      "offset": 1428,
+      "length": 4,
+      "encoding": "u32LE",
+      "hex": "f0f41a00"
+    },
+    {
+      "name": "CPMM_capture_slot",
+      "offset": 1432,
+      "length": 8,
+      "encoding": "u64LE",
+      "hex": "b18f011f00000000"
+    },
+    {
+      "name": "Token2022_full_code_sha256",
+      "offset": 1440,
+      "length": 32,
+      "encoding": "SHA256raw32",
+      "hex": "b781b71d230a9910de4d3c103e72608f597fc73c83ee207242ac82b708382a6a"
+    },
+    {
+      "name": "Token2022_full_code_length",
+      "offset": 1472,
+      "length": 4,
+      "encoding": "u32LE",
+      "hex": "60d90a00"
+    },
+    {
+      "name": "Token2022_capture_slot",
+      "offset": 1476,
+      "length": 8,
+      "encoding": "u64LE",
+      "hex": "b18f011f00000000"
+    },
+    {
+      "name": "legacyToken_full_code_sha256",
+      "offset": 1484,
+      "length": 32,
+      "encoding": "SHA256raw32",
+      "hex": "8190d3f7ceb6cb7a7a8d8924bff89f9f611e15ce1f806f2b6237f3311a98f697"
+    },
+    {
+      "name": "legacyToken_full_code_length",
+      "offset": 1516,
+      "length": 4,
+      "encoding": "u32LE",
+      "hex": "38a80100"
+    },
+    {
+      "name": "legacyToken_capture_slot",
+      "offset": 1520,
+      "length": 8,
+      "encoding": "u64LE",
+      "hex": "599b011f00000000"
+    },
+    {
+      "name": "ATA_full_code_sha256",
+      "offset": 1528,
+      "length": 32,
+      "encoding": "SHA256raw32",
+      "hex": "e5e7aed11ad3969eea2aa76c8b4d2e73ea25be7e6b5cce989b7710cf5452496e"
+    },
+    {
+      "name": "ATA_container_sha256",
+      "offset": 1560,
+      "length": 32,
+      "encoding": "SHA256raw32",
+      "hex": "648e13d02ec2e8555d751e38980e01faa5cbb47c2e7d7262f3a2103caa3afa02"
+    },
+    {
+      "name": "config0_data_sha256",
+      "offset": 1592,
+      "length": 32,
+      "encoding": "SHA256raw32",
+      "hex": "3b5ca2f3187261cc048e2353789242067c3aff19cab67168f86dbbd29d99f21c"
+    },
+    {
+      "name": "alpha_num",
+      "offset": 1624,
+      "length": 8,
+      "encoding": "QLE",
+      "hex": "0100000000000000"
+    },
+    {
+      "name": "alpha_den",
+      "offset": 1632,
+      "length": 8,
+      "encoding": "QLE",
+      "hex": "e803000000000000"
+    },
+    {
+      "name": "C_base",
+      "offset": 1640,
+      "length": 8,
+      "encoding": "QLE",
+      "hex": "00e40b5402000000"
+    },
+    {
+      "name": "refill_N",
+      "offset": 1648,
+      "length": 8,
+      "encoding": "QLE",
+      "hex": "404b4c0000000000"
+    },
+    {
+      "name": "scale_D",
+      "offset": 1656,
+      "length": 8,
+      "encoding": "QLE",
+      "hex": "0300000000000000"
+    },
+    {
+      "name": "start_timestamp",
+      "offset": 1664,
+      "length": 8,
+      "encoding": "qLE",
+      "hex": "00f1536500000000"
+    },
+    {
+      "name": "pool_HTFP_initial",
+      "offset": 1672,
+      "length": 8,
+      "encoding": "QLE",
+      "hex": "00a0724e18090000"
+    },
+    {
+      "name": "pool_wsol_initial",
+      "offset": 1680,
+      "length": 8,
+      "encoding": "QLE",
+      "hex": "00e8764817000000"
+    },
+    {
+      "name": "creator_mode",
+      "offset": 1688,
+      "length": 2,
+      "encoding": "Some=1/OnlyToken0=1",
+      "hex": "0101"
+    },
+    {
+      "name": "schema_sizes",
+      "offset": 1690,
+      "length": 8,
+      "encoding": "Config/Inventory/Volume/ProofRecord u16LE",
+      "hex": "af00140059000001"
+    },
+    {
+      "name": "wire_profile",
+      "offset": 1698,
+      "length": 4,
+      "encoding": "wireversion1 Process3 Init4 Finalize5",
+      "hex": "01030405"
+    },
+    {
+      "name": "guard_bits",
+      "offset": 1702,
+      "length": 2,
+      "encoding": "in_flightbit0 barrierbit1",
+      "hex": "0102"
+    },
+    {
+      "name": "native_fixture_manifest_sha256",
+      "offset": 1704,
+      "length": 32,
+      "encoding": "SHA256raw32",
+      "hex": "ca481f4e8389fbd1ba799d89dc320898c346f611af9685760020658c5de1db7b"
+    },
+    {
+      "name": "local_profile_manifest_sha256",
+      "offset": 1736,
+      "length": 32,
+      "encoding": "SHA256raw32",
+      "hex": "dcd918ce5f99b086980f025dbb65ca340ae3adbbe5ed4b1d321bdee8065d3081"
+    }
+  ],
+  "ordered_key_roles": [
+    "config",
+    "custody",
+    "genesis_holding",
+    "genesis_owner",
+    "initializer",
+    "inventory",
+    "mint",
+    "program",
+    "reserve",
+    "system",
+    "tax_authority",
+    "token2022",
+    "amm",
+    "amm_config",
+    "legacy_token",
+    "wsol_mint",
+    "associated_token",
+    "instructions_sysvar",
+    "creation_fee_receiver",
+    "amm_authority",
+    "pool",
+    "lp_mint",
+    "vault_wsol",
+    "vault_htfp",
+    "observation",
+    "creator_wsol",
+    "creator_htfp",
+    "creator_lp",
+    "other_lp",
+    "creator_share",
+    "volume",
+    "settle_authority",
+    "temp_wsol_sequence0",
+    "proof_program",
+    "wallet_program",
+    "proof_guard",
+    "proof_volume",
+    "proof_record",
+    "proof_reserve",
+    "proof_settle_authority",
+    "proof_marker",
+    "proof_temp_sequence0"
+  ],
+  "not_a_JSON_hash": true,
+  "all_runtime_assertions": "NOT_RUN_STAGE_A"
+}

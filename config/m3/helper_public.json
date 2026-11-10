@@ -1,0 +1,6 @@
+{
+  "program_hex": "07892e04c1b9255f9367c1f9b398a5e75ed4397590442d596b47a5a42ccaee3c",
+  "controller_role": "genesis_owner",
+  "wallet_seed": "wallet-holder",
+  "scope": "authenticated artificial local caller fixture, not a production wallet service"
+}

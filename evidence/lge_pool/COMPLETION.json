@@ -1,0 +1,28 @@
+{
+  "record": "S146",
+  "status": "BOUNDED_LOCAL_COMPLETE_AFTER_EXACT_INDEPENDENT_PASS",
+  "source_test_reviewed_commit": "5cbb38f6f9f3d0c3f63c1847ccb9790c8317f4fb",
+  "independent_review": "evidence/lge_pool/IMPLEMENTATION_REVIEW.json",
+  "founder_scope_authorization": "S141 direct human implementation request",
+  "founder_deliverable_acceptance": "NOT_RECORDED",
+  "counts": {
+    "allocation_tests_per_role": 7,
+    "generated_allocation_cases_per_role": 256,
+    "native_VMs_per_role": 1,
+    "explicit_signed_sends_per_role": 44,
+    "separate_synthetic_airdrop_API_calls_per_role": 1,
+    "expected_rejections_per_role": 3,
+    "unexpected_native_failures": 0,
+    "native_retries": 0
+  },
+  "source_freeze": "evidence/lge_pool/CANDIDATE.json",
+  "separate_native_raw_audit": "evidence/lge_pool/supervisor/raw_audit.stdout.json",
+  "all_prior_noncanonical_payloads_unchanged": true,
+  "static_preparation_notes": "evidence/lge_pool/PREPARATION_NOTE.txt; native author HANDOFF retains its harmless handoff-generation SyntaxWarning.",
+  "public_blockchain_actions": 0,
+  "new_dependencies_builds_or_installs": 0,
+  "real_key_material_access_or_export": 0,
+  "adjacent_repository_writes": 0,
+  "deferred_M5_or_locker_actions": 0,
+  "next_gate": "Separate connected-public-pilot preparation and unresolved supported500ppm/BurnAndEarn/deferredM5/launch inputs; no public execution assigned."
+}

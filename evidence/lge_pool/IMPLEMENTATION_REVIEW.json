@@ -1,0 +1,29 @@
+{
+  "record": "S145",
+  "date": "2026-11-10",
+  "timezone": "Europe/Warsaw",
+  "reviewer": "/root/lge_pool_review",
+  "reviewed_candidate_commit": "5cbb38f6f9f3d0c3f63c1847ccb9790c8317f4fb",
+  "status": "BOUNDED_LOCAL_IMPLEMENTATION_INTEGRATION_PASS",
+  "findings": [],
+  "verified": [
+    "Exact final sources equal executed source snapshots; reviewed candidate clean.",
+    "Exact55/35/5/5 tokens and11SOL total:8.8SOL pool/2.2SOL canonical local reserve, separate operational budget.",
+    "Each role7 allocation tests/256 generated inputs,1VM/44 explicit signed sends plus1 synthetic airdrop;3 expected rejects. Serial campaigns, no unexpected native failure/retry.",
+    "Independent raw recomputation of3 swaps in BOTH captures verifies integer outputs and creator/protocol/fund liabilities; native tax, supply conservation and rollback corroborated.",
+    "Frozen main snapshot precedes the separate explicitly unreal epoch-rewind counterfactual.",
+    "All4745 candidate manifest payloads/4746 checksums verified; prior noncanonical payloads unchanged."
+  ],
+  "independent_swap_recomputation": {
+    "buy": {"gross_output": "395693895974262", "creator": "2500", "protocol": "300", "fund": "100"},
+    "sell": {"gross_output": "230203", "creator": "230000000000", "protocol": "27600000000", "fund": "9200000000"},
+    "counterfactual": {"gross_output": "2502", "creator": "2500000000", "protocol": "300000000", "fund": "100000000"}
+  },
+  "review_mode": "Read-only source/raw-record checks; reviewer performed no native/target execution, signing or network query.",
+  "limitations": [
+    "Standalone synthetic local LGE/CPMM only.",
+    "Historical experimental trade2500/creator2500ppm and retainedLP; no final2500/500 or BurnAndEarn validation.",
+    "H absent: no integratedInitialize/Recover/Redeem/Process or public deployment readiness.",
+    "DeferredM5 unchanged; real timing/public wallets/rounding and connected clients remain open."
+  ]
+}

@@ -1,0 +1,777 @@
+{
+  "CLI": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=tools python3 -B -m htfp_launch_manifest DOSSIER.json; exactly one explicit regular-file path,no stdin/default/URL/fetch/apply/output-file options. Help/invalid arguments return fixed CLI_USAGE report exit2. JSON stdout only,one trailing LF,no normal stderr or traceback. Read at most65537bytes. Exit0means no documentary contradiction,not readiness.",
+  "authority": [
+    "S98",
+    "S99"
+  ],
+  "error_phase_order": [
+    "CLI/file/size",
+    "strict UTF-8 and stdlib JSON parse/hooks(first encountered duplicate/nonfinite/number event; syntax INVALID_JSON; decoder recursion NESTING_LIMIT)",
+    "Unicode scalar validation(all keys/strings,INVALID_TEXT at $),container depth/assertion limit",
+    "root type/schema",
+    "unknown keys then declared fields lexicographically at each object; assertion items input index order; fractions member domains then denominator positivity"
+  ],
+  "execution_accounting": {
+    "budgets": {
+      "all_M6B": 4194304,
+      "author_source_tests_fixture_evidence": 1572864,
+      "design": 524288,
+      "free_floor": 2147483648,
+      "supervisor_evidence": 2097152
+    },
+    "future_limit_per_role_all_runs": 1024,
+    "new_HTTP": 0,
+    "new_native": 0,
+    "product_boundary": "Agent verification/evidence-runner limits only. Product CLI has no role/campaign ledger,invocation quota,free-disk gate or test lock; bounded input grammar is separate.",
+    "recommended_full_campaign_per_role_max": 128,
+    "recommended_plan": "About100cases per full author/root campaign,including handpicked/generated/CLI/probes/failures; independent oracle later. Preallocate prospective attempt rows before every externally initiated target verification call/CLI process,including help/failures/retries/helper probes. Nested helpers in the same invocation are not double-counted. Retain started/completed/exit/report/source hashes and all failures; orphan blocks continuation; no resets. Lossless gzip of complete case input/stdout records at initial generation is allowed to fit budget. No target imports/probes during design.",
+    "stage_A_target_attempts": 0
+  },
+  "external_gate_source_ids": {
+    "ACTIVATION_OPENING_TIMING": [
+      "D04",
+      "D40",
+      "O15"
+    ],
+    "AMM_CONFIG_FEEKEY_CLAIM_BINDINGS": [
+      "D35",
+      "D36",
+      "D37",
+      "O09",
+      "O19"
+    ],
+    "FUNDING_DISTRIBUTION_EXECUTION": [
+      "D06",
+      "D18",
+      "D21",
+      "D38",
+      "D39"
+    ],
+    "IDENTITY_CONTROL_DEPLOYMENT": [
+      "D33",
+      "O12"
+    ],
+    "M5_FINAL_TARGET_ACCEPTANCE": [
+      "O09",
+      "O19"
+    ],
+    "MINT_STORAGE_AUTHORITIES": [
+      "D01",
+      "D04",
+      "D05",
+      "D17",
+      "O13"
+    ],
+    "PUBLIC_SOURCE_BINARY_RUNTIME_EQUIVALENCE": [
+      "O14",
+      "O17"
+    ]
+  },
+  "external_gates": [
+    "IDENTITY_CONTROL_DEPLOYMENT",
+    "MINT_STORAGE_AUTHORITIES",
+    "FUNDING_DISTRIBUTION_EXECUTION",
+    "AMM_CONFIG_FEEKEY_CLAIM_BINDINGS",
+    "ACTIVATION_OPENING_TIMING",
+    "PUBLIC_SOURCE_BINARY_RUNTIME_EQUIVALENCE",
+    "M5_FINAL_TARGET_ACCEPTANCE"
+  ],
+  "file_open": "Open the explicit path read-only/nonblocking,then fstat the opened descriptor before reading; require a regular file and close on every path. Nonregular FIFO/socket/device/directory and unreadable files yield INPUT_UNREADABLE without blocking/data read. A symlink is permitted only when its opened target descriptor is regular.",
+  "finding_catalog": {
+    "ACTIVATION_EPOCH_MISMATCH": "Supplied activation epoch differs from scheduling epoch plus two.",
+    "ALLOCATION_OVER_NOMINAL": "Supplied allocation amounts exceed fixed nominal issuance.",
+    "ATTRIBUTED_ASSERTION_UNVERIFIED": "Supplied claim and any approval or verification label remain unverified.",
+    "COMPLETED_ALLOCATION_SHORTFALL": "Completed allocation amounts fall below fixed nominal issuance.",
+    "COMPLETION_MISSING_AMOUNTS": "Completed allocation assertion lacks all four explicit amounts.",
+    "EPOCH_RELATION_OVERFLOW": "Scheduling epoch plus two cannot fit an unsigned 64-bit activation epoch.",
+    "EXTERNAL_GATE_UNVERIFIED": "Offline documentary checks do not establish this external prerequisite.",
+    "FUNDING_RATIO_MISMATCH": "Supplied funding leg differs from its exactly representable confirmed share.",
+    "FUNDING_TOTAL_MISMATCH": "Intended pool and reserve lamports do not sum to gross raised lamports.",
+    "INITIAL_CREDIT_EXCEEDS_CAPACITY": "Candidate initial gross-sale credit exceeds candidate shared capacity.",
+    "LP_LOCK_FRACTION_MISMATCH": "Intended lock fraction is not100% of actually received initial LP.",
+    "MISSING_INPUT": "Dossier field is missing; no value is inferred.",
+    "OPEN_CHOICE": "Supplied candidate remains an unresolved production choice under the frozen sources.",
+    "PARTIAL_ALLOCATION": "Draft allocation remains below nominal; unallocated quantity is not assigned.",
+    "PERSONAL_WALLET_MISMATCH": "The two intended personal revenue wallet keys differ.",
+    "POLICY_MISMATCH": "Supplied intent contradicts a confirmed policy value.",
+    "PROVISIONAL_CHOICE": "Supplied candidate remains provisional under the frozen sources.",
+    "ROUNDING_UNRESOLVED": "Exact 80/20 integer lamport shares are impossible; no rounding decision is inferred."
+  },
+  "finding_paths": {
+    "ACTIVATION_EPOCH_MISMATCH": "mint.activation_epoch",
+    "ALLOCATION_OVER_NOMINAL": "allocation",
+    "ATTRIBUTED_ASSERTION_UNVERIFIED": "assertions[index]",
+    "COMPLETED_ALLOCATION_SHORTFALL": "allocation",
+    "COMPLETION_MISSING_AMOUNTS": "allocation.complete",
+    "EPOCH_RELATION_OVERFLOW": "mint.scheduling_epoch",
+    "EXTERNAL_GATE_UNVERIFIED": "the fixed external gate ID",
+    "FUNDING_RATIO_MISMATCH": "funding.pool_lamports or funding.reserve_lamports,one per mismatching supplied leg",
+    "FUNDING_TOTAL_MISMATCH": "funding",
+    "INITIAL_CREDIT_EXCEEDS_CAPACITY": "volume.initial_credit_gross_base_units",
+    "LP_LOCK_FRACTION_MISMATCH": "market.initial_received_lp_lock_fraction",
+    "MISSING_INPUT": "the missing leaf path",
+    "OPEN_CHOICE": "the supplied open_choice_paths leaf",
+    "PARTIAL_ALLOCATION": "allocation",
+    "PERSONAL_WALLET_MISMATCH": "market",
+    "POLICY_MISMATCH": "the fixed policy field path",
+    "PROVISIONAL_CHOICE": "the supplied provisional_choice_paths leaf",
+    "ROUNDING_UNRESOLVED": "funding"
+  },
+  "finding_sources": "POLICY_MISMATCH uses fixed_policy_checks[path].source_ids; relationship findings use that relationship source_ids; missing/open/provisional leaves use their group_source_ids; external gate uses external_gate_source_ids; attributed assertions use S98,S99.",
+  "fixed_policy_checks": {
+    "allocation.final_distribution_wallet_remaining_base_units": {
+      "code": "POLICY_MISMATCH",
+      "expected": "0",
+      "source_ids": [
+        "D18"
+      ]
+    },
+    "allocation.method": {
+      "code": "POLICY_MISMATCH",
+      "expected": "MANUAL",
+      "source_ids": [
+        "D21"
+      ]
+    },
+    "allocation.pool_base_units": {
+      "code": "POLICY_MISMATCH",
+      "expected": "3500000000000000000",
+      "source_ids": [
+        "D38"
+      ]
+    },
+    "identity.program_id": {
+      "code": "POLICY_MISMATCH",
+      "expected": "CseQKCWvi4EA2o3oa11Age4p4xKWSLuzjWCzitASrPJu",
+      "source_ids": [
+        "D33"
+      ]
+    },
+    "identity.reserve": {
+      "code": "POLICY_MISMATCH",
+      "expected": "33S4fefxDJ9Bz6KmHns37uvwcWSPQnsEyopAZ6YtJpdo",
+      "source_ids": [
+        "D33"
+      ]
+    },
+    "market.creator_fee_mode": {
+      "code": "POLICY_MISMATCH",
+      "expected": "BothToken",
+      "source_ids": [
+        "D36"
+      ]
+    },
+    "market.creator_fee_ppm": {
+      "code": "POLICY_MISMATCH",
+      "expected": "500",
+      "source_ids": [
+        "D36"
+      ]
+    },
+    "market.distribution_active_fee_bps": {
+      "code": "POLICY_MISMATCH",
+      "expected": "0",
+      "source_ids": [
+        "D06"
+      ]
+    },
+    "market.htfp_receipts_tax_exempt": {
+      "code": "POLICY_MISMATCH",
+      "expected": false,
+      "source_ids": [
+        "D37"
+      ]
+    },
+    "market.initial_lp_mechanism": {
+      "code": "POLICY_MISMATCH",
+      "expected": "OFFICIAL_BURN_AND_EARN",
+      "source_ids": [
+        "D35"
+      ]
+    },
+    "market.opening_target": {
+      "code": "POLICY_MISMATCH",
+      "expected": "E_PLUS_2_PLUS_UNSPECIFIED_HOURS",
+      "source_ids": [
+        "D40"
+      ]
+    },
+    "market.ordinary_fee_ppm": {
+      "code": "POLICY_MISMATCH",
+      "expected": "2500",
+      "source_ids": [
+        "D36"
+      ]
+    },
+    "market.pool_funding_active_fee_bps": {
+      "code": "POLICY_MISMATCH",
+      "expected": "0",
+      "source_ids": [
+        "D06",
+        "D40"
+      ]
+    },
+    "mint.decimals": {
+      "code": "POLICY_MISMATCH",
+      "expected": "7",
+      "source_ids": [
+        "D02"
+      ]
+    },
+    "mint.final_discretionary_withdrawal": {
+      "code": "POLICY_MISMATCH",
+      "expected": false,
+      "source_ids": [
+        "D17"
+      ]
+    },
+    "mint.final_economic_override": {
+      "code": "POLICY_MISMATCH",
+      "expected": false,
+      "source_ids": [
+        "D17"
+      ]
+    },
+    "mint.final_emergency_pause": {
+      "code": "POLICY_MISMATCH",
+      "expected": false,
+      "source_ids": [
+        "D17"
+      ]
+    },
+    "mint.final_fee_configuration_authority": {
+      "code": "POLICY_MISMATCH",
+      "expected": "NONE",
+      "source_ids": [
+        "D05"
+      ]
+    },
+    "mint.final_freeze_authority": {
+      "code": "POLICY_MISMATCH",
+      "expected": "NONE",
+      "source_ids": [
+        "D17"
+      ]
+    },
+    "mint.final_human_upgrade": {
+      "code": "POLICY_MISMATCH",
+      "expected": false,
+      "source_ids": [
+        "D17"
+      ]
+    },
+    "mint.final_mint_authority": {
+      "code": "POLICY_MISMATCH",
+      "expected": "NONE",
+      "source_ids": [
+        "D01",
+        "D17"
+      ]
+    },
+    "mint.final_withheld_withdraw_authority": {
+      "code": "POLICY_MISMATCH",
+      "expected": "CODE_RESTRICTED_PDA",
+      "source_ids": [
+        "D05",
+        "D17"
+      ]
+    },
+    "mint.initial_fee_bps": {
+      "code": "POLICY_MISMATCH",
+      "expected": "0",
+      "source_ids": [
+        "D04"
+      ]
+    },
+    "mint.initial_supply_base_units": {
+      "code": "POLICY_MISMATCH",
+      "expected": "10000000000000000000",
+      "source_ids": [
+        "D01",
+        "D02"
+      ]
+    },
+    "mint.maximum_fee_base_units": {
+      "code": "POLICY_MISMATCH",
+      "expected": "18446744073709551615",
+      "source_ids": [
+        "D20"
+      ]
+    },
+    "mint.mint_count": {
+      "code": "POLICY_MISMATCH",
+      "expected": "1",
+      "source_ids": [
+        "D34"
+      ]
+    },
+    "mint.plan": {
+      "code": "POLICY_MISMATCH",
+      "expected": "NEW",
+      "source_ids": [
+        "D34"
+      ]
+    },
+    "mint.scheduled_fee_bps": {
+      "code": "POLICY_MISMATCH",
+      "expected": "800",
+      "source_ids": [
+        "D04"
+      ]
+    },
+    "mint.token_standard": {
+      "code": "POLICY_MISMATCH",
+      "expected": "Token-2022",
+      "source_ids": [
+        "D03"
+      ]
+    },
+    "volume.global_control": {
+      "code": "POLICY_MISMATCH",
+      "expected": true,
+      "source_ids": [
+        "D14"
+      ]
+    },
+    "volume.per_call_control": {
+      "code": "POLICY_MISMATCH",
+      "expected": true,
+      "source_ids": [
+        "D14"
+      ]
+    }
+  },
+  "grammar": {
+    "absence": "All group leaf fields are optional and nullable. Missing/null is MISSING, never a default. An omitted/null group means its fields are absent. assertions omitted/null means no attributed assertions. Unknown keys at every level are invalid.",
+    "bool": "JSON true/false; strings/numbers not coerced.",
+    "fraction": "Exactly {numerator:u64,denominator:u64},denominator>0. No reduction,alpha<=1,positive numerator/rate/capacity or production-value restriction is inferred.",
+    "optional_assertions": {
+      "item_optional": {
+        "citation": "text",
+        "claimed_status": "text"
+      },
+      "item_required": {
+        "claim": "text",
+        "subject": "text"
+      },
+      "max_items": 16,
+      "type": "array"
+    },
+    "optional_groups": {
+      "allocation": {
+        "complete": "bool",
+        "entitlement_reference": "text",
+        "final_distribution_wallet_remaining_base_units": "u64",
+        "lge_base_units": "u64",
+        "marketing_base_units": "u64",
+        "method": "text",
+        "pool_base_units": "u64",
+        "recipients_reference": "text",
+        "remainder_reference": "text",
+        "team_base_units": "u64"
+      },
+      "funding": {
+        "pool_lamports": "u64",
+        "raised_lamports": "u64",
+        "reserve_lamports": "u64",
+        "rounding_rule_reference": "text"
+      },
+      "identity": {
+        "extensions_description": "text",
+        "genesis_sha256": "sha256",
+        "initializer": "pubkey",
+        "metadata_mutability": "text",
+        "metadata_reference": "text",
+        "mint": "pubkey",
+        "program_id": "pubkey",
+        "reserve": "pubkey"
+      },
+      "market": {
+        "burn_earn_personal_wallet": "pubkey",
+        "config_reference": "text",
+        "creator_fee_mode": "text",
+        "creator_fee_ppm": "u64",
+        "creator_personal_wallet": "pubkey",
+        "distribution_active_fee_bps": "u64",
+        "extra_margin_seconds": "u64",
+        "htfp_receipts_tax_exempt": "bool",
+        "initial_lp_mechanism": "text",
+        "initial_received_lp_lock_fraction": "fraction",
+        "locker_reference": "text",
+        "opening_target": "text",
+        "opening_timestamp": "u64",
+        "ordinary_fee_ppm": "u64",
+        "pool_funding_active_fee_bps": "u64",
+        "slip_policy_reference": "text"
+      },
+      "mint": {
+        "activation_epoch": "u64",
+        "decimals": "u64",
+        "final_discretionary_withdrawal": "bool",
+        "final_economic_override": "bool",
+        "final_emergency_pause": "bool",
+        "final_fee_configuration_authority": "text",
+        "final_freeze_authority": "text",
+        "final_human_upgrade": "bool",
+        "final_mint_authority": "text",
+        "final_withheld_withdraw_authority": "text",
+        "initial_fee_bps": "u64",
+        "initial_supply_base_units": "u64",
+        "maximum_fee_base_units": "u64",
+        "mint_count": "u64",
+        "plan": "text",
+        "scheduled_fee_bps": "u64",
+        "scheduling_epoch": "u64",
+        "token_standard": "text"
+      },
+      "volume": {
+        "alpha": "fraction",
+        "capacity_gross_base_units": "u64",
+        "global_control": "bool",
+        "initial_credit_gross_base_units": "u64",
+        "per_call_control": "bool",
+        "prestart_policy_reference": "text",
+        "refill_gross_base_units_per_second": "fraction",
+        "refill_start_timestamp": "u64",
+        "structure": "text"
+      }
+    },
+    "pubkey": "Canonical Base58 decoding to exactly32bytes,alphabet123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz; re-encoding equal; syntactic only,no key/control/curve/ownership claim.",
+    "required_shape_errors": "A nonnull fraction missing numerator/denominator is TYPE_MISMATCH at the fraction path; assertion missing required subject/claim is TYPE_MISMATCH at assertions[index]. Unknown keys still fail UNKNOWN_FIELD first at the nearest declared object.",
+    "root_required": {
+      "schema": "literal HTFP_LAUNCH_DOSSIER_V1"
+    },
+    "sha256": "Exactly64lowercaseASCIIhex characters,syntactic only.",
+    "text": "Nonempty UTF-8 text<=512encodedbytes,no C0control or DEL characters; no source/evidence reference is opened.",
+    "u64": "Canonical ASCII string 0 or [1-9][0-9]*,1..20digits,value<=18446744073709551615; no JSON number literal is accepted anywhere.",
+    "unicode": "Every decoded JSON string/key must contain Unicode scalar values only. Reject any unpaired U+D800..U+DFFF surrogate with INVALID_TEXT at $,before UTF-8 length encoding or schema traversal; valid escaped surrogate pairs decoding to a scalar remain ordinary text."
+  },
+  "group_source_ids": {
+    "allocation": [
+      "D18",
+      "D21",
+      "D38",
+      "O02",
+      "O18"
+    ],
+    "funding": [
+      "D39",
+      "O03"
+    ],
+    "identity": [
+      "D33",
+      "D34",
+      "O13"
+    ],
+    "market": [
+      "D06",
+      "D35",
+      "D36",
+      "D37",
+      "D40",
+      "O09",
+      "O15",
+      "O19"
+    ],
+    "mint": [
+      "D01",
+      "D02",
+      "D03",
+      "D04",
+      "D05",
+      "D17",
+      "D20"
+    ],
+    "volume": [
+      "D14",
+      "D30",
+      "O04"
+    ]
+  },
+  "input_errors": {
+    "CLI_USAGE": "Pass exactly one local JSON dossier path.",
+    "COLLECTION_LIMIT": "Dossier collection exceeds the supported bound.",
+    "DUPLICATE_KEY": "Duplicate JSON object keys are unsupported.",
+    "INPUT_TOO_LARGE": "The dossier exceeds65536 bytes.",
+    "INPUT_UNREADABLE": "The explicit dossier cannot be read as a regular local file.",
+    "INTEGER_OUT_OF_RANGE": "Decimal integer exceeds unsigned 64-bit range.",
+    "INVALID_FRACTION": "Fraction denominator must be positive.",
+    "INVALID_INTEGER": "Expected a canonical unsigned 64-bit decimal string.",
+    "INVALID_JSON": "The dossier is not valid JSON.",
+    "INVALID_PUBKEY": "Expected a canonical 32-byte Base58 public key.",
+    "INVALID_SHA256": "Expected64 lowercase hexadecimal characters.",
+    "INVALID_TEXT": "Text must be nonempty,bounded,and free of control characters.",
+    "INVALID_UTF8": "The dossier is not strict UTF-8 JSON.",
+    "JSON_NUMBER_NOT_ALLOWED": "Numeric fields must use canonical decimal strings.",
+    "NESTING_LIMIT": "Dossier JSON nesting exceeds depth 4.",
+    "NONFINITE_JSON": "Nonfinite JSON constants are unsupported.",
+    "SCHEMA_MISMATCH": "Unsupported dossier schema.",
+    "TYPE_MISMATCH": "Dossier field has an unsupported type.",
+    "UNKNOWN_FIELD": "Unknown dossier field."
+  },
+  "input_schema": "HTFP_LAUNCH_DOSSIER_V1",
+  "limits": {
+    "assertions": 16,
+    "input_bytes": 65536,
+    "json_nesting_depth": 4,
+    "read_max_bytes": 65537,
+    "report_bytes": 131072,
+    "text_bytes": 512,
+    "u64_max": "18446744073709551615"
+  },
+  "open_choice_paths": [
+    "identity.mint",
+    "identity.initializer",
+    "identity.genesis_sha256",
+    "identity.metadata_reference",
+    "identity.metadata_mutability",
+    "identity.extensions_description",
+    "allocation.recipients_reference",
+    "allocation.entitlement_reference",
+    "allocation.remainder_reference",
+    "funding.rounding_rule_reference",
+    "market.opening_timestamp",
+    "market.extra_margin_seconds",
+    "market.slip_policy_reference",
+    "market.config_reference",
+    "market.locker_reference"
+  ],
+  "open_rules": {
+    "candidate_fields": "All supplied identity.mint/initializer/genesis_sha256/metadata_reference/metadata_mutability/extensions_description,allocation.lge/team/marketing/recipients_reference/entitlement_reference/remainder_reference,funding.rounding_rule_reference,market.opening_timestamp/extra_margin_seconds/slip_policy_reference/config_reference/locker_reference,volume.structure/alpha/capacity/refill/initial_credit/start/prestart values retain OPEN_CHOICE or PROVISIONAL_CHOICE regardless asserted approval. Detailed exact path list and codes below.",
+    "missing_leaf": "MISSING_INPUT at every absent/null leaf; source_ids are exactly group_source_ids for that leaf's top-level group, in the listed array order. The same group mapping applies to OPEN_CHOICE and PROVISIONAL_CHOICE; fixed/relationship source lists do not override it.",
+    "no_approval": "No caller label/reference changes fixed policy status,closes a decision or public gate,or upgrades documentary evidence."
+  },
+  "provisional_choice_paths": [
+    "allocation.lge_base_units",
+    "allocation.team_base_units",
+    "allocation.marketing_base_units",
+    "volume.structure",
+    "volume.alpha",
+    "volume.capacity_gross_base_units",
+    "volume.refill_gross_base_units_per_second",
+    "volume.initial_credit_gross_base_units",
+    "volume.refill_start_timestamp",
+    "volume.prestart_policy_reference"
+  ],
+  "relationship_checks": [
+    {
+      "id": "ALLOCATION_TOTAL",
+      "inputs": [
+        "allocation.complete",
+        "allocation.pool_base_units",
+        "allocation.lge_base_units",
+        "allocation.team_base_units",
+        "allocation.marketing_base_units"
+      ],
+      "report_path": "allocation",
+      "rule": "Sum explicitly provided amounts only,against fixed nominal10000000000000000000. Above nominal always ALLOCATION_OVER_NOMINAL. Below nominal with complete false/null is PARTIAL_ALLOCATION,report exact unallocated_from_provided without assigning it. complete true requires all four amounts (else COMPLETION_MISSING_AMOUNTS); full supplied sum below nominal is COMPLETED_ALLOCATION_SHORTFALL. Nominal equality does not approve shares/recipients/entitlements.",
+      "source_ids": [
+        "D01",
+        "D18",
+        "D38",
+        "O02",
+        "O18"
+      ]
+    },
+    {
+      "id": "FUNDING_TOTAL",
+      "inputs": [
+        "funding.raised_lamports",
+        "funding.pool_lamports",
+        "funding.reserve_lamports"
+      ],
+      "report_path": "funding",
+      "rule": "If all three provided,pool+reserve must equal gross raised (FUNDING_TOTAL_MISMATCH). No maintenance/cost/observed backing subtraction. Partial fields stay missing. Zero totals are arithmetically valid,no funding or minimum conclusion.",
+      "source_ids": [
+        "D39",
+        "O03"
+      ]
+    },
+    {
+      "id": "FUNDING_RATIO",
+      "inputs": [
+        "funding.raised_lamports",
+        "funding.pool_lamports",
+        "funding.reserve_lamports"
+      ],
+      "report_path": "funding",
+      "rule": "Derive exact expected fractions4*N/5 andN/5 from supplied gross N. If N%5==0,compare each supplied leg against exact integer (FUNDING_RATIO_MISMATCH). If N%5!=0,always ROUNDING_UNRESOLVED,retain exact fractions and any supplied leg differences,choose no rounding/tolerance/destination and do not classify the ratio alone as confirmed or contradictory. Independently enforce total conservation. A supplied rounding reference does not close this question or approve supplied allocations.",
+      "source_ids": [
+        "D39",
+        "O03"
+      ]
+    },
+    {
+      "id": "ACTIVATION_EPOCH",
+      "inputs": [
+        "mint.scheduling_epoch",
+        "mint.activation_epoch"
+      ],
+      "report_path": "mint",
+      "rule": "If scheduling E supplied,derive E+2 exactly and require it<=u64max (EPOCH_RELATION_OVERFLOW otherwise,even when activation missing). If it fits and activation supplied,require activation==E+2 (ACTIVATION_EPOCH_MISMATCH otherwise). Missing E or missing activation without overflow gives MISSING. No epoch-to-wall-clock conversion; claimed epochs externally unverified.",
+      "source_ids": [
+        "D04",
+        "D40"
+      ]
+    },
+    {
+      "id": "LP_LOCK_FRACTION",
+      "inputs": [
+        "market.initial_received_lp_lock_fraction"
+      ],
+      "report_path": "market.initial_received_lp_lock_fraction",
+      "rule": "If supplied,require numerator==denominator (LP_LOCK_FRACTION_MISMATCH otherwise). Its base is100%of actual initial received LP,never total escrow/minimum LP/later third-party LP. No LP quantities are generated.",
+      "source_ids": [
+        "D35"
+      ]
+    },
+    {
+      "id": "PERSONAL_WALLET_MATCH",
+      "inputs": [
+        "market.creator_personal_wallet",
+        "market.burn_earn_personal_wallet"
+      ],
+      "report_path": "market",
+      "rule": "If both supplied,require identical canonical public wallet keys (PERSONAL_WALLET_MISMATCH otherwise). Do not compare HTFP token-account/ATA addresses or assert wallet/person/control/creator/FeeKey ownership or claim routing.",
+      "source_ids": [
+        "D37"
+      ]
+    },
+    {
+      "id": "INITIAL_CREDIT_CAPACITY",
+      "inputs": [
+        "volume.initial_credit_gross_base_units",
+        "volume.capacity_gross_base_units"
+      ],
+      "report_path": "volume",
+      "rule": "If both supplied,initial_credit<=capacity (INITIAL_CREDIT_EXCEEDS_CAPACITY otherwise) as candidate internal consistency only. All structure/numbers/time/prestart remain provisional/open,including zero or alpha>1 candidates.",
+      "source_ids": [
+        "D30",
+        "O04"
+      ]
+    }
+  ],
+  "report": {
+    "check": "Exactly {rule_id,path,result}; one entry per fixed check and relationship,ordered as stated. result MATCH/CONTRADICTION/MISSING/OPEN/PROVISIONAL/ROUNDING_UNRESOLVED/NOT_EVALUATED. For relationships,path is exactly the relationship report_path; finding paths remain independently defined in finding_paths.",
+    "derived": "Exactly optional keys: allocation_known_sum_base_units=sum explicitly provided4amounts(if any); allocation_unallocated_from_provided_base_units=nominal-known when<=nominal; allocation_overallocated_base_units=known-nominal only when positive; funding_sum_lamports=P+R when both supplied; funding_expected_pool_lamports={numerator:4*N,denominator:5},funding_expected_reserve_lamports={numerator:N,denominator:5} when gross N supplied; funding_pool_difference_numerator=5*P-4*N and funding_reserve_difference_numerator=5*R-N when operands supplied,implicit denominator5; activation_expected_epoch=E+2 whenever E supplied. All numerical components are canonical decimal strings; two difference numerators may be signed. Derived sums/products may exceed u64,never truncate. No other derived fields or allocations.",
+    "error": "null except INPUT_INVALID,then exactly {code,path,message}; fixed messages below; path is dot-separated declared field or $ for whole input/CLI.",
+    "finding": "Exactly {code,path,source_ids,message}; bounded fixed messages,no arbitrary asserted text echo.",
+    "fixed": {
+      "approval": "NOT_ESTABLISHED",
+      "production_readiness": "NOT_ASSESSED",
+      "public_verification": "NOT_PERFORMED",
+      "schema": "HTFP_LAUNCH_REPORT_V1",
+      "scope": "DOCUMENTARY_ONLY"
+    },
+    "input_invalid": "No partial assessment: checks/contradictions/open_items/unverified_assertions empty,derived empty. Emit first input error by error_phase_order,never traceback. Parser/whole-input/usage errors path $,schema errors path schema; declared field errors use field path,unknown-field errors nearest declared object parent.",
+    "input_sha256": "SHA256 of exact full input bytes when read<=65536,including invalid JSON; null for missing/unreadable/nonregular/oversize/usage input.",
+    "keys": [
+      "schema",
+      "scope",
+      "policy_sources",
+      "input_sha256",
+      "outcome",
+      "production_readiness",
+      "public_verification",
+      "approval",
+      "error",
+      "checks",
+      "contradictions",
+      "open_items",
+      "unverified_assertions",
+      "derived"
+    ],
+    "outcomes": {
+      "CONTRADICTIONS_PRESENT": 1,
+      "INPUT_INVALID": 2,
+      "NO_DOCUMENTARY_CONTRADICTION_FOUND": 0
+    },
+    "policy_sources": "Fixed map of DECISION_REGISTER.md,HTFP_FUNCTIONAL_SPEC.md,SECURITY_REQUIREMENTS.md,OPEN_QUESTIONS.md to source SHA256 below. References to frozen rule provenance,not runtime verification of local files/public state.",
+    "sorting": "fixed checks lexicographic field path; relationships in listed order; contradictions/open_items sorted(path,code); external gates listed order then assertions input order."
+  },
+  "report_schema": "HTFP_LAUNCH_REPORT_V1",
+  "schema": "HTFP_M6B_DESIGN_REQUIREMENTS_V1",
+  "source_bindings": {
+    "DECISION_REGISTER.md": {
+      "bytes": 36535,
+      "sha256": "9910deba190701a6bc11d91393c9d32f5b8e656027c7925fb4f13959bce1879f"
+    },
+    "HTFP_FUNCTIONAL_SPEC.md": {
+      "bytes": 68138,
+      "sha256": "6f80fab441729fb742cbb6fe893e7e8944a1aa79edf0750155e848e2c4540eb9"
+    },
+    "OPEN_QUESTIONS.md": {
+      "bytes": 31193,
+      "sha256": "3a8abdfc46b6117a268343811579c73a7dc8ec05b9e0f4e8c0a097e8cd71708a"
+    },
+    "SECURITY_REQUIREMENTS.md": {
+      "bytes": 62481,
+      "sha256": "966ca82678f4df1cfee21c3649c29e7df304b41b46c097cb9d76a42730804602"
+    },
+    "evidence/M5_LOCKER_FULLSUITE_INTERRUPTED_COMPLETION.json": {
+      "bytes": 2759,
+      "sha256": "1f3b3cffcae5d9676f0072fb2ff236f62ed9820c0668e29efd6171d0c0cf36b1"
+    },
+    "evidence/M6A_AUTHORIZATION.json": {
+      "bytes": 2529,
+      "sha256": "471a118e46676a048b4e2431109150b5098398d008f322df2d367e0beb5fe1fb"
+    },
+    "evidence/M6A_COMPLETION.json": {
+      "bytes": 3455,
+      "sha256": "edc8ba399f0f0fa62af90d581728166a3bfc927b370632f374287274d58f4d44"
+    },
+    "evidence/M6B_AUTHORIZATION.json": {
+      "bytes": 2183,
+      "sha256": "de967fbc6c03fd81aa9787a5400eeed953aa506e728f1e0ca14ac2dcb2b2cbb4"
+    },
+    "evidence/M6B_OFFLINE_MANIFEST_PROPOSAL.md": {
+      "bytes": 7322,
+      "sha256": "586699965ef996e2dfbbe9faa7a81339a6ffbbdca5033b2f5b6aa9d6a742ad38"
+    },
+    "evidence/M6B_PROPOSAL_INDEPENDENT_REVIEW.txt": {
+      "bytes": 1126,
+      "sha256": "5d5f78877fa38597ceaf5081fb3fb4c7b48212cfcd0f408037f540745b596e09"
+    },
+    "evidence/M6B_PROPOSAL_PREPARATION.json": {
+      "bytes": 1649,
+      "sha256": "1290e454807a17d12d3ccc9116250d599ede92b571b3177d6e2f46b5baf0fd6c"
+    },
+    "evidence/M6B_PROPOSAL_REVIEW.json": {
+      "bytes": 2471,
+      "sha256": "7eb9f65b1a7a24e09bc40ab04dc72c662015dc795253ac870d9c135ee3950b2f"
+    },
+    "evidence/M6B_STAGE_A_CORRECTION_HANDOFF.json": {
+      "bytes": 2408,
+      "sha256": "3344cd0145ef17a0ec4826d18e8806bcb8a3937e9286495297c00fbe3939b336"
+    },
+    "evidence/M6B_STAGE_A_HANDOFF.json": {
+      "bytes": 2745,
+      "sha256": "bf4952e44d6abfb7b00a20f5255f027e222b9ab9570e2fcde922b8284004434d"
+    },
+    "evidence/M6B_STAGE_A_INDEPENDENT_REVIEW_001.txt": {
+      "bytes": 1871,
+      "sha256": "96456cbdc0c8abe133ea708f39feb5d7c7dc8ef6214604a46b89e36949c2b248"
+    },
+    "evidence/M6B_STAGE_A_REVIEW_001.json": {
+      "bytes": 3050,
+      "sha256": "d83dadec264bd0bcc258530b79421869899c23a390634e8a556b3d4d701c69d9"
+    },
+    "evidence/m6b/design/HANDOFF.json": {
+      "bytes": 9987,
+      "sha256": "e5cc3fc547b136bede8bbcbfc62ab5f92e7522cdc6f1c5d05665df63df480c5a"
+    },
+    "evidence/m6b/preparation/INPUT_INVENTORY.json": {
+      "bytes": 8936,
+      "sha256": "3ab774a12f3e399dfbeaa640077d7e1b6e4641e6d233a26f4f9e9fbbc33eb980"
+    },
+    "evidence/remaining/READINESS.md": {
+      "bytes": 4167,
+      "sha256": "a0b70094d51ef33cb93a95ae903c4590d126b01d7ba2e774119b3758064fc379"
+    },
+    "evidence/remaining/volume/DECISION_SUPPORT.md": {
+      "bytes": 8977,
+      "sha256": "8b1ed7021e41a57f1d902da7fd9e31850ca9e48a191420f0ef100d439a052603"
+    }
+  },
+  "status": "STAGE_A_DESIGN_CANDIDATE_NO_IMPLEMENTATION_ASSIGNED"
+}

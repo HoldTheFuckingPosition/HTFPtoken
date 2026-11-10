@@ -1,0 +1,23 @@
+{
+  "schema": "htfp-m5-locker-resource-contract-v1",
+  "StageA_author_including_config_max": 16777216,
+  "StageA_planned_self_limit": 4194304,
+  "aggregate_M5_max": 67108864,
+  "cache_targets_max": 1073741824,
+  "free_disk_floor": 2147483648,
+  "StageB_author_evidence_max": 20971520,
+  "reserved_supervisor_reproduction_max": 20971520,
+  "reserved_global_contingency": 4194304,
+  "execution_preflight": "Require actual total existing M5 evidence +20MiB author +20MiB supervisor +4MiB contingency <=64MiB. Stop/report before cap; no deletion/recompression of old evidence.",
+  "future_native_send_attempts_max": 5000,
+  "future_fixture_instances_max": 100,
+  "planned_families": 26,
+  "planned_subcases": 107,
+  "gzip_new_traces": true,
+  "trace_format": "Full lossless compact UTF8 JSON gzip mtime0; raw/stored SHA256 and byte counts; complete mutable before/after accounts, actual getter/sysvar/meta/outcome records, no omissions or model receipts.",
+  "raw_response_policy": "Only complete new captures may be gzip encoded; never strip/patch/trim binary. ProgramData full allocation and code relation retained; actual decoding checked.",
+  "no_build_needed": true,
+  "if_build_becomes_necessary": "Stop that dependency and present concrete need under internal design/handoff gates; do not install/build by inference.",
+  "monitor": "Before and during capture/runtime/writes, include all prior/current M5 evidence +root M5_* files, both new namespaces, all old/new owned cache/targets; disk floor. Count stored allocated and logical sizes.",
+  "fixture_instance_reuse_limit": "104+ planned subcases do not imply one VM each: exact failed-negative groups may reuse verified unchanged native prestate; ABI/dust/metadata/positive-generated setup remains fresh; maximum100 VMs and5000 total native attempts, otherwise stop/report."
+}

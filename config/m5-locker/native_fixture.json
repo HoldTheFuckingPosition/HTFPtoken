@@ -1,0 +1,195 @@
+{
+  "schema": "htfp-m5-locker-mixed-native-fixture-v1",
+  "enabled_by_default": false,
+  "CPMM": {
+    "path": "evidence/m5/target/CPMM.code_unmodified.so",
+    "bytes": 1766640,
+    "sha256": "30a9273dda17d7b3513889af1dab1185d9facc4756a6edf36c42f30ba228d8d1"
+  },
+  "locker": {
+    "path": "evidence/m5/target/LP_LOCK.code_unmodified.so",
+    "bytes": 543368,
+    "sha256": "10ddd2110bd4c635952390703d654af755f0182069282bce421634d47ed97745"
+  },
+  "config0": {
+    "path": "evidence/m5/target/config_0.bin",
+    "bytes": 236,
+    "sha256": "3b5ca2f3187261cc048e2353789242067c3aff19cab67168f86dbbd29d99f21c"
+  },
+  "core_capture": {
+    "path": "evidence/m5/target/CAPTURE.json",
+    "bytes": 19534,
+    "sha256": "7619bc6f6dba55b261967c20cac1b5b573f6792cf6e37d99b1b70fb90ef51576"
+  },
+  "metadata": {
+    "address": "metaqbxxUerdq28cj1RbAWkYQm3ybzjb6a8bt518x1s",
+    "program_account_owner": "BPFLoaderUpgradeab1e11111111111111111111111",
+    "program_account_executable": true,
+    "program_account_lamports": 5201174270,
+    "program_account_bytes": 36,
+    "program_account_sha256": "0f1b17a95b5f588794003ef8494ffc4e59933f3f2226e41dee037aa312c5e21e",
+    "loader_account": {
+      "data": [
+        "c29sYW5hX2JwZl9sb2FkZXJfdXBncmFkZWFibGVfcHJvZ3JhbQ==",
+        "base64"
+      ],
+      "executable": true,
+      "lamports": 1,
+      "owner": "NativeLoader1111111111111111111111111111111",
+      "rentEpoch": 18446744073709551615,
+      "space": 37
+    },
+    "program_account": {
+      "path": "evidence/m5/locker_design/dependencies/metadata.program_account.bin.gz",
+      "encoding": "gzip mtime0; complete unmodified decoded bytes",
+      "raw_bytes": 36,
+      "raw_sha256": "0f1b17a95b5f588794003ef8494ffc4e59933f3f2226e41dee037aa312c5e21e",
+      "stored_bytes": 57,
+      "stored_sha256": "7752eaa5061a97e4e39071c953c414fb1b4c3cc8118d844a8aec2d1c7fdeb7cd"
+    },
+    "programdata": "PwDiXFxQsGra4sFFTT8r1QWRMd4vfumiWC1jfWNfdYT",
+    "programdata_bytes": 1295389,
+    "programdata_sha256": "fe856b22687903a4ed6be72a8f09c26ad94ceaacc74af67fa5c7d192abb716d5",
+    "last_modified_slot": 363279440,
+    "upgrade_authority": "6Vwz7AXYG6V1TUPP3KWYZncMEvUv6iPSFbfHDCLRcjtz",
+    "programdata_record": {
+      "path": "evidence/m5/locker_design/dependencies/metadata.programdata.bin.gz",
+      "encoding": "gzip mtime0; complete unmodified decoded bytes",
+      "raw_bytes": 1295389,
+      "raw_sha256": "fe856b22687903a4ed6be72a8f09c26ad94ceaacc74af67fa5c7d192abb716d5",
+      "stored_bytes": 172875,
+      "stored_sha256": "c5d8d89ca3dfcbebeb00675e675cea02d8b1589c05e0e347e2bd854ba4de7be4"
+    },
+    "code_relation": "Full unmodified ProgramData suffix [45:]; metadata is retained separately, no ELF strip/trim/patch",
+    "code": {
+      "path": "evidence/m5/locker_design/dependencies/metadata.code_unmodified.so.gz",
+      "encoding": "gzip mtime0; complete unmodified decoded bytes",
+      "raw_bytes": 1295344,
+      "raw_sha256": "bb0842f6d5740eabe8f9fb3b723b9ecd89cadf9f48ef9ad6a9dc6cfa8a9658e4",
+      "stored_bytes": 172823,
+      "stored_sha256": "863032c3bb72a798ee49ccb93368fc67d91a9c7c251d2192ff917105b5b5f088"
+    },
+    "ELF_machine": 247,
+    "source_to_binary": "UNPROVEN",
+    "native_execution": "NOT_RUN"
+  },
+  "memo": {
+    "address": "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr",
+    "program_account_owner": "BPFLoader2111111111111111111111111111111111",
+    "program_account_executable": true,
+    "program_account_lamports": 41509619334,
+    "program_account_bytes": 74800,
+    "program_account_sha256": "f520eaf096361abbb9639ea4dc3e5388a87b9330e121f476607b87c46ef67954",
+    "loader_account": {
+      "data": [
+        "c29sYW5hX2JwZl9sb2FkZXJfcHJvZ3JhbQ==",
+        "base64"
+      ],
+      "executable": true,
+      "lamports": 1,
+      "owner": "NativeLoader1111111111111111111111111111111",
+      "rentEpoch": 18446744073709551615,
+      "space": 25
+    },
+    "program_account": {
+      "path": "evidence/m5/locker_design/dependencies/memo.program_account.bin.gz",
+      "encoding": "gzip mtime0; complete unmodified decoded bytes",
+      "raw_bytes": 74800,
+      "raw_sha256": "f520eaf096361abbb9639ea4dc3e5388a87b9330e121f476607b87c46ef67954",
+      "stored_bytes": 21093,
+      "stored_sha256": "032244e681113b8fda3a455db47e55c8b67b90f968c2e42ac17f4f8b14ae70b7"
+    },
+    "programdata": null,
+    "upgrade_authority": null,
+    "immutable_legacy_loader": true,
+    "code_relation": "Entire immutable legacy-loader Program account data; no transform",
+    "code": {
+      "path": "evidence/m5/locker_design/dependencies/memo.code_unmodified.so.gz",
+      "encoding": "gzip mtime0; complete unmodified decoded bytes",
+      "raw_bytes": 74800,
+      "raw_sha256": "f520eaf096361abbb9639ea4dc3e5388a87b9330e121f476607b87c46ef67954",
+      "stored_bytes": 21093,
+      "stored_sha256": "032244e681113b8fda3a455db47e55c8b67b90f968c2e42ac17f4f8b14ae70b7"
+    },
+    "ELF_machine": 247,
+    "source_to_binary": "UNPROVEN",
+    "native_execution": "NOT_RUN"
+  },
+  "dependency_capture": {
+    "path": "evidence/m5/locker_design/CAPTURE.json",
+    "bytes": 5242,
+    "sha256": "ed146b384de44ed01cff7dca063594121e116d57b464030e95c0abaa98b8d323"
+  },
+  "legacy_Token": {
+    "role": "legacyToken",
+    "path": "evidence/M4A_LEGACY_TOKEN_CAPTURE/legacy_token_devnet_code_unmodified.so",
+    "full_bytes": 108600,
+    "full_sha256": "8190d3f7ceb6cb7a7a8d8924bff89f9f611e15ce1f806f2b6237f3311a98f697",
+    "slot": 520199001,
+    "trim_strip_patch": "NONE",
+    "source_public_version_match": "UNKNOWN"
+  },
+  "Token2022": {
+    "role": "Token2022",
+    "path": "evidence/m4a/author/devnet/Token2022.code_unmodified.so",
+    "full_bytes": 711008,
+    "full_sha256": "b781b71d230a9910de4d3c103e72608f597fc73c83ee207242ac82b708382a6a",
+    "slot": 520196017,
+    "trim_strip_patch": "NONE",
+    "source_public_version_match": "UNKNOWN"
+  },
+  "ATA": {
+    "program": "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL",
+    "container": "/home/jerem/htfpo-v1/.venv/packages/solders/solders.abi3.so",
+    "container_sha256": "648e13d02ec2e8555d751e38980e01faa5cbb47c2e7d7262f3a2103caa3afa02",
+    "slice_offset": 22800289,
+    "slice_bytes": 105032,
+    "ELF_sha256": "e5e7aed11ad3969eea2aa76c8b4d2e73ea25be7e6b5cce989b7710cf5452496e",
+    "mapping_evidence": "Supervisor read-only auxiliary static load_spl_programs mapping; StageA independently hashed slice only. StageB must verify actual constructor executable bytes/hash before replay and after native overrides.",
+    "Devnet_source_or_binary_match": "UNKNOWN"
+  },
+  "static_native_mint_supplement": {
+    "path": "evidence/M4B_WSOL_MINT_FIXTURE_SUPPLEMENT.json",
+    "bytes": 3734,
+    "sha256": "b22c83c421f1a3884cd34e1de4b0e0ff550ccec70f56960f3bfae9e9b537becf"
+  },
+  "native_mint_data": {
+    "path": "evidence/m4a/author/devnet/native_SOL_mint.account_data.bin",
+    "bytes": 82,
+    "sha256": "b0f919425a529f4971ef8dabd535aec34947d5c8c4885df80dae91635b98c5f3"
+  },
+  "H_initialization_artifact": {
+    "path": "evidence/m4b/process_author/build-m3-final/htfp.so",
+    "bytes": 155240,
+    "sha256": "2634fd48775e74e845aee5018e49dc8663f7ccb671871efb5df4adf0ca07823c"
+  },
+  "H_initialization_build_record": {
+    "path": "evidence/m4b/process_author/build-m3-final/build.json",
+    "bytes": 11799,
+    "sha256": "c70c0278e8cc050ec8d66bde5ac46c2171b95b67a69751f9cf9e78342188a2f0"
+  },
+  "H_source_profile": {
+    "path": "config/m3/local_profile.json",
+    "bytes": 11411,
+    "sha256": "8c39db647774d1e24946aa8cebf00d18ee527a6af47a3c5d1c8f614b92398f6a"
+  },
+  "runtime": {
+    "python": "3.12.3",
+    "solders": "0.26.0",
+    "native_container_sha256": "648e13d02ec2e8555d751e38980e01faa5cbb47c2e7d7262f3a2103caa3afa02",
+    "sigverify": true,
+    "blockhash_check": true,
+    "packet_max": 1232,
+    "CU_max": 1400000,
+    "heap": 32768,
+    "clock_raw_bytes": 40,
+    "rent_raw_bytes": 17
+  },
+  "loader_limit": "LiteSVM.add_program uses synthetic BPF2 executable accounts for supplied ELFs even from upgradeable captures. Public ProgramData/upgrade/feature semantics not replayed. Installed Memo never silently substitutes; override exact MemoV3 captured full bytes and verify loaded hash. Metadata absent from installed bundled SPL inventory; load exact captured full bytes. Actual compatibility NOT_RUN. add_program may suppress loader errors with unwrap_or_default; None or matching executable bytes are not runtime/load PASS. Require real native outcomes after StageB gate.",
+  "monetary_prestate": "Only artificial System funding; exact immutable config0 and zero-supply canonical native mint dependency at local actual rent; canonical fee receiver native initialized from zero-data token buffer. No public lamports/positive token/pool/LP/locker outcome injected.",
+  "source_to_binary": "UNPROVEN",
+  "native_execution": "NOT_RUN",
+  "mixed_provenance": "CPMM/locker slot520406338; legacy/Token2022 older snapshots; ATA/runtime installed container; Metadata/Memo slot520415647. No same-cluster-runtime-equivalence claim.",
+  "adapter": "An explicitly NEW future adapter/output namespace must select accepted current-source H-M3 artifact2634fd...; never call frozen tests/m4b/runtime.VM constructor unchanged (it unconditionally loads old proof/wallet and a stale M3 source binding). Unchanged instruction-source constructors may be explicitly adapted with their actual provenance; no validation weakening.",
+  "metadata_charges": "Published CreateMetadataAccountV3 source levies create fee plus rent. Capture actual selected binary charges and destinations; no numerical fee guessed, no program charges excluded from rollback. No Master Edition/Authorization Rules accounts in frozen locker ABI."
+}

@@ -1,0 +1,8 @@
+{
+  "intent": {
+    "sources": []
+  },
+  "operation": "encode",
+  "profile": "LOCAL_M3_HISTORICAL_V1",
+  "schema": "htfp-recover-request-v1"
+}

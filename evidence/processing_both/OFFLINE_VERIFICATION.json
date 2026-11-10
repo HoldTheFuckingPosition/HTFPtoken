@@ -1,0 +1,67 @@
+{
+  "record": "S167",
+  "date": "2026-11-10",
+  "timezone": "Europe/Warsaw",
+  "status": "EXISTING_EVIDENCE_OFFLINE_VERIFICATION_FINISHED_INTEGRATION_INCOMPLETE",
+  "main": {
+    "native_status": "LOCAL_NATIVE_BOTH_PROCESSING_PASS",
+    "independent_raw_audit": "RAW_AUDIT_PASS",
+    "signed_submissions": 118,
+    "actual_failed_transactions": 49,
+    "successful_Process_instructions": 10,
+    "successful_Redeem_instructions": 1,
+    "native_Process_burn_base_units": "11100999999",
+    "native_SOL_credit_from_Process_lamports": "40",
+    "Redeem_burn_base_units": "100000000000000000",
+    "Redeem_payout_lamports": "21991091",
+    "scale_limit": "Illustrative local volume constants and very large fixed supply; observed tiny SOL conversions are test facts, not production economic sizing."
+  },
+  "partial_CU": {
+    "native_status": "RETAINED_NATIVE_FAILURE",
+    "independent_existing_evidence_disposition": "PARTIAL_RAW_EVIDENCE_VALIDATED_EXPECTATION_NOT_MET",
+    "signed_submissions": 57,
+    "actual_failed_transactions": 3,
+    "actual_error": "ProgramFailedToComplete atFinalizeindex2/full203592CU withmeter-exceededlog",
+    "frozen_expected_error": "ComputationalBudgetExceeded",
+    "expectation_met": false
+  },
+  "actual_scope_totals": {
+    "author_VM": 2,
+    "author_signed_submissions": 175,
+    "author_synthetic_airdrop_API_calls": 2,
+    "author_build_attempts": 5,
+    "ROOT_build_VM_signed_submissions": 0
+  },
+  "actual_offline_verification": {
+    "audit_CLI_processes": 2,
+    "per_directory_attempts": 4,
+    "version1_main_format_failure_retained": true,
+    "version2_main_raw_audit": "PASS",
+    "version2_partial_CU": "PARTIAL_RAW_EVIDENCE_VALIDATED_EXPECTATION_NOT_MET",
+    "both_actual_audit_CLI_exit_statuses": 2,
+    "sensitivity_CLI_processes": 1,
+    "finite_semantic_checks": 15,
+    "expected_semantic_rejections": 15,
+    "unexpected_semantic_results": 0,
+    "semantic_exit_status": 0,
+    "direct_gzip_JSON_coverage_diagnostic": 1,
+    "product_native_SDK_build_calls": 0
+  },
+  "independent_v2_correction_review": {
+    "reviewer": "/root/lge_pool_review",
+    "verdict": "PASS narrow offline auditor v2 correction; findings[]",
+    "auditor_sha256": "1856e7d5ad060c61aa9ebfed31f494d3aefc38b1c5eb89fdc626546e03355b4a",
+    "limits": "Exact3nonpacketobjects separatelychecked andN068actualfinalphaseconservation; oldv1/failure/seal retained. No nativeexpectationchange."
+  },
+  "frozen_oracle_erratum": "audit/ERRATUM_N017.json cites pre-executionP002/MATRIX2505; original stale2506 oracle remains byte-identical.",
+  "all_authors_and_native_writers_stopped": true,
+  "full_author_completion_handoff": "NOT_AVAILABLE after agent service interruption; ROOT interrupted checkpoint preserves exact current artifacts.",
+  "native_continuation": "STOPPED after actual expected-error mismatch and automatic cybersecurity content flag; not resumed/rephrased/rerouted.",
+  "remaining_not_run": [
+    "CU32000",
+    "SeparateROOTfinal-sourcecompilation/nativecampaign",
+    "Exactfinalimplementationintegrationreview"
+  ],
+  "full_integration_acceptance": false,
+  "public_final500ppm_locker_BurnAndEarn_M5_acceptance": false
+}
