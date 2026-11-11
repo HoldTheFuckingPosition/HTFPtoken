@@ -2,7 +2,9 @@
 
 **HTFP is designed as a SOL-backed token with on-chain redemption through its vault.** Once the protocol is initialized and funded, holders can burn HTFP to redeem a proportional share of the vault's spendable SOL under the redemption rules below. This redemption value depends on the actual SOL available and total token supply before the burn, rather than a fixed SOL price.
 
-**Under development.** This page describes the intended architecture. Public deployment and final liquidity integration remain pending.
+**Testnet pilot deployed.** The limited token/vault pilot supports initialization, tax recovery and holder redemption. Positive 8% fee tests await activation at epoch 1086; tax-to-SOL processing and final Raydium liquidity integration remain under development. The architecture below describes the full intended protocol.
+
+Testnet: [HTFP program](https://explorer.solana.com/address/CseQKCWvi4EA2o3oa11Age4p4xKWSLuzjWCzitASrPJu?cluster=testnet) · [HTFP mint](https://explorer.solana.com/address/rRPZUSGGDPsHKKt1zP4ZLfviW9sVZ2FYKcDgdc4j55o?cluster=testnet). The [deployed pilot source](programs/htfp-testnet/) is distinct from the full processing candidate. Program upgrades and metadata remain controlled by the approved Testnet wallet during trials.
 
 ## How the 8% tax works
 
