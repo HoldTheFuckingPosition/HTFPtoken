@@ -1,0 +1,161 @@
+{
+  "scope": "MAINNET_READ_ONLY_AND_ISOLATED_SIGNED_LOCAL_RUNTIME",
+  "date_utc": "2026-11-19",
+  "cpmm_explanatory_source_commit": "3d69122790e97cd6aff24e8ba95940793773f58c",
+  "mainnet": {
+    "genesis": "5eykt4UsFv8P8NJdTREpY1vzqKqZKvdpKuc147dw2N9d",
+    "core_slot": 471192559,
+    "node_version": {
+      "feature-set": 2681577653,
+      "solana-core": "4.4.0"
+    },
+    "config": {
+      "address": "D4FPEruKEHrG5TenZ2mpDGEfu1iUvTiqBxvpU8HLBvC2",
+      "bump": 255,
+      "create_lamports": 150000000,
+      "creator_fee_ppm": 500,
+      "default_protocol_share_of_creator_ppm": 50000,
+      "disable_create_pool": false,
+      "fund_owner": "FUNDduJTA7XcckKHKfAoEnnhuSud2JUCUZv6opWEjrBU",
+      "fund_share_of_trade_ppm": 40000,
+      "index": 0,
+      "protocol_owner": "ProCXqRcXJjoUd1RNoo28bSizAA6EEqt9wURZYPDc5u",
+      "protocol_share_of_trade_ppm": 120000,
+      "raw_sha256": "be8d13d1a6def925af32187937fde9ef21d2d7ca5efb1c6e1fd6611b3f12cfe1",
+      "trade_fee_ppm": 2500
+    },
+    "programs": {
+      "cpmm": {
+        "authority": "FytDrVzDybM1TwFQPGb8qaxZR7dBCzNeqT3vtQsceZQK",
+        "capacity": 793824,
+        "payload_sha256": "c383e1c5b1f578f3d1bf42f12360fca67225b9adda0f3b6c293ad0d6b966818d",
+        "program": "CPMMoo8L3F4NbTegBCKVNunggL7H1ZpdTHKxQB5qKP1C",
+        "programdata": "DMawCQzbgNTmbzaESc7o6pvL1KAeetY8zA7jNpzntHhU",
+        "slot": 463522946
+      },
+      "legacy": {
+        "authority": null,
+        "capacity": 108600,
+        "payload_sha256": "8190d3f7ceb6cb7a7a8d8924bff89f9f611e15ce1f806f2b6237f3311a98f697",
+        "program": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+        "programdata": "3gvYRKWyXRR9xKWe1ZjPhLY5ZJRN7KDB4rFZFGoJfFk2",
+        "slot": 419472000
+      },
+      "token2022": {
+        "authority": "AeLmXCbPaQHGWRLr2saFsEVfmMNuKnxRAbWCT9P5twgz",
+        "capacity": 1382016,
+        "payload_sha256": "15a2e615a42e20f31714bbaaee43002ae6f1cda2e8d7118243117ab3c1342e2d",
+        "program": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+        "programdata": "DoU57AYuPFu2QU514RktNPG22QhApEjnKxnBcu4BHDTY",
+        "slot": 460497271
+      }
+    },
+    "source_admin_address": "GThUX1Atko4tqhN2NaiTazWSeFWMuiUvfFnyJyUghFMJ",
+    "source_share_admin_address": "RayRrPVNAg3hTPa1yfZiR49FqCpkmiLaP4yWsVBnoBZ",
+    "filtered_witness_count": 37,
+    "both_token_witnesses": [
+      {
+        "address": "2W8zkRFk21idgqqxQzKTazRaRW4cfZRwLgL2EcczNbdS",
+        "slot": 471192563
+      },
+      {
+        "address": "DbP4LiA7RcearJGaNaApSAkCCgX9sV6VvxbWMtu2KPcz",
+        "slot": 471194549
+      }
+    ],
+    "observation_sha256": "2f6995e6ff5a8fd00da75b74fad36fd1d2ae4fe51e9466b04669bec3bcdc5775"
+  },
+  "local": {
+    "status": "PASS_LOCAL_ONLY_CPMM_2500_500_BOTH_TOKEN",
+    "fixture_elf_sha256": "7260c4b62b1361353d7d5b3a6edd5622c53543c9a8f1cef876a47f7e8f64e1c5",
+    "result_sha256": "b8c476389c17dc6d351403e59c03595606523a418d583515997b42e1616f8b68",
+    "native_htfp_fee_bps": 800,
+    "cases": [
+      {
+        "case": "wsol-to-htfp",
+        "input": "wSOL",
+        "compute_units": 29821,
+        "gross": "10000003",
+        "curve_exact_input_reserve": "8819460670",
+        "curve_exact_output_reserve": "3492294083107862988",
+        "htfp_withheld_in": "0",
+        "pool_input": "10000003",
+        "combined": "30001",
+        "creator": "5000",
+        "trade": "25001",
+        "protocol": "3000",
+        "fund": "1000",
+        "liquidity": "21001",
+        "curve_input": "9970002",
+        "curve_out": "3943422887229796",
+        "htfp_withheld_out": "315473830978384",
+        "net_out": "3627949056251412"
+      },
+      {
+        "case": "htfp-to-wsol",
+        "input": "HTFP",
+        "compute_units": 29451,
+        "gross": "100000000003",
+        "curve_exact_input_reserve": "3488350660220633192",
+        "curve_exact_output_reserve": "8829451673",
+        "htfp_withheld_in": "8000000001",
+        "pool_input": "92000000002",
+        "combined": "276000001",
+        "creator": "46000000",
+        "trade": "230000001",
+        "protocol": "27600000",
+        "fund": "9200000",
+        "liquidity": "193200001",
+        "curve_input": "91724000001",
+        "curve_out": "232",
+        "htfp_withheld_out": "0",
+        "net_out": "232"
+      },
+      {
+        "case": "htfp-process-finalize",
+        "input": "HTFP",
+        "compute_units": 263265,
+        "gross": "5000000005",
+        "curve_exact_input_reserve": "3488350752137833194",
+        "curve_exact_output_reserve": "8829451441",
+        "htfp_withheld_in": "400000001",
+        "pool_input": "4600000004",
+        "combined": "13800001",
+        "creator": "2300000",
+        "trade": "11500001",
+        "protocol": "1380000",
+        "fund": "460000",
+        "liquidity": "9660001",
+        "curve_input": "4586200003",
+        "curve_out": "11",
+        "htfp_withheld_out": "0",
+        "net_out": "11",
+        "process": {
+          "Q": "8000000008",
+          "burn": "3000000003",
+          "reserve_delta": "11"
+        }
+      },
+      {
+        "case": "wsol-to-htfp-dust",
+        "input": "wSOL",
+        "compute_units": 29271,
+        "gross": "3",
+        "curve_exact_input_reserve": "8829451430",
+        "curve_exact_output_reserve": "3488350756733693198",
+        "htfp_withheld_in": "0",
+        "pool_input": "3",
+        "combined": "1",
+        "creator": "0",
+        "trade": "1",
+        "protocol": "0",
+        "fund": "0",
+        "liquidity": "1",
+        "curve_input": "2",
+        "curve_out": "790162510",
+        "htfp_withheld_out": "63213001",
+        "net_out": "726949509"
+      }
+    ]
+  }
+}

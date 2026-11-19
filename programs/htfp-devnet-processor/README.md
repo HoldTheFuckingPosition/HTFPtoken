@@ -18,10 +18,15 @@ transaction fence retain their existing checks.
 
 ## Build and host tests
 
-Use a provisioned Solana platform-tools v1.54 toolchain with Rust 1.89.0-dev,
-Cargo 1.89.0 and LLVM 20.1.7, and a Cargo cache for the checked-in lockfile.
-From the repository root, provide the platform-tools directory in
-`HTFP_PLATFORM_TOOLS`.
+Use [Solana platform-tools v1.54](https://github.com/anza-xyz/platform-tools/releases/tag/v1.54)
+on Linux x86-64 with Rust 1.89.0-dev, Cargo 1.89.0 (`d96b80636`) and LLVM
+20.1.7. The released Linux archive SHA-256 is
+`fcc41631c7f77561bf5412218bf297501dccf0305ea280f338f0ace2aab9f31e`.
+From the repository root, set `HTFP_PLATFORM_TOOLS` to the extracted
+directory containing `rust/bin` and `llvm/bin`. Prepare the Cargo cache
+from the checked-in lockfile first. If dependencies are missing, use the
+pinned toolchain to fetch them with
+`cargo fetch --locked --manifest-path programs/htfp-devnet-processor/Cargo.toml`.
 
 ```sh
 platform=${HTFP_PLATFORM_TOOLS:?Set HTFP_PLATFORM_TOOLS to the v1.54 platform-tools directory}
@@ -36,6 +41,8 @@ cargo build --offline --locked --jobs 1 --no-default-features \
 llvm-objcopy --strip-all \
   "$CARGO_TARGET_DIR/sbpf-solana-solana/release/htfp_devnet_processor.so" \
   "$CARGO_TARGET_DIR/artifacts/htfp-devnet-processor.so"
+wc -c "$CARGO_TARGET_DIR/artifacts/htfp-devnet-processor.so"
+sha256sum "$CARGO_TARGET_DIR/artifacts/htfp-devnet-processor.so"
 cargo test --offline --locked --jobs 1 --no-default-features \
   --features devnet-tax-processor --manifest-path programs/htfp-devnet-processor/Cargo.toml \
   --lib --target x86_64-unknown-linux-gnu
@@ -47,5 +54,14 @@ The qualified stripped ELF is **237,888 bytes** with SHA-256
 `24a69877a349f365cec15c840b8b924779a0f9ec6621248b4f0aa2db93f3150d`.
 The Cargo.lock SHA-256 is
 `ccc1b2ee6bcef788786d371a6c3367fcc1cda389a4f14bdd4aeb71c5293de0fb`.
+The source and profile were introduced on the public branch in
+[`06889d9`](https://github.com/HoldTheFuckingPosition/HTFPtoken/commit/06889d981984e8e0e219928f3e0ba55e5d89030f).
+A clean public checkout reproduced the installed ELF byte for byte and
+passed seven enabled and two default-feature host checks. The
+[finalized receipt](../../evidence/devnet_processor_upgrade/FOLLOWUP_2026-11-19.public.json)
+identifies the installed cluster, program and ProgramData.
+
 The [external-wSOL regression](../../tests/devnet_processor_upgrade/README.md)
-uses a separately retained, digest-bound LiteSVM fixture.
+uses a separately retained, digest-bound LiteSVM fixture. The build and both
+host test commands above need only public source, the toolchain and locked
+dependencies.

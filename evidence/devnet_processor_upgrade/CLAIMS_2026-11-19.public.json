@@ -1,0 +1,97 @@
+{
+  "scope": "DEVNET_CLAIMS",
+  "date_utc": "2026-11-19",
+  "genesis": "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG",
+  "pool": "CHAETgvJoVDMmVY9Urzzhh8CuJxm7Z14QsKdindepPUN",
+  "creator_claim": {
+    "status": "FINALIZED_AND_RECONCILED_CREATOR_ONLY",
+    "signature": "5Nf5sRcKLYorawRKfYmGkYMKCZqhXyra5GoCo1x7Ap6mskURTNx9H23g38tEoEF4n7LfmeQaiBdscTt6PAYjz6KY",
+    "slot": 523872901,
+    "after_slot": 523872911,
+    "protocol_share_ppm": 0,
+    "compute_units": 72365,
+    "fee_lamports": 5000,
+    "ATA_rent_lamports": 3063240,
+    "payer_total_lamports": 3068240,
+    "LP_change_base": 0,
+    "instruction": "CollectCreatorFee",
+    "gross": {
+      "wsol_lamports": "50000",
+      "htfp_base_units": "479944054151"
+    },
+    "withheld": {
+      "wsol_lamports": "0",
+      "htfp_base_units": "38395524333"
+    },
+    "spendable_net": {
+      "wsol_lamports": "50000",
+      "htfp_base_units": "441548529818"
+    },
+    "creator_counters_after": {
+      "wsol_lamports": "0",
+      "htfp_base_units": "0"
+    },
+    "effective_reserves_and_locker_state_unchanged": true,
+    "reconciliation_sha256": "16b9f2fbc3c840765a67276c64bc1dd9507533c435c8fb7a5d4e8b4229321462",
+    "retained_finalized_rpc_receipt_sha256": "1d8847f6c22733bdbf07566a16536bac68d57964f9dec322c577f65b8a70dc17"
+  },
+  "fee_key": {
+    "status": "UNSIGNED_SIMULATION_NO_COMMIT",
+    "lp_decimals": 9,
+    "locker_program": "DRay25Usp3YJAi7beckgpGUC7mGJ2cR1AVPxhYfwVCUX",
+    "locker_elf_sha256": "10ddd2110bd4c635952390703d654af755f0182069282bce421634d47ed97745",
+    "finalized_observation_slots": {
+      "after": 523873817,
+      "before": 523873772,
+      "native_after": 523873823
+    },
+    "signatures": 0,
+    "submissions": 0,
+    "network_financial_state_unchanged": true,
+    "cap_probe": {
+      "slot": 523873803,
+      "request_LP_base": "100000000",
+      "actual_burn_LP_base": "100000000",
+      "available_earned_LP_base": "208940645",
+      "unclaimed_LP_after": "108940645",
+      "fee_lamports": "5000",
+      "ATA_rent_lamports": "0",
+      "compute_units": 97186,
+      "gross": {
+        "wsol_lamports": "5025",
+        "htfp_base_units": "1989919234387"
+      },
+      "withheld": {
+        "wsol_lamports": "0",
+        "htfp_base_units": "159193538751"
+      },
+      "spendable_net": {
+        "wsol_lamports": "5025",
+        "htfp_base_units": "1830725695636"
+      },
+      "independent_minimum_receipt": {
+        "wsol_lamports": "0",
+        "htfp_base_units": "0"
+      },
+      "normalized_message_sha256": "6b3d6b7ba3a8f9ccaa820c50ec8d34a754ed10336f65eba94cb76b275347bb43"
+    },
+    "boundary_probes": [
+      {
+        "slot": 523873793,
+        "request_LP_base": "18446744073709551615",
+        "actual_burn_LP_base": "208940645",
+        "available_earned_LP_base": "208940645",
+        "unclaimed_LP_after": "0"
+      },
+      {
+        "slot": 523873813,
+        "request_LP_base": "208940646",
+        "actual_burn_LP_base": "208940645",
+        "available_earned_LP_base": "208940645",
+        "unclaimed_LP_after": "0"
+      }
+    ],
+    "historical_principal_reservation_preserved": true,
+    "reconciliation_sha256": "b6eaa4f3ea1d3d9e852d23053fa28ebccf516c21ecbeeca55b749466efc06034"
+  }
+}

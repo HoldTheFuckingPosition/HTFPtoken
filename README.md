@@ -2,13 +2,22 @@
 
 **HTFP is designed as a SOL-backed token with on-chain redemption through its vault.** Once the protocol is initialized and funded, holders can burn HTFP to redeem a proportional share of the vault's spendable SOL under the redemption rules below. This redemption value depends on the actual SOL available and total token supply before the burn, rather than a fixed SOL price.
 
+This repository's main branch contains the current pre-launch review code. Mainnet release qualification remains open.
+
+## Review the current release work
+
+| Scope | Source, checks and evidence |
+| --- | --- |
+| Devnet processor | [Rust source, build and host tests](programs/htfp-devnet-processor/README.md) · [ABI and fixed profile](config/devnet-processor/) · [Finalized upgrade, fee cycle and claims coverage](evidence/devnet_processor_upgrade/README.md) |
+| Testnet token and vault | [Pilot source, activation and artifact](programs/htfp-testnet/README.md) |
+| Production target | [Manifest and launch checklist](docs/PRODUCTION-LAUNCH-MANIFEST.md) · [Offline dossier checker](tools/htfp_launch_manifest/README.md) · [Opening bound and assumptions](tools/htfp_launch_manifest/OPENING.md) |
+| Raydium production fee tier | [Mainnet observations, local accounting cases and offline check](evidence/cpmm_fee_profile/README.md) |
+
 **Testnet token/vault pilot.** The pilot supports initialization, tax recovery and holder redemption. The 8% fee activated at epoch 1086 and was observed active at epoch 1091. The recorded pilot transactions exercised the 0% launch phase. `Process` is unavailable in this deployment.
 
-**Devnet processor pilot.** The corrected processor upgrade finalized on 19 November 2026. A subsequent `Recover → Process → Finalize` transaction credited the fixed reserve using the experimental BothToken profile with 2,500 ppm trade and 2,500 ppm creator fees. The specified production target is 2,500 ppm trade and 500 ppm BothToken creator fees. The Fee Key claim and separate creator-fee collection remain pending. [Devnet release and validation](evidence/devnet_processor_upgrade/README.md)
+**Devnet processor pilot.** The corrected processor upgrade and a subsequent `Recover → Process → Finalize` cycle finalized on 19 November 2026 under the experimental 2,500 ppm trade and 2,500 ppm BothToken creator profile. The separate creator claim also finalized. A capped Fee Key claim was simulated unsigned on Devnet. A finalized Fee Key claim remains open. The production target is 2,500 ppm trade and 500 ppm BothToken creator fees. [Devnet release and validation](evidence/devnet_processor_upgrade/README.md)
 
 Testnet: [HTFP program](https://explorer.solana.com/address/CseQKCWvi4EA2o3oa11Age4p4xKWSLuzjWCzitASrPJu?cluster=testnet) · [HTFP mint](https://explorer.solana.com/address/rRPZUSGGDPsHKKt1zP4ZLfviW9sVZ2FYKcDgdc4j55o?cluster=testnet). The [deployed pilot source](programs/htfp-testnet/) is distinct from the full processing candidate. Program upgrades and metadata remain controlled by the approved Testnet wallet during trials.
-
-The launch checker reports documentary inconsistencies and unresolved inputs. [Offline launch dossier checker](tools/htfp_launch_manifest/README.md)
 
 ## How the 8% tax works
 
@@ -91,12 +100,12 @@ The Raydium market price can rise or fall. Selling the 5/8 portion into the pool
 | Contributed SOL | 80% pool / 20% HTFP reserve |
 | Raydium fee target | 0.25% ordinary + 0.05% creator, in BothToken mode |
 
-The LGE is handled manually: SOL contributors receive their share of the participant allocation in proportion to contributed SOL. Initial distribution and pool funding take place during the 0% phase; trading is intended to open by timestamp after fee activation plus an additional margin.
+The manual LGE allocates the participant tranche in proportion to contributed SOL. Initial distributions and pool funding must execute while the native fee is 0%. The launch plan must establish that an official pool swap can execute only after the fee becomes 8%. The exact opening time and production evidence remain open. [Production launch checklist](docs/PRODUCTION-LAUNCH-MANIFEST.md)
 
 The intended liquidity arrangement places **100% of initially received LP tokens into official Burn & Earn**. Creator income and Burn & Earn income go to the same founder wallet, with applicable HTFP transfer fees. This LP mechanism is separate from the HTFP burns shown above.
 
 ## Source
 
-The [Rust source](programs/htfp-both/) contains the current HTFP development candidate. See the [program directory](programs/README.md) for its scope and external dependencies.
+The [program directory](programs/README.md) identifies the current processor, Testnet pilot and historical local candidate.
 
 No project-wide license has been selected. Dependencies retain their own terms; see [third-party notices](THIRD_PARTY_NOTICES.md).
