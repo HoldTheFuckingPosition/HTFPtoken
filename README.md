@@ -2,9 +2,13 @@
 
 **HTFP is designed as a SOL-backed token with on-chain redemption through its vault.** Once the protocol is initialized and funded, holders can burn HTFP to redeem a proportional share of the vault's spendable SOL under the redemption rules below. This redemption value depends on the actual SOL available and total token supply before the burn, rather than a fixed SOL price.
 
-**Testnet pilot deployed.** The limited token/vault pilot supports initialization, tax recovery and holder redemption. Positive 8% fee tests await activation at epoch 1086; tax-to-SOL processing and final Raydium liquidity integration remain under development. The architecture below describes the full intended protocol.
+**Testnet token/vault pilot.** The pilot supports initialization, tax recovery and holder redemption. The 8% fee activated at epoch 1086 and was observed active at epoch 1091. The recorded pilot transactions exercised the 0% launch phase. `Process` is unavailable in this deployment.
+
+**Devnet processor pilot.** The corrected processor upgrade finalized on 19 November 2026. A subsequent `Recover → Process → Finalize` transaction credited the fixed reserve using the experimental BothToken profile with 2,500 ppm trade and 2,500 ppm creator fees. The specified production target is 2,500 ppm trade and 500 ppm BothToken creator fees. The Fee Key claim and separate creator-fee collection remain pending. [Devnet release and validation](evidence/devnet_processor_upgrade/README.md)
 
 Testnet: [HTFP program](https://explorer.solana.com/address/CseQKCWvi4EA2o3oa11Age4p4xKWSLuzjWCzitASrPJu?cluster=testnet) · [HTFP mint](https://explorer.solana.com/address/rRPZUSGGDPsHKKt1zP4ZLfviW9sVZ2FYKcDgdc4j55o?cluster=testnet). The [deployed pilot source](programs/htfp-testnet/) is distinct from the full processing candidate. Program upgrades and metadata remain controlled by the approved Testnet wallet during trials.
+
+The launch checker reports documentary inconsistencies and unresolved inputs. [Offline launch dossier checker](tools/htfp_launch_manifest/README.md)
 
 ## How the 8% tax works
 
@@ -28,7 +32,7 @@ The sale transfer is also taxed: 5 HTFP gross gives 4.6 HTFP net input and 0.4 H
 
 | Program | Role in HTFP |
 | --- | --- |
-| **[HTFP](programs/htfp-both/)** | The project's Rust program: initialization, tax recovery, burn/swap processing and holder redemption. |
+| **[HTFP](programs/)** | The project's Rust program covers initialization, tax recovery, burn/swap processing and holder redemption across its build profiles. |
 | **Token-2022** | Manages the HTFP mint, token balances, native transfer fees and token burns. |
 | **Raydium CPMM** | Provides the intended HTFP / SOL-wSOL pool and executes swaps. |
 | **Raydium Burn & Earn** | Intended locking mechanism for initial LP tokens, with fee rights retained through the Fee Key. |

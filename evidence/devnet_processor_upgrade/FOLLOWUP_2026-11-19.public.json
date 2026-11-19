@@ -1,0 +1,101 @@
+{
+  "cluster": "Devnet",
+  "dateUtc": "2026-11-19",
+  "evidenceSha256": {
+    "expiredWriteReconciliation": "a116ba12114ce64f97929150b2c76ac5e2c82d3f36d7cd4d3ad929e0f227e5c6",
+    "functionalCompletion": "ae4651a1bbdbc2b228dc0ae18eb577b2498c3a68c5cda0b41934f51f606e4162",
+    "functionalFinalizedReceipt": "12236335e4174cc4a598b29db7325bce67ec7ba06efbc9ca723eb62662c16e92",
+    "installationCompletion": "a6512c0b0f9f5f03e793b2ae2d0744689dc0764f85e1bfd675ef26d94a5af337",
+    "installationReceiptAudit": "caf93a90bdb07796d9b9a9e3c5bdc79090fe841a59bff106232233ade028d5c9"
+  },
+  "functionalValidation": {
+    "burnedBase": 259542885,
+    "computeUnits": 339317,
+    "custodyAfterBase": 15852979511285,
+    "epoch": 1212,
+    "finality": "finalized",
+    "finalizedSlot": 523856222,
+    "instructions": [
+      "Recover",
+      "Process",
+      "Finalize"
+    ],
+    "inventoryAfterBase": 15852979511285,
+    "networkFeeLamports": 5000,
+    "poolHtfpVaultSpendableIncreaseBase": 397965757,
+    "poolNativeTaxWithheldBase": 34605718,
+    "poolWsolVaultDeltaLamports": -1,
+    "processedBase": 692114360,
+    "profile": {
+      "creatorMode": "BothToken",
+      "creatorPpm": 2500,
+      "tradePpm": 2500
+    },
+    "recoveredBase": 15853671625643,
+    "reserveCreditLamports": 1,
+    "signature": "4iwseSyTVGVDwuqmJi92D3PxsTHcHkhZFPtBqDDWeMYPBFMtmgUyipJUtyzyQNL26S1a5VSC59GVvHKmYeN7rLBw",
+    "soldGrossBase": 432571475,
+    "supplyAfterBase": 9999780697203264797,
+    "temporaryAccountAbsentAfterFinality": true,
+    "temporaryRentPaidAndRefundedLamports": 1488440,
+    "verifiedStateSlot": 523856232,
+    "volumeAfter": {
+      "idle": true,
+      "quota": 2999998702285575,
+      "sequence": 3
+    }
+  },
+  "genesis": "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG",
+  "installed": {
+    "additionalProgramDataRentLamports": 0,
+    "allocatedPayloadBytes": 237920,
+    "buffer": "DNJJqTcjmsZvuGdmig4JmzrqA6FXDh6QSt5xTh6D9V8q",
+    "bufferAbsentAfterFinality": true,
+    "bufferCreation": {
+      "finality": "finalized",
+      "signature": "35Kae5mvkCH2ZthDspiLCaMuaZecQrE5bo6ZxiLsgQxPDbE1oedzWoieFvCwLMZp2HSsTksrijE7mr9hCuTCD7kV",
+      "slot": 523840379
+    },
+    "bufferRentPaidAndRefundedLamports": 1209309240,
+    "effectiveFinalizedReadSlot": 523855973,
+    "expiredWriteOriginalSignature": "5kSqXwBfyL22G4aJVrkwt3QqCStrx6G9n6jaEmsw6hjpJHyHJdvRM9sjys46je6ru4kfKS9LjaNcUKANF2d1Hcpq",
+    "finality": "finalized",
+    "finalizedInstallationTransactions": 240,
+    "finalizedWrites": 238,
+    "fundingWallet": "4WKQg3Sm8bvHS8DBmxoiMMi4Fev4mJU6ZLwGSTg6jDna",
+    "installationFeesLamports": 1200000,
+    "oneExpiredWriteWasReconciledBeforeReplacement": true,
+    "paddingZeroBytes": 32,
+    "programDataAccountBytes": 237965,
+    "programDataSha256": "88aa1590360dc49fe98e6e11618b179797d71617250c2a5e2cce29c1a1fc304a",
+    "submittedOriginals": 241,
+    "totalInstallationAndValidationFeesLamports": 1205000,
+    "upgradeSignature": "3XPeGpjRUJa51niiZBLTjn69nzca6v9BPhgfXtpjrpnG2qZBUdWiRVT9tc5Qx5VkCsY69TpdNecYAKDEY5xe17zN",
+    "upgradeSlot": 523855963,
+    "usefulBytes": 237888,
+    "usefulSha256": "24a69877a349f365cec15c840b8b924779a0f9ec6621248b4f0aa2db93f3150d"
+  },
+  "loader": "BPFLoaderUpgradeab1e11111111111111111111111",
+  "program": "CseQKCWvi4EA2o3oa11Age4p4xKWSLuzjWCzitASrPJu",
+  "programData": "D24fujViDprPKrK2LsCVKqUszUAeCGqEGYCpDntGiFbB",
+  "schema": "htfp-devnet-processor-followup-v1",
+  "source": {
+    "base": "ddc478f8082c107bb8b3c70a2ba55f91a2c4d37f",
+    "cargoLockSha256": "ccc1b2ee6bcef788786d371a6c3367fcc1cda389a4f14bdd4aeb71c5293de0fb",
+    "features": [
+      "devnet-tax-processor"
+    ],
+    "processingSourceSha256": "d1fa3349c805490a9a8ae800e8b9f276e5d2ba726f6af1227ed80deceaa79349",
+    "productionPatchSha256": "6db9da41f5fe9ff3eba1bafebdb26ac6c84f7b6f246e1464efc8fc5ed67a1355",
+    "publicCheckoutReproduction": {
+      "defaultHostTestsPassed": 2,
+      "elfBytes": 237888,
+      "elfSha256": "24a69877a349f365cec15c840b8b924779a0f9ec6621248b4f0aa2db93f3150d",
+      "enabledHostTestsPassed": 7,
+      "externalWsolFixture": "PASS"
+    },
+    "publicReleaseCommit": "2571953839ae848a9e23c45101ae343ef56ebfe2"
+  },
+  "status": "INSTALLED_FINALIZED_AND_TARGETED_FEE_CYCLE_VERIFIED",
+  "upgradeAuthority": "4WKQg3Sm8bvHS8DBmxoiMMi4Fev4mJU6ZLwGSTg6jDna"
+}
