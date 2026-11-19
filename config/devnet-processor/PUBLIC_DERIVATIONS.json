@@ -1,0 +1,47 @@
+{
+  "status": "PUBLIC_DATA_DERIVATION_ONLY_NEEDS_RUST_INDEPENDENT_CONFIRMATION",
+  "algorithm": "stdlib SHA256; canonical bump255downto0; Edwards decompression existence overfield2^255-19; noSDK/private/signing",
+  "program": "CseQKCWvi4EA2o3oa11Age4p4xKWSLuzjWCzitASrPJu",
+  "mint": "7kmK5pDzV99ZrJjJhokmdA6VWYAyouNSLqxi5SViMqRp",
+  "values": {
+    "volume": {
+      "address": "CkEfPvX8YFk7Bky9sRD3zFZwzEYz3giAmc5bdhdyNig3",
+      "hex": "ae83fa87fd6afa1c997d3e1b2f686b7bbb6717192fe2d87a042847f876f388e4",
+      "bump": 254,
+      "seeds_hex": [
+        "687466702d766f6c756d65",
+        "645c332843411f359caa6cca5d45bbc62a439a3bb76a0e396eba2086b32d69cf"
+      ]
+    },
+    "settle_authority": {
+      "address": "8KzBnCdBgmpxxfYpYF9wPQas47q26fDpUyaVUVgHK4NG",
+      "hex": "6cdeec5d0dd83b173c6b4f84c01550a35b613b75a2405a93dee0998d7940c7ed",
+      "bump": 254,
+      "seeds_hex": [
+        "687466702d736574746c652d61757468",
+        "645c332843411f359caa6cca5d45bbc62a439a3bb76a0e396eba2086b32d69cf"
+      ]
+    },
+    "temp0": {
+      "address": "9YBqCmWD5qzwULg7BdfmxQrBEB2HzcTuuZx4p36e88x2",
+      "hex": "7edabf4aff34866351437b8e89652c227c0cea5bb34c76ac0ded74ea144961fb",
+      "bump": 254,
+      "seeds_hex": [
+        "687466702d746d702d77736f6c",
+        "645c332843411f359caa6cca5d45bbc62a439a3bb76a0e396eba2086b32d69cf",
+        "0000000000000000"
+      ]
+    },
+    "temp1": {
+      "address": "ZqZqXhdfemxNoM2hYzAMVPc8c3aZXphiTK95v5q5Tvk",
+      "hex": "08697ff3a5c6864ce863f567e7b4bd2109879c1dfbf243743503e0c7d1403535",
+      "bump": 255,
+      "seeds_hex": [
+        "687466702d746d702d77736f6c",
+        "645c332843411f359caa6cca5d45bbc62a439a3bb76a0e396eba2086b32d69cf",
+        "0100000000000000"
+      ]
+    }
+  },
+  "cross_validation_required": "EnabledRust host find_program_address must match all4, then nativeinvoke_signed proves runtime derivations before acceptance."
+}

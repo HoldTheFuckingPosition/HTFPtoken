@@ -1,0 +1,497 @@
+{
+  "schema": "HTFP_DEVNET_PROCESSOR_PROPOSED_BINDING_V1",
+  "bytes": 1282,
+  "sha256": "aab3babb1be2805158cf9d1c52b6b55a8aa0ccf657e92dc863ce1150f837dbb9",
+  "fields": [
+    {
+      "name": "domain",
+      "offset": 0,
+      "bytes": 16,
+      "encoding": "ASCII16",
+      "hex": "485446505f5441585f4445565f563031"
+    },
+    {
+      "name": "schema",
+      "offset": 16,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "0100"
+    },
+    {
+      "name": "M3_genesis_commitment",
+      "offset": 18,
+      "bytes": 32,
+      "encoding": "SHA256raw32",
+      "hex": "c24fa22797b5b13048d17a3c21f2063990df9948232bc13efcc2f897361303af"
+    },
+    {
+      "name": "key_count",
+      "offset": 50,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "1900"
+    },
+    {
+      "name": "key_program",
+      "offset": 52,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "b069e31dfd2108b1cd368029bcec7384945d8185915f81893cbd1c570f7c483e"
+    },
+    {
+      "name": "key_mint",
+      "offset": 84,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "645c332843411f359caa6cca5d45bbc62a439a3bb76a0e396eba2086b32d69cf"
+    },
+    {
+      "name": "key_token2022",
+      "offset": 116,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "06ddf6e1ee758fde18425dbce46ccddab61afc4d83b90d27febdf928d8a18bfc"
+    },
+    {
+      "name": "key_system",
+      "offset": 148,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "key_reserve",
+      "offset": 180,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "1e56dfe19f3df7ee7207281a64e0df81828811cc2293c7edb66ecc7ab0312d6a"
+    },
+    {
+      "name": "key_initializer",
+      "offset": 212,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "3415b7e9dfab7c6ca50828492a774c009a01db0f75de42c184bef68f6c5a8f43"
+    },
+    {
+      "name": "key_genesis_holding",
+      "offset": 244,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "4fb635cf698de65fe1cd90133eee346dd6829f60ef78e9ff938af7e0d2c5a669"
+    },
+    {
+      "name": "key_genesis_owner",
+      "offset": 276,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "3415b7e9dfab7c6ca50828492a774c009a01db0f75de42c184bef68f6c5a8f43"
+    },
+    {
+      "name": "key_config",
+      "offset": 308,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "46a193440292487dce78f16ab7daee48fc830c8c89009c2e91e799fca39742f3"
+    },
+    {
+      "name": "key_inventory",
+      "offset": 340,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "ede8f5dbb865f2ce697368f6764625384f3a3f62a674b25e736dc1cb8a49d50c"
+    },
+    {
+      "name": "key_tax_authority",
+      "offset": 372,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "979f5fdcf29bf72314770b3af9cf10dbe88cb64e3649abcc386d6e8ea548f7d2"
+    },
+    {
+      "name": "key_custody",
+      "offset": 404,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "a6ba927409045a86ef6370bc7c72c06c0eab548d80c7bf5959cfec6a0ca94aa2"
+    },
+    {
+      "name": "key_amm",
+      "offset": 436,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "b89899792dca5234796fe77462b031df463f5ffeae367c5c0ffb246e1cb7ce0c"
+    },
+    {
+      "name": "key_amm_config",
+      "offset": 468,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "40ccefb95c1e29767b6e03168559a0b8f829d878b619470933ee8a4a48763c8c"
+    },
+    {
+      "name": "key_legacy_token",
+      "offset": 500,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "06ddf6e1d765a193d9cbe146ceeb79ac1cb485ed5f5b37913a8cf5857eff00a9"
+    },
+    {
+      "name": "key_wsol_mint",
+      "offset": 532,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "069b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001"
+    },
+    {
+      "name": "key_instructions_sysvar",
+      "offset": 564,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "06a7d517187bd16635dad40455fdc2c0c124c68f215675a5dbbacb5f08000000"
+    },
+    {
+      "name": "key_amm_authority",
+      "offset": 596,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "ab53ab772724caf0b6a150d55ce2c8cf302e51a1aeafcac5428c9a7433d9f72a"
+    },
+    {
+      "name": "key_pool",
+      "offset": 628,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "a79449b1f2883169bb627de7c79c8bef6dadec63ef2e4a2e0931378d0655b233"
+    },
+    {
+      "name": "key_lp_mint",
+      "offset": 660,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "c6d35a4024830a024c2b60350fe6918d8b456553545935e4511189d142cb8b44"
+    },
+    {
+      "name": "key_vault_wsol",
+      "offset": 692,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "b8b63fbeef6ad34ab89971759edcce4c9115e738af03936c59d072e1669e4128"
+    },
+    {
+      "name": "key_vault_htfp",
+      "offset": 724,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "f0b61742c1a2e1a322081e5fbab1873a13ca0edb5e831b5ec30b59ee5bbbfa20"
+    },
+    {
+      "name": "key_observation",
+      "offset": 756,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "feb995f34f29277c77b5d9531dce58e1c88b85ca1e3b7d7dbcd7768f75d6a746"
+    },
+    {
+      "name": "key_volume",
+      "offset": 788,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "ae83fa87fd6afa1c997d3e1b2f686b7bbb6717192fe2d87a042847f876f388e4"
+    },
+    {
+      "name": "key_settle_authority",
+      "offset": 820,
+      "bytes": 32,
+      "encoding": "pubkey32; explicit ordered role",
+      "hex": "6cdeec5d0dd83b173c6b4f84c01550a35b613b75a2405a93dee0998d7940c7ed"
+    },
+    {
+      "name": "CPMM_full_code_sha256",
+      "offset": 852,
+      "bytes": 32,
+      "encoding": "SHA256raw32",
+      "hex": "30a9273dda17d7b3513889af1dab1185d9facc4756a6edf36c42f30ba228d8d1"
+    },
+    {
+      "name": "CPMM_full_code_bytes",
+      "offset": 884,
+      "bytes": 4,
+      "encoding": "ILE",
+      "hex": "f0f41a00"
+    },
+    {
+      "name": "CPMM_capture_slot",
+      "offset": 888,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "09a3261f00000000"
+    },
+    {
+      "name": "Token2022_full_code_sha256",
+      "offset": 896,
+      "bytes": 32,
+      "encoding": "SHA256raw32",
+      "hex": "b781b71d230a9910de4d3c103e72608f597fc73c83ee207242ac82b708382a6a"
+    },
+    {
+      "name": "Token2022_full_code_bytes",
+      "offset": 928,
+      "bytes": 4,
+      "encoding": "ILE",
+      "hex": "60d90a00"
+    },
+    {
+      "name": "Token2022_capture_slot",
+      "offset": 932,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "09a3261f00000000"
+    },
+    {
+      "name": "legacyToken_full_code_sha256",
+      "offset": 940,
+      "bytes": 32,
+      "encoding": "SHA256raw32",
+      "hex": "8190d3f7ceb6cb7a7a8d8924bff89f9f611e15ce1f806f2b6237f3311a98f697"
+    },
+    {
+      "name": "legacyToken_full_code_bytes",
+      "offset": 972,
+      "bytes": 4,
+      "encoding": "ILE",
+      "hex": "38a80100"
+    },
+    {
+      "name": "legacyToken_capture_slot",
+      "offset": 976,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "09a3261f00000000"
+    },
+    {
+      "name": "ATA_full_code_sha256",
+      "offset": 984,
+      "bytes": 32,
+      "encoding": "SHA256raw32",
+      "hex": "e5e7aed11ad3969eea2aa76c8b4d2e73ea25be7e6b5cce989b7710cf5452496e"
+    },
+    {
+      "name": "ATA_container_sha256",
+      "offset": 1016,
+      "bytes": 32,
+      "encoding": "SHA256raw32",
+      "hex": "648e13d02ec2e8555d751e38980e01faa5cbb47c2e7d7262f3a2103caa3afa02"
+    },
+    {
+      "name": "config0_data_sha256",
+      "offset": 1048,
+      "bytes": 32,
+      "encoding": "SHA256raw32",
+      "hex": "3b5ca2f3187261cc048e2353789242067c3aff19cab67168f86dbbd29d99f21c"
+    },
+    {
+      "name": "alpha_num",
+      "offset": 1080,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "0100000000000000"
+    },
+    {
+      "name": "alpha_den",
+      "offset": 1088,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "e803000000000000"
+    },
+    {
+      "name": "C_base",
+      "offset": 1096,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "0080c6a47e8d0300"
+    },
+    {
+      "name": "refill_N",
+      "offset": 1104,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "00203d88792d0000"
+    },
+    {
+      "name": "scale_D",
+      "offset": 1112,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "0300000000000000"
+    },
+    {
+      "name": "start_timestamp",
+      "offset": 1120,
+      "bytes": 8,
+      "encoding": "qLE",
+      "hex": "c07ffa6a00000000"
+    },
+    {
+      "name": "initial_pool_HTFP",
+      "offset": 1128,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "0000dec9747f9230"
+    },
+    {
+      "name": "initial_pool_wSOL",
+      "offset": 1136,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "0058850c02000000"
+    },
+    {
+      "name": "trade_ppm",
+      "offset": 1144,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "c409000000000000"
+    },
+    {
+      "name": "creator_ppm",
+      "offset": 1152,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "c409000000000000"
+    },
+    {
+      "name": "protocol_ppm",
+      "offset": 1160,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "c0d4010000000000"
+    },
+    {
+      "name": "fund_ppm",
+      "offset": 1168,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "409c000000000000"
+    },
+    {
+      "name": "initialize_creator_mode",
+      "offset": 1176,
+      "bytes": 2,
+      "encoding": "Borsh Some(1), BothToken(0)",
+      "hex": "0100"
+    },
+    {
+      "name": "Config_bytes",
+      "offset": 1178,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "af00"
+    },
+    {
+      "name": "Inventory_bytes",
+      "offset": 1180,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "1400"
+    },
+    {
+      "name": "Volume_bytes",
+      "offset": 1182,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "5900"
+    },
+    {
+      "name": "Mint_bytes",
+      "offset": 1184,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "cb01"
+    },
+    {
+      "name": "Custody_bytes",
+      "offset": 1186,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "b200"
+    },
+    {
+      "name": "Pool_bytes",
+      "offset": 1188,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "7d02"
+    },
+    {
+      "name": "AMMConfig_bytes",
+      "offset": 1190,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "ec00"
+    },
+    {
+      "name": "Observation_bytes",
+      "offset": 1192,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "eb0f"
+    },
+    {
+      "name": "wire_tags",
+      "offset": 1194,
+      "bytes": 4,
+      "encoding": "wireversion1 Process3 InitProcessing4 Finalize5",
+      "hex": "01030405"
+    },
+    {
+      "name": "guard_bits",
+      "offset": 1198,
+      "bytes": 2,
+      "encoding": "inflight1 barrier2",
+      "hex": "0102"
+    },
+    {
+      "name": "native_fixture_manifest_sha256",
+      "offset": 1200,
+      "bytes": 32,
+      "encoding": "SHA256raw32",
+      "hex": "d76a00a6269ecae210e83d85eda15b1f2633cd5155c0f3e8e17eddd400b66c97"
+    },
+    {
+      "name": "profile_manifest_sha256",
+      "offset": 1232,
+      "bytes": 32,
+      "encoding": "SHA256raw32 exact PROFILE.json bytes, no circular digest",
+      "hex": "8671afc989c121053f9bdf40983a8885939b1ba74aa54df58efbae8082075eeb"
+    },
+    {
+      "name": "HTFP_active_bps",
+      "offset": 1264,
+      "bytes": 2,
+      "encoding": "HLE",
+      "hex": "2003"
+    },
+    {
+      "name": "HTFP_active_epoch",
+      "offset": 1266,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "ba04000000000000"
+    },
+    {
+      "name": "HTFP_maximum_fee",
+      "offset": 1274,
+      "bytes": 8,
+      "encoding": "QLE",
+      "hex": "ffffffffffffffff"
+    }
+  ],
+  "notes": {
+    "status": "PROPOSED_DEVNET_NOT_PUBLIC_AUTHORITY",
+    "base_genesis_commitment": "unchangedrichc24at18/32",
+    "native_fixture_manifest_sha256": "currentread001NATIVE_STATEhash; all3nativeELFs freshlyobserved",
+    "ATA_fields": "unchangedunusedprovenance,noATACPI",
+    "production_enabled": false
+  }
+}

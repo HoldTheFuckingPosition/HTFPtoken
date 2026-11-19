@@ -1,0 +1,211 @@
+{
+  "schema": "HTFP_DEVNET_PROCESSOR_PROFILE_PROPOSAL_V1",
+  "status": "PROPOSED_PENDING_FINAL_FOUNDER_PUBLIC_GO",
+  "candidate": "DEVNET_PROCESSOR_INTERACTIVE_V1",
+  "target_cluster": "devnet",
+  "genesis_hash": "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG",
+  "public_execution_authorized": false,
+  "production_enabled": false,
+  "new_crate": "programs/htfp-devnet-processor",
+  "new_config": "config/devnet-processor",
+  "feature": "devnet-tax-processor",
+  "default_features": [],
+  "processing_domain_ascii16": "HTFP_TAX_DEV_V01",
+  "base_commitment_c24": "c24fa22797b5b13048d17a3c21f2063990df9948232bc13efcc2f897361303af",
+  "base_profile_bytes": 585,
+  "base_profile_preserved": {
+    "path": "programs/htfp-tax-processor/src/devnet_profile.rs",
+    "bytes": 5422,
+    "sha256": "c0a26a148e50f23832949cb71856bdbe7ba1d6ff65129ee3b17eca451e2605dd"
+  },
+  "rich_metadata_parser_preserved_non_test": {
+    "path": "programs/htfp-tax-processor/src/metadata_mint.rs",
+    "bytes": 3015,
+    "sha256": "12e66094b1773a18e063561aa950d69af579e95bcc1a4f018c8cce9124f7497b"
+  },
+  "base_creation_epoch": 1208,
+  "native_fee_activation_epoch": 1210,
+  "supply_base_units": "10000000000000000000",
+  "rich_mint_current_bytes": 459,
+  "ordered_key_roles": [
+    "program",
+    "mint",
+    "token2022",
+    "system",
+    "reserve",
+    "initializer",
+    "genesis_holding",
+    "genesis_owner",
+    "config",
+    "inventory",
+    "tax_authority",
+    "custody",
+    "amm",
+    "amm_config",
+    "legacy_token",
+    "wsol_mint",
+    "instructions_sysvar",
+    "amm_authority",
+    "pool",
+    "lp_mint",
+    "vault_wsol",
+    "vault_htfp",
+    "observation",
+    "volume",
+    "settle_authority"
+  ],
+  "identities": {
+    "program": {
+      "base58": "CseQKCWvi4EA2o3oa11Age4p4xKWSLuzjWCzitASrPJu",
+      "hex": "b069e31dfd2108b1cd368029bcec7384945d8185915f81893cbd1c570f7c483e"
+    },
+    "mint": {
+      "base58": "7kmK5pDzV99ZrJjJhokmdA6VWYAyouNSLqxi5SViMqRp",
+      "hex": "645c332843411f359caa6cca5d45bbc62a439a3bb76a0e396eba2086b32d69cf"
+    },
+    "token2022": {
+      "base58": "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb",
+      "hex": "06ddf6e1ee758fde18425dbce46ccddab61afc4d83b90d27febdf928d8a18bfc"
+    },
+    "system": {
+      "base58": "11111111111111111111111111111111",
+      "hex": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "reserve": {
+      "base58": "33S4fefxDJ9Bz6KmHns37uvwcWSPQnsEyopAZ6YtJpdo",
+      "hex": "1e56dfe19f3df7ee7207281a64e0df81828811cc2293c7edb66ecc7ab0312d6a"
+    },
+    "initializer": {
+      "base58": "4WKQg3Sm8bvHS8DBmxoiMMi4Fev4mJU6ZLwGSTg6jDna",
+      "hex": "3415b7e9dfab7c6ca50828492a774c009a01db0f75de42c184bef68f6c5a8f43"
+    },
+    "genesis_holding": {
+      "base58": "6NAMdiydSrt2Ckfjpt9cCsHhiKT4zkbSY8NCwRvVgDWp",
+      "hex": "4fb635cf698de65fe1cd90133eee346dd6829f60ef78e9ff938af7e0d2c5a669"
+    },
+    "genesis_owner": {
+      "base58": "4WKQg3Sm8bvHS8DBmxoiMMi4Fev4mJU6ZLwGSTg6jDna",
+      "hex": "3415b7e9dfab7c6ca50828492a774c009a01db0f75de42c184bef68f6c5a8f43"
+    },
+    "config": {
+      "base58": "5kiSLTfzWL2cfA7DrLH8qrj3mUosCD5Zi9CKabexx9S2",
+      "hex": "46a193440292487dce78f16ab7daee48fc830c8c89009c2e91e799fca39742f3"
+    },
+    "inventory": {
+      "base58": "H1hf2peuQTN8iVnybrBrDYPBzNPHJL7nor35MoErq1XH",
+      "hex": "ede8f5dbb865f2ce697368f6764625384f3a3f62a674b25e736dc1cb8a49d50c"
+    },
+    "tax_authority": {
+      "base58": "BCsWovCVY9HBRRLgBrfVDkE3bSKpeXsmFs9qKYNNsE9o",
+      "hex": "979f5fdcf29bf72314770b3af9cf10dbe88cb64e3649abcc386d6e8ea548f7d2"
+    },
+    "custody": {
+      "base58": "CDqgd2mrRRYYL7zcxp25NuJCCY7YjsYKPWHubWJsYn7T",
+      "hex": "a6ba927409045a86ef6370bc7c72c06c0eab548d80c7bf5959cfec6a0ca94aa2"
+    },
+    "amm": {
+      "base58": "DRaycpLY18LhpbydsBWbVJtxpNv9oXPgjRSfpF2bWpYb",
+      "hex": "b89899792dca5234796fe77462b031df463f5ffeae367c5c0ffb246e1cb7ce0c"
+    },
+    "amm_config": {
+      "base58": "5MxLgy9oPdTC3YgkiePHqr3EoCRD9uLVYRQS2ANAs7wy",
+      "hex": "40ccefb95c1e29767b6e03168559a0b8f829d878b619470933ee8a4a48763c8c"
+    },
+    "legacy_token": {
+      "base58": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",
+      "hex": "06ddf6e1d765a193d9cbe146ceeb79ac1cb485ed5f5b37913a8cf5857eff00a9"
+    },
+    "wsol_mint": {
+      "base58": "So11111111111111111111111111111111111111112",
+      "hex": "069b8857feab8184fb687f634618c035dac439dc1aeb3b5598a0f00000000001"
+    },
+    "instructions_sysvar": {
+      "base58": "Sysvar1nstructions1111111111111111111111111",
+      "hex": "06a7d517187bd16635dad40455fdc2c0c124c68f215675a5dbbacb5f08000000"
+    },
+    "amm_authority": {
+      "base58": "CXniRufdq5xL8t8jZAPxsPZDpuudwuJSPWnbcD5Y5Nxq",
+      "hex": "ab53ab772724caf0b6a150d55ce2c8cf302e51a1aeafcac5428c9a7433d9f72a"
+    },
+    "pool": {
+      "base58": "CHAETgvJoVDMmVY9Urzzhh8CuJxm7Z14QsKdindepPUN",
+      "hex": "a79449b1f2883169bb627de7c79c8bef6dadec63ef2e4a2e0931378d0655b233"
+    },
+    "lp_mint": {
+      "base58": "EP8eSBLLftsqpAEhZgHbtFj6xrLd3dhxb7uqEJ3x9Tby",
+      "hex": "c6d35a4024830a024c2b60350fe6918d8b456553545935e4511189d142cb8b44"
+    },
+    "vault_wsol": {
+      "base58": "DS3CWCKzZ8D35hh9zxoXb8VKTAbqM9ueAMbtu1qi7uBM",
+      "hex": "b8b63fbeef6ad34ab89971759edcce4c9115e738af03936c59d072e1669e4128"
+    },
+    "vault_htfp": {
+      "base58": "HCdtbRoRaDwtqrsmVwP7sFbfbD17K6FKGrTnCXAoyJoH",
+      "hex": "f0b61742c1a2e1a322081e5fbab1873a13ca0edb5e831b5ec30b59ee5bbbfa20"
+    },
+    "observation": {
+      "base58": "J9Lgv7s7PeiLkzan1HwhVcYWaoDvQxvoM7iGetCprkeZ",
+      "hex": "feb995f34f29277c77b5d9531dce58e1c88b85ca1e3b7d7dbcd7768f75d6a746"
+    },
+    "volume": {
+      "base58": "CkEfPvX8YFk7Bky9sRD3zFZwzEYz3giAmc5bdhdyNig3",
+      "hex": "ae83fa87fd6afa1c997d3e1b2f686b7bbb6717192fe2d87a042847f876f388e4"
+    },
+    "settle_authority": {
+      "base58": "8KzBnCdBgmpxxfYpYF9wPQas47q26fDpUyaVUVgHK4NG",
+      "hex": "6cdeec5d0dd83b173c6b4f84c01550a35b613b75a2405a93dee0998d7940c7ed"
+    }
+  },
+  "current_public_state": {
+    "path": "evidence/devnet_processor_upgrade/read-001/STATE.json",
+    "bytes": 226487,
+    "sha256": "345fb91868316ef6a1bd9451c0a7ea97373adeb80344d06f528e51fdb5d7e9fa"
+  },
+  "current_native_state": {
+    "path": "evidence/devnet_processor_upgrade/read-001/NATIVE_STATE.json",
+    "bytes": 3449583,
+    "sha256": "d76a00a6269ecae210e83d85eda15b1f2633cd5155c0f3e8e17eddd400b66c97"
+  },
+  "current_native_ELFs": {
+    "token2022": {
+      "path": "evidence/devnet_processor_upgrade/read-001/token2022.so",
+      "bytes": 711008,
+      "sha256": "b781b71d230a9910de4d3c103e72608f597fc73c83ee207242ac82b708382a6a"
+    },
+    "amm": {
+      "path": "evidence/devnet_processor_upgrade/read-001/amm.so",
+      "bytes": 1766640,
+      "sha256": "30a9273dda17d7b3513889af1dab1185d9facc4756a6edf36c42f30ba228d8d1"
+    },
+    "legacy_token": {
+      "path": "evidence/devnet_processor_upgrade/read-001/legacy_token.so",
+      "bytes": 108600,
+      "sha256": "8190d3f7ceb6cb7a7a8d8924bff89f9f611e15ce1f806f2b6237f3311a98f697"
+    }
+  },
+  "canonical_volume_PDA": "CkEfPvX8YFk7Bky9sRD3zFZwzEYz3giAmc5bdhdyNig3",
+  "volume_layout_bytes": 89,
+  "volume_requirement": "Fresh public Volume absent before upgrade+initialization; existing different commitment fails closed, no reset/migration in this candidate. Preserve guard0/R-covered/Configinitialized state.",
+  "ABI": {
+    "path": "config/devnet-tax-processor/ABI.json",
+    "bytes": 14402,
+    "sha256": "885a504d41ecc4c7c114b810d04cfb3f2ea8c35b89cad540cffa819664fce470"
+  },
+  "ABI_notes": "Same wire3Process14B22accounts/4InitializeProcessing6B5accounts/5Finalize14B4accounts; no endpoint/control change. ABI hash itself will be regenerated for new processing commitment.",
+  "volume_proposal": {
+    "option": "B-interactive",
+    "alpha_numerator": 1,
+    "alpha_denominator": 1000,
+    "C_base_units": "1000000000000000",
+    "scale_D": 3,
+    "capacity_scaled": "3000000000000000",
+    "initial_credit_scaled": "3000000000000000",
+    "refill_N_scaled_per_second": "50000000000000",
+    "start_timestamp": 1794801600,
+    "full_refill_seconds": 60,
+    "policy_status": "Devnet-only PROPOSED; production alpha/C/r/initial/start OPEN"
+  },
+  "same_financial_contract": "3/8 nativeburn,5/8gross taxedsale,fixedofficialpool and nativeSOLvault,unbookeddonations/exactdepositrefund/prefundrestoration/Volume/F17unchanged",
+  "new_ELF": "Mustbuildnewsourcewithnewfeatureandbinding; oldd650localELFimmutable andnotpubliccandidate; N/hash/Loaderstoragecosts remainlatebound.",
+  "fresh_current_Legacy_provenance": "All3nativeELFhashes match old acceptedbytes; Legacy8190 is now separately observed currentDevnet in read-001, without rewriting former historical labels."
+}
