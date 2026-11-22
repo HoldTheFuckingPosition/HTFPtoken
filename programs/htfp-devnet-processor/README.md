@@ -16,6 +16,11 @@ tax, sells 5/8 gross through the pinned pool, and settles the resulting
 native SOL to the fixed reserve. Volume, storage reimbursement and the
 transaction fence retain their existing checks.
 
+The separate [local production volume-policy candidate](../../tests/production_volume/README.md)
+uses `production-volume-policy` with an explicit fixture binding. It keeps
+the Process/Finalize message format and uses a distinct Volume account version.
+Reproduce the installed Devnet artifact from its recorded source commit below.
+
 ## Build and host tests
 
 Use [Solana platform-tools v1.54](https://github.com/anza-xyz/platform-tools/releases/tag/v1.54)

@@ -108,4 +108,4 @@ The intended liquidity arrangement places **100% of initially received LP tokens
 
 The [program directory](programs/README.md) identifies the current processor, Testnet pilot and historical local candidate.
 
-No project-wide license has been selected. Dependencies retain their own terms; see [third-party notices](THIRD_PARTY_NOTICES.md).
+Original HTFP Project code is available under the [zlib license](LICENSE). Dependencies and other third-party materials retain their own terms. See [third-party notices](THIRD_PARTY_NOTICES.md).

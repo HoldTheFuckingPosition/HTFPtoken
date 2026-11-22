@@ -17,9 +17,20 @@ macro_rules! check {
     ($condition:expr, $code:expr) => { if !($condition) { return Err(ProgramError::Custom($code)); } };
 }
 mod metadata_mint;
-#[cfg(feature="devnet-tax-processor")]
+#[cfg(all(feature = "devnet-tax-processor", feature = "production-volume-policy"))]
+compile_error!("Select either the installed Devnet profile or the isolated production volume policy");
+
+#[cfg(feature = "devnet-tax-processor")]
 mod processing_profile;
-#[cfg(feature="devnet-tax-processor")]
+
+#[cfg(all(feature = "production-volume-policy", not(feature = "devnet-tax-processor")))]
+mod processing_profile {
+    // The genesis side still uses the retained local fixture. A real production
+    // release requires its own reviewed mint/genesis and processing bindings.
+    include!(env!("HTFP_PRODUCTION_POLICY_PROFILE"));
+}
+
+#[cfg(any(feature = "devnet-tax-processor", feature = "production-volume-policy"))]
 mod processing;
 fn fail(code: u32) -> ProgramError { ProgramError::Custom(code) }
 fn part(d: &[u8], p: usize, n: usize) -> Res<&[u8]> { d.get(p..p.checked_add(n).ok_or(fail(7010))?).ok_or(fail(7002)) }
@@ -70,7 +81,7 @@ fn verify_profile(id:&Pubkey)->ProgramResult {
     check!(&PREIMAGE[553..578]==b"\x17\x00htfp-devnet1-holding-v1" && PREIMAGE[578..583]==bumps()? && PREIMAGE[583..585]==[1,0],7016);
     check!(Pubkey::create_with_seed(&INITIALIZER,"htfp-devnet1-holding-v1",&TOKEN2022).map_err(|_|fail(7016))?==GENESIS_HOLDING,7016);
     check!(Pubkey::create_with_seed(&INITIALIZER,"htfp-devnet1-mint-v1",&TOKEN2022).map_err(|_|fail(7016))?==MINT,7016);
-    #[cfg(feature="devnet-tax-processor")]
+    #[cfg(any(feature = "devnet-tax-processor", feature = "production-volume-policy"))]
     processing::verify_binding()?;
     Ok(())
 }
@@ -139,7 +150,7 @@ fn common(cfg:&AccountInfo,inv:&AccountInfo,m:&AccountInfo,t:&AccountInfo)->Res<
     required(inv,true,false)?;check!(cfg.owner==&PROGRAM && inv.owner==&PROGRAM && !cfg.executable && !inv.executable,7001);
     check!(&**cfg.try_borrow_data()?==config_data(1)?.as_slice(),7002);
     let d=inv.try_borrow_data()?;check!(d.len()==20 && &d[..8]==b"HTFPINV1" && u16_at(&d,8)?==1 && d[10]==bumps()?[1],7002);
-    check!(d[11]<=if cfg!(feature="devnet-tax-processor"){3}else{1},7002);check!(d[11]&1==0,7012);u64_at(&d,12)
+    check!(d[11]<=if cfg!(any(feature = "devnet-tax-processor", feature = "production-volume-policy")){3}else{1},7002);check!(d[11]&1==0,7012);u64_at(&d,12)
 }
 fn event(tag:u8,body:&[u8]){let mut d=b"HTFPEVT1".to_vec();d.extend_from_slice(&[1,tag]);d.extend_from_slice(body);sol_log_data(&[&d]);}
 fn native_ix(data:Vec<u8>,accounts:Vec<AccountMeta>)->Instruction{Instruction{program_id:TOKEN2022,accounts,data}}
@@ -194,7 +205,7 @@ fn recover(a:&[AccountInfo],data:&[u8])->ProgramResult{
     check!(data.len()==8,7000);let n=u16_at(data,6)? as usize;check!(n<=32 && a.len()==6+n,7000);
     let (fixed,sources)=a.split_at(6);let [cfg,inv,m,cust,tax,t]=fixed else{return Err(fail(7000));};
     let r=common(cfg,inv,m,t)?;
-    #[cfg(feature="devnet-tax-processor")]
+    #[cfg(any(feature = "devnet-tax-processor", feature = "production-volume-policy"))]
     check!(inv.try_borrow_data()?[11]&2==0,7021);
     identity(cust,&CUSTODY)?;identity(tax,&TAX_AUTHORITY)?;
     unique(fixed)?;required(m,true,false)?;required(cust,true,false)?;check!(system_zero(tax),7001);
@@ -302,13 +313,13 @@ pub fn process_instruction(id:&Pubkey,accounts:&[AccountInfo],data:&[u8])->Progr
         0=>{check!(data.len()==6,7000);initialize(accounts)},
         1=>recover(accounts,data),
         2=>redeem(accounts,data),
-        #[cfg(feature="devnet-tax-processor")]
+        #[cfg(any(feature = "devnet-tax-processor", feature = "production-volume-policy"))]
         3=>processing::process(accounts,data),
-        #[cfg(feature="devnet-tax-processor")]
+        #[cfg(any(feature = "devnet-tax-processor", feature = "production-volume-policy"))]
         4=>{check!(data.len()==6,7000);processing::initialize_processing(accounts)},
-        #[cfg(feature="devnet-tax-processor")]
+        #[cfg(any(feature = "devnet-tax-processor", feature = "production-volume-policy"))]
         5=>processing::finalize(accounts,data),
-        #[cfg(not(feature="devnet-tax-processor"))]
+        #[cfg(not(any(feature = "devnet-tax-processor", feature = "production-volume-policy")))]
         3|4|5=>Err(fail(7015)),
         6=>{
             check!(data.len()==6 && accounts.is_empty(),7000);

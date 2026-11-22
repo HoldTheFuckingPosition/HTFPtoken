@@ -15,6 +15,7 @@ solana-program = { version = "=2.3.0", default-features = false }
 default = []
 devnet-metadata = []
 devnet-tax-processor = ["devnet-metadata"]
+production-volume-policy = ["devnet-metadata"]
 custom-heap = []
 custom-panic = []
 

@@ -13,11 +13,15 @@ from .checker import (
 
 SCHEMA = "HTFP_OPENING_BOUND_V1"
 PROFILE = "agave-v4.4.1-stable-tower"
+ALPENGLOW_PROFILE = "agave-v4.4.1-firedancer-v26.10.8-stable-alpenglow"
 AGAVE_COMMIT = "5bb304027fe1a166b02cb26dc8c161593f416fca"
+FIREDANCER_COMMIT = "ccf8664261dc8091bc9b97ab1e7a64f91c87d6e2"
 TOKEN_2022 = "TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb"
 I64_MAX = (1 << 63) - 1
 NS_PER_SECOND = 10**9
-MIN_SUPPORTED_DURATION_NS = 400_000_000
+TOWER_MIN_DURATION_BOUND_NS = 400_000_000
+ALPENGLOW_MIN_DURATION_BOUND_NS = 200_000_000
+ALPENGLOW_MAX_CLOCK_SECONDS = I64_MAX // NS_PER_SECOND
 MINIMUM_SLOTS_PER_EPOCH = 32
 
 
@@ -115,6 +119,13 @@ def tower_clock_upper_bound(anchor, start, next_start, last, max_slot_duration_n
     return upper
 
 
+def alpenglow_clock_upper_bound(anchor, last, max_slot_duration_ns):
+    """Bound all descendant footers through last, including skipped slots."""
+    elapsed = (last - anchor["slot"]) * max_slot_duration_ns
+    upper_ns = min(I64_MAX, anchor["footer_unix_timestamp_ns"] + 2 * elapsed)
+    return upper_ns // NS_PER_SECOND
+
+
 def calculate(dossier):
     root = record(dossier, "$", {
         "schema": "text", "genesis_hash": "pubkey", "market_identity_sha256": "sha256",
@@ -123,14 +134,23 @@ def calculate(dossier):
     if root["schema"] != SCHEMA:
         raise OpeningError("UNSUPPORTED_SCHEMA", "schema")
 
-    runtime = record(dossier.get("runtime"), "runtime", {
+    runtime_input = dossier.get("runtime")
+    runtime_fields = {
         "profile": "text", "agave_commit": "text", "max_slot_duration_ns": "u64",
         "covered_from_slot": "u64", "covered_through_slot": "u64",
         "coverage_evidence_sha256": "sha256",
-    })
-    if runtime["profile"] != PROFILE or runtime["agave_commit"] != AGAVE_COMMIT:
+    }
+    alpenglow = isinstance(runtime_input, dict) and runtime_input.get("profile") == ALPENGLOW_PROFILE
+    if alpenglow:
+        runtime_fields.update(firedancer_commit="text", first_alpenglow_bank_slot="u64")
+    runtime = record(runtime_input, "runtime", runtime_fields)
+    if runtime["profile"] not in (PROFILE, ALPENGLOW_PROFILE) or runtime["agave_commit"] != AGAVE_COMMIT:
         raise OpeningError("UNSUPPORTED_RUNTIME_PROFILE", "runtime")
-    if runtime["max_slot_duration_ns"] < MIN_SUPPORTED_DURATION_NS:
+    if alpenglow and runtime["firedancer_commit"] != FIREDANCER_COMMIT:
+        raise OpeningError("UNSUPPORTED_RUNTIME_PROFILE", "runtime.firedancer_commit")
+    duration_ns = runtime["max_slot_duration_ns"]
+    duration_floor = ALPENGLOW_MIN_DURATION_BOUND_NS if alpenglow else TOWER_MIN_DURATION_BOUND_NS
+    if duration_ns < duration_floor:
         raise OpeningError("UNSUPPORTED_SLOT_DURATION_NS", "runtime.max_slot_duration_ns")
 
     geometry = record(dossier.get("epoch_schedule"), "epoch_schedule", {
@@ -154,11 +174,14 @@ def calculate(dossier):
     if runtime["covered_through_slot"] < last:
         raise OpeningError("RUNTIME_COVERAGE_ENDS_BEFORE_ACTIVATION", "runtime.covered_through_slot")
 
-    anchor = record(dossier.get("anchor"), "anchor", {
+    anchor_fields = {
         "slot": "u64", "epoch": "u64", "epoch_start_timestamp_s": "u64",
         "unix_timestamp_s": "u64", "clock_evidence_sha256": "sha256", "finalized": "bool",
         "official_pool_absent": "bool",
-    })
+    }
+    if alpenglow:
+        anchor_fields.update(footer_unix_timestamp_ns="u64", footer_evidence_sha256="sha256")
+    anchor = record(dossier.get("anchor"), "anchor", anchor_fields)
     anchor_epoch = epoch_for_slot(anchor["slot"], geometry)
     if not anchor["finalized"] or anchor["slot"] == 0 or anchor["slot"] < receipt["landed_slot"]:
         raise OpeningError("ANCHOR_NOT_FINALIZED_AFTER_SCHEDULING", "anchor")
@@ -186,15 +209,33 @@ def calculate(dossier):
         raise OpeningError("FEE_SCHEDULE_MISMATCH", "mint")
 
     start = first_slot(anchor_epoch, geometry)
-    if runtime["covered_from_slot"] > start:
-        raise OpeningError("RUNTIME_COVERAGE_STARTS_AFTER_EPOCH_ORIGIN", "runtime.covered_from_slot")
     next_start = first_slot(anchor_epoch + 1, geometry) if anchor_epoch == scheduled_epoch else None
-    upper = tower_clock_upper_bound(anchor, start, next_start, last, runtime["max_slot_duration_ns"])
+    if alpenglow:
+        if anchor["slot"] <= runtime["first_alpenglow_bank_slot"]:
+            raise OpeningError("UNSUPPORTED_ALPENGLOW_MIGRATION", "anchor.slot")
+        if runtime["covered_from_slot"] > anchor["slot"]:
+            raise OpeningError("RUNTIME_COVERAGE_STARTS_AFTER_ANCHOR", "runtime.covered_from_slot")
+        if anchor["slot"] == last:
+            raise OpeningError("NO_FUTURE_PRE_ACTIVATION_SLOT", "anchor.slot")
+        footer_ns = anchor["footer_unix_timestamp_ns"]
+        if not 0 < footer_ns <= I64_MAX:
+            raise OpeningError("INVALID_FOOTER_NANOSECONDS", "anchor.footer_unix_timestamp_ns")
+        if anchor["unix_timestamp_s"] != footer_ns // NS_PER_SECOND:
+            raise OpeningError("CLOCK_FOOTER_MISMATCH", "anchor.unix_timestamp_s")
+        max_clock_seconds = ALPENGLOW_MAX_CLOCK_SECONDS
+        upper = alpenglow_clock_upper_bound(anchor, last, duration_ns)
+        if upper >= max_clock_seconds:
+            raise OpeningError("OPEN_TIME_OVERFLOW", "anchor")
+    else:
+        if runtime["covered_from_slot"] > start:
+            raise OpeningError("RUNTIME_COVERAGE_STARTS_AFTER_EPOCH_ORIGIN", "runtime.covered_from_slot")
+        max_clock_seconds = I64_MAX
+        upper = tower_clock_upper_bound(anchor, start, next_start, last, duration_ns)
     proposed = None
     if dossier.get("proposed_open_time_s") is not None:
         _field(dossier["proposed_open_time_s"], "u64", "proposed_open_time_s")
         proposed = int(dossier["proposed_open_time_s"])
-        if not upper < proposed <= I64_MAX:
+        if not upper < proposed <= max_clock_seconds:
             raise OpeningError("OPEN_TIME_OUTSIDE_PROVED_RANGE", "proposed_open_time_s")
 
     funding_checked = dossier.get("funding_observation") is not None
@@ -202,17 +243,22 @@ def calculate(dossier):
         funding = record(dossier["funding_observation"], "funding_observation", {
             "slot": "u64", "unix_timestamp_s": "u64",
         })
-        if funding["slot"] < anchor["slot"] or funding["slot"] >= activation_slot:
+        first_funding_slot = anchor["slot"] + int(alpenglow)
+        if not first_funding_slot <= funding["slot"] < activation_slot:
             raise OpeningError("FUNDING_OUTSIDE_ACTIVE_ZERO_WINDOW", "funding_observation.slot")
         current_time = funding["unix_timestamp_s"]
         if proposed is not None and current_time >= proposed:
             raise OpeningError("STALE_OPEN_TIME", "funding_observation.unix_timestamp_s")
-        if funding["slot"] == anchor["slot"]:
+        if alpenglow:
+            # A descendant executes before its own footer, inheriting a parent
+            # whose slot cannot exceed execution slot minus one.
+            observed_upper = alpenglow_clock_upper_bound(anchor, funding["slot"] - 1, duration_ns)
+        elif funding["slot"] == anchor["slot"]:
             observed_upper = anchor["unix_timestamp_s"]
         else:
             boundary = next_start if next_start is not None and funding["slot"] >= next_start else None
             observed_upper = tower_clock_upper_bound(
-                anchor, start, boundary, funding["slot"], runtime["max_slot_duration_ns"],
+                anchor, start, boundary, funding["slot"], duration_ns,
             )
         if not anchor["unix_timestamp_s"] <= current_time <= observed_upper:
             raise OpeningError("CLOCK_OUTSIDE_PROVED_RANGE", "funding_observation.unix_timestamp_s")

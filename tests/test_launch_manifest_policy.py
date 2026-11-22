@@ -44,6 +44,48 @@ class LaunchManifestPolicyTests(unittest.TestCase):
     def findings(self, report, field):
         return {(finding["code"], finding["path"]) for finding in report[field]}
 
+    def test_production_volume_is_gross_one_percent_without_a_bucket(self):
+        options = {
+            "alpha": {"numerator": "1", "denominator": "100"},
+            "global_control": False,
+            "per_call_control": True,
+            "structure": "PER_CALL_GROSS_EFFECTIVE_RESERVE_ONLY",
+        }
+        status, report = self.run_checker(volume=options)
+        self.assertEqual(status, 0)
+        self.assertFalse(any(item["path"].startswith("volume.") for item in report["open_items"]))
+        status, _ = self.run_checker(volume={**options, "alpha": {"numerator": "2", "denominator": "200"}})
+        self.assertEqual(status, 0)
+
+        status, report = self.run_checker(volume={
+            **options, "alpha": {"numerator": "1", "denominator": "1000"},
+            "global_control": True, "refill_start_timestamp": "0",
+        })
+        self.assertEqual(status, 1)
+        self.assertEqual(self.findings(report, "contradictions"), {
+            ("POLICY_MISMATCH", "volume.alpha"),
+            ("POLICY_MISMATCH", "volume.global_control"),
+            ("POLICY_MISMATCH", "volume.refill_start_timestamp"),
+        })
+
+    def test_final_metadata_rejects_mutability_but_requires_separate_evidence(self):
+        path = "identity.metadata_mutability"
+        status, report = self.run_checker(identity={"metadata_mutability": "MUTABLE"})
+        self.assertEqual(status, 1)
+        self.assertIn(("POLICY_MISMATCH", path), self.findings(report, "contradictions"))
+
+        status, report = self.run_checker(identity={"metadata_mutability": "IMMUTABLE"})
+        self.assertEqual(status, 0)
+        checks = {check["path"]: check["result"] for check in report["checks"]}
+        self.assertEqual(checks[path], "MATCH")
+        self.assertIn(("MISSING_INPUT", "identity.metadata_reference"),
+                      self.findings(report, "open_items"))
+        self.assertEqual(report["production_readiness"], "NOT_ASSESSED")
+
+        status, report = self.run_checker(identity={"metadata_mutability": None})
+        self.assertEqual(status, 0)
+        self.assertIn(("MISSING_INPUT", path), self.findings(report, "open_items"))
+
     def test_confirmed_allocations_match_and_participant_ledger_remains_open(self):
         allocation = {name: str(amount) for name, amount in ALLOCATIONS.items()}
         status, report = self.run_checker(allocation={"complete": True, **allocation})

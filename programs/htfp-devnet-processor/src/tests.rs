@@ -13,7 +13,10 @@ fn default_profile_denies_all_valid_tags() {
         assert_eq!(process_instruction(&PROGRAM,&[],&wire),Err(fail(7015)));
     }
 }
-#[cfg(all(feature="devnet-metadata",not(feature="devnet-tax-processor")))]
+#[cfg(all(
+    feature = "devnet-metadata",
+    not(any(feature = "devnet-tax-processor", feature = "production-volume-policy"))
+))]
 #[test]
 fn metadata_core_alone_does_not_enable_processing() {
     for tag in 3..=5 {

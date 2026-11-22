@@ -48,6 +48,111 @@ def dossier():
     }
 
 
+def alpenglow_dossier():
+    doc = dossier()
+    doc["runtime"].update(
+        profile=opening.ALPENGLOW_PROFILE,
+        firedancer_commit=opening.FIREDANCER_COMMIT,
+        first_alpenglow_bank_slot="120",
+        max_slot_duration_ns="200000000",
+        covered_from_slot="129",
+    )
+    doc["anchor"].update(footer_unix_timestamp_ns="110999999999", footer_evidence_sha256=HASH)
+    return doc
+
+
+class AlpenglowOpeningBoundTest(unittest.TestCase):
+    def test_inclusive_bound_and_inherited_execution_second(self):
+        doc = alpenglow_dossier()
+        doc["proposed_open_time_s"] = "136"
+        doc["funding_observation"] = {"slot": "130", "unix_timestamp_s": "110"}
+        result = opening.calculate(doc)
+        self.assertEqual(result["maximum_pre_activation_clock_s"], "135")
+        self.assertEqual(result["minimum_open_time_s"], "136")
+        self.assertTrue(result["funding_observation_consistent"])
+        # Slot 130's own footer can reach 111, but that bank inherits 110 in execution.
+        doc["funding_observation"]["unix_timestamp_s"] = "111"
+        with self.assertRaisesRegex(opening.OpeningError, "CLOCK_OUTSIDE_PROVED_RANGE"):
+            opening.calculate(doc)
+        del doc["funding_observation"]
+        doc["proposed_open_time_s"] = "135"
+        with self.assertRaisesRegex(opening.OpeningError, "OPEN_TIME_OUTSIDE_PROVED_RANGE"):
+            opening.calculate(doc)
+
+    def test_late_actual_scheduling_and_zero_rate_window(self):
+        doc = alpenglow_dossier()
+        doc["fee_schedule_receipt"]["landed_slot"] = "160"
+        doc["anchor"].update(slot="161", epoch="5")
+        doc["mint"].update(observed_slot="161", newer_epoch="7")
+        doc["runtime"].update(covered_from_slot="161", covered_through_slot="223")
+        result = opening.calculate(doc)
+        self.assertEqual(result["scheduling_epoch"], "5")
+        self.assertEqual(result["first_activation_slot"], "224")
+        for observation in ({"slot": "161", "unix_timestamp_s": "110"},
+                            {"slot": "224", "unix_timestamp_s": "110"}):
+            doc["funding_observation"] = observation
+            with self.assertRaisesRegex(opening.OpeningError, "FUNDING_OUTSIDE_ACTIVE_ZERO_WINDOW"):
+                opening.calculate(doc)
+        del doc["funding_observation"]
+        doc["anchor"].update(slot="223", epoch="6")
+        doc["mint"]["observed_slot"] = "223"
+        with self.assertRaisesRegex(opening.OpeningError, "NO_FUTURE_PRE_ACTIVATION_SLOT"):
+            opening.calculate(doc)
+
+    def test_rejects_unqualified_profiles_and_missing_anchor_evidence(self):
+        changes = (
+            ("runtime", "covered_from_slot", "130", "RUNTIME_COVERAGE_STARTS_AFTER_ANCHOR"),
+            ("runtime", "covered_through_slot", "190", "RUNTIME_COVERAGE_ENDS_BEFORE_ACTIVATION"),
+            ("runtime", "first_alpenglow_bank_slot", "129", "UNSUPPORTED_ALPENGLOW_MIGRATION"),
+            ("runtime", "firedancer_commit", "other", "UNSUPPORTED_RUNTIME_PROFILE"),
+            ("runtime", "max_slot_duration_ns", "200", "UNSUPPORTED_SLOT_DURATION_NS"),
+            ("anchor", "unix_timestamp_s", "111", "CLOCK_FOOTER_MISMATCH"),
+            ("anchor", "footer_unix_timestamp_ns", "110", "CLOCK_FOOTER_MISMATCH"),
+            ("anchor", "footer_unix_timestamp_ns", str(opening.I64_MAX + 1), "INVALID_FOOTER_NANOSECONDS"),
+            ("anchor", "footer_evidence_sha256", None, "MISSING_INPUT"),
+        )
+        for group, field, value, expected in changes:
+            with self.subTest(field=field):
+                doc = alpenglow_dossier()
+                doc[group][field] = value
+                with self.assertRaisesRegex(opening.OpeningError, expected):
+                    opening.calculate(doc)
+
+    def test_saturation_and_alpenglow_clock_domain(self):
+        doc = alpenglow_dossier()
+        doc["proposed_open_time_s"] = str(opening.ALPENGLOW_MAX_CLOCK_SECONDS + 1)
+        with self.assertRaisesRegex(opening.OpeningError, "OPEN_TIME_OUTSIDE_PROVED_RANGE"):
+            opening.calculate(doc)
+        del doc["proposed_open_time_s"]
+        doc["anchor"].update(footer_unix_timestamp_ns=str(opening.I64_MAX - 1),
+                             unix_timestamp_s=str(opening.ALPENGLOW_MAX_CLOCK_SECONDS))
+        with self.assertRaisesRegex(opening.OpeningError, "OPEN_TIME_OVERFLOW"):
+            opening.calculate(doc)
+
+    def test_bound_covers_reachable_footers_and_execution_on_skipped_branches(self):
+        # Exhaust alternate parents and admissible endpoints under several
+        # changing nominal schedules. Timestamp order and rounding derive
+        # from the simulated recurrence, independent of the checker bound.
+        for elapsed in ((1, 1, 1, 1), (1, 200_000_000, 350_000_000, 200_000_000),
+                        (700_000_000, 300_000_000, 400_000_000, 2)):
+            for initial in (10_000_000_000, 10_999_999_999, opening.I64_MAX - 3):
+                anchor = {"slot": 8, "footer_unix_timestamp_ns": initial}
+                states = [{initial}]
+                for child in range(1, len(elapsed) + 1):
+                    slot = anchor["slot"] + child
+                    states.append(set())
+                    execution_bound = opening.alpenglow_clock_upper_bound(anchor, slot - 1, max(elapsed))
+                    for parent in range(child):
+                        duration = sum(elapsed[parent:child])
+                        for previous in states[parent]:
+                            self.assertLessEqual(previous // opening.NS_PER_SECOND, execution_bound)
+                            low = min(opening.I64_MAX, previous + 1)
+                            high = min(opening.I64_MAX, previous + duration * 2)
+                            states[child].update((low, (low + high) // 2, high))
+                    footer_bound = opening.alpenglow_clock_upper_bound(anchor, slot, max(elapsed))
+                    self.assertLessEqual(max(states[child]) // opening.NS_PER_SECOND, footer_bound)
+
+
 class OpeningBoundTest(unittest.TestCase):
     def test_closed_bound_and_first_permissible_second(self):
         doc = dossier()

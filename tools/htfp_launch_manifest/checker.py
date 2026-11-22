@@ -207,12 +207,13 @@ def _assess(values, assertions, digest):
     derived = report["derived"]
     for path, value in sorted(values.items()):
         group = path.split(".", 1)[0]
-        if value is None:
+        if path in p.RETIRED_VOLUME_PATHS:
+            if value is not None:
+                contradictions.append(_finding("POLICY_MISMATCH", path, p.GROUP_SOURCES[group]))
+        elif value is None:
             opened.append(_finding("MISSING_INPUT", path, p.GROUP_SOURCES[group]))
         elif path in p.OPEN_PATHS:
             opened.append(_finding("OPEN_CHOICE", path, p.GROUP_SOURCES[group]))
-        elif path in p.PROVISIONAL_PATHS:
-            opened.append(_finding("PROVISIONAL_CHOICE", path, p.GROUP_SOURCES[group]))
     for path, rule in sorted(p.EXPECTED.items()):
         value = values[path]
         result = "MISSING" if value is None else "MATCH" if value == rule["expected"] else "CONTRADICTION"
@@ -298,13 +299,12 @@ def _assess(values, assertions, digest):
                 result = "MATCH"
                 if a != b:
                     contradict("PERSONAL_WALLET_MISMATCH", "market")
-        elif rule_id == "INITIAL_CREDIT_CAPACITY":
-            credit = number("volume.initial_credit_gross_base_units")
-            capacity = number("volume.capacity_gross_base_units")
-            if credit is not None and capacity is not None:
+        elif rule_id == "GROSS_PER_OPERATION_FRACTION":
+            fraction = values["volume.alpha"]
+            if fraction is not None:
                 result = "MATCH"
-                if credit > capacity:
-                    contradict("INITIAL_CREDIT_EXCEEDS_CAPACITY", "volume.initial_credit_gross_base_units")
+                if int(fraction["numerator"]) * 100 != int(fraction["denominator"]):
+                    contradict("POLICY_MISMATCH", relation["report_path"])
         else:
             raise RuntimeError("Unknown frozen relationship")
         if len(contradictions) > before:
