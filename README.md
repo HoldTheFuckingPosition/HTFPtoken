@@ -11,6 +11,7 @@ This repository's main branch contains the current pre-launch review code. Mainn
 | Devnet processor | [Rust source, build and host tests](programs/htfp-devnet-processor/README.md) · [ABI and fixed profile](config/devnet-processor/) · [Finalized upgrade, fee cycle and claims coverage](evidence/devnet_processor_upgrade/README.md) |
 | Testnet token and vault | [Pilot source, activation and artifact](programs/htfp-testnet/README.md) |
 | Production target | [Manifest and launch checklist](docs/PRODUCTION-LAUNCH-MANIFEST.md) · [Offline dossier checker](tools/htfp_launch_manifest/README.md) · [Opening bound and assumptions](tools/htfp_launch_manifest/OPENING.md) |
+| Production V2 SOL reserve | [Technical reserve rule, native ABI and reproducible candidate](docs/TECHNICAL-RESERVE.md) |
 | Raydium production fee tier | [Mainnet observations, local accounting cases and offline check](evidence/cpmm_fee_profile/README.md) |
 
 **Testnet token/vault pilot.** The pilot supports initialization, tax recovery and holder redemption. The 8% fee activated at epoch 1086 and was observed active at epoch 1091. The recorded pilot transactions exercised the 0% launch phase. `Process` is unavailable in this deployment.

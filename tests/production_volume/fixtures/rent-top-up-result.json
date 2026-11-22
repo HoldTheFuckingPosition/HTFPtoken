@@ -1,0 +1,133 @@
+{
+  "elf_sha256": "cb4af1cd9983872691a74c4eb11e03ce6967ac9f8c044a55b1fed730968f56bc",
+  "initial_technical_reserve": 650240,
+  "first_technical_reserve": 768000,
+  "terminal_technical_reserve": 885760,
+  "each_top_up": 117760,
+  "partial_and_full_redemption": [
+    396973,
+    2381842
+  ],
+  "tests": [
+    {
+      "check": "native fresh initialization",
+      "wire_bytes": 546,
+      "fixture_fee": 5000,
+      "compute_units": 129817
+    },
+    {
+      "check": "already covered, zero top-up",
+      "wire_bytes": 427,
+      "fixture_fee": 10000,
+      "expected_error": 7030,
+      "system_cpi_rolled_back": false
+    },
+    {
+      "check": "rent rise initially blocks redemption before burn",
+      "wire_bytes": 563,
+      "fixture_fee": 5000,
+      "expected_error": 7028,
+      "system_cpi_rolled_back": false
+    },
+    {
+      "check": "ordinary SOL donation",
+      "wire_bytes": 255,
+      "fixture_fee": 5000,
+      "compute_units": 300
+    },
+    {
+      "check": "ordinary donation does not cure the technical gap",
+      "wire_bytes": 563,
+      "fixture_fee": 5000,
+      "expected_error": 7028,
+      "system_cpi_rolled_back": false
+    },
+    {
+      "check": "sponsor missing its signature",
+      "wire_bytes": 363,
+      "fixture_fee": 5000,
+      "expected_error": 7005,
+      "system_cpi_rolled_back": false
+    },
+    {
+      "check": "mismatched record",
+      "wire_bytes": 427,
+      "fixture_fee": 10000,
+      "expected_error": 7027,
+      "system_cpi_rolled_back": false
+    },
+    {
+      "check": "underquoted top-up",
+      "wire_bytes": 427,
+      "fixture_fee": 10000,
+      "expected_error": 7030,
+      "system_cpi_rolled_back": false
+    },
+    {
+      "check": "overquoted top-up",
+      "wire_bytes": 427,
+      "fixture_fee": 10000,
+      "expected_error": 7030,
+      "system_cpi_rolled_back": false
+    },
+    {
+      "check": "underfunded sponsor",
+      "wire_bytes": 427,
+      "fixture_fee": 10000,
+      "expected_error": 7031,
+      "system_cpi_rolled_back": false
+    },
+    {
+      "check": "first external payer funds the exact shortfall",
+      "wire_bytes": 427,
+      "fixture_fee": 10000,
+      "compute_units": 24657
+    },
+    {
+      "check": "competing sponsor loses the funding race",
+      "wire_bytes": 427,
+      "fixture_fee": 10000,
+      "expected_error": 7030,
+      "system_cpi_rolled_back": false
+    },
+    {
+      "check": "repeated top-up by the successful payer",
+      "wire_bytes": 427,
+      "fixture_fee": 10000,
+      "expected_error": 7030,
+      "system_cpi_rolled_back": false
+    },
+    {
+      "check": "ordinary SOL donation",
+      "wire_bytes": 255,
+      "fixture_fee": 5000,
+      "compute_units": 300
+    },
+    {
+      "check": "rounded redemption after lower rent and genuine receipt",
+      "wire_bytes": 563,
+      "fixture_fee": 5000,
+      "compute_units": 99888
+    },
+    {
+      "check": "same amount at a later rise with an obsolete recorded basis",
+      "wire_bytes": 427,
+      "fixture_fee": 10000,
+      "expected_error": 7030,
+      "system_cpi_rolled_back": false
+    },
+    {
+      "check": "later minimum failure rolls back a successful System top-up",
+      "wire_bytes": 688,
+      "fixture_fee": 10000,
+      "expected_error": 7009,
+      "system_cpi_rolled_back": true
+    },
+    {
+      "check": "fresh sponsored increase and full-supply redemption settle atomically",
+      "wire_bytes": 688,
+      "fixture_fee": 10000,
+      "compute_units": 124394
+    }
+  ]
+}
