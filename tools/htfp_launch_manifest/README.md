@@ -12,7 +12,11 @@ Supply exactly one explicit regular local JSON file. Reports go to stdout. Exit0
 
 The original reviewed schema remains in the checker. The [incomplete example](EXAMPLE.json) illustrates the documented inputs and leaves the launch identity and ledger unresolved. The current checker applies D38/S141 to all four token tranches and D39 to SOL funding. Monetary inputs are canonical unsigned 64-bit decimal strings. The command reads at most 65,537 bytes and refuses files above 65,536 bytes or nonregular devices, pipes or directories.
 
-Each supplied tranche total must match the confirmed 55/35/5/5 allocation. Missing tranche totals remain open in draft dossiers. Funding checks use gross raised lamports. Each supplied share must be the floor or ceiling of its confirmed fraction, and two supplied shares must add up to the raised total. The rounding choice, participant ledger and remainder ownership remain open. Claimed addresses, authority removal, source hashes, URLs, receipts and approval labels remain unverified. Policy-source hashes identify the documents used to define the rules.
+Each supplied tranche total must match the confirmed 55/35/5/5 allocation. Missing tranche totals remain open in draft dossiers. Funding checks use gross raised lamports. Each supplied share must be the floor or ceiling of its confirmed fraction, and two supplied shares must add up to the raised total. Summarize the simple manual ledger in these totals. Actual participant amounts, contributor cutoff and rounding allocations remain launch inputs. Claimed addresses, authority removal, source hashes, URLs, receipts and approval labels remain unverified. Policy-source hashes identify the archived decisions used to define the rules.
+
+The production declaration `identity.metadata_mutability` must be `IMMUTABLE` if supplied. The content, URI, persistence and final authorities still need independent review. An accepted declaration does not verify the actual metadata or account state.
+
+For production, declare `PER_CALL_GROSS_EFFECTIVE_RESERVE_ONLY`, a fraction of 1/100, enabled per-call control and disabled global control. Leave the old bucket capacity, refill, start, prestart and initial-credit fields absent or null. Prior Devnet dossiers describe a different profile.
 
 Run the focused current-policy regression from the repository root:
 

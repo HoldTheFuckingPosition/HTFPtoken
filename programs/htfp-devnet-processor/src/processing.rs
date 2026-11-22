@@ -1,17 +1,23 @@
-//! Proposed Devnet processor: unchanged financial code and fixed native CPI.
+//! Shared tax settlement with separately bound sale policies.
 use super::*;
 use crate::processing_profile as p;
 use solana_program::{clock::Clock,instruction::get_stack_height,sysvar::instructions::{load_current_index_checked,load_instruction_at_checked}};
 fn sub(a:u64,b:u64)->Res<u64>{a.checked_sub(b).ok_or(fail(7010))}
 fn put(d:&mut[u8],off:usize,n:u64){d[off..off+8].copy_from_slice(&n.to_le_bytes());}
+#[cfg(not(feature = "production-volume-policy"))]
 fn i64_at(d:&[u8],off:usize)->Res<i64>{Ok(i64::from_le_bytes(part(d,off,8)?.try_into().map_err(|_|fail(7019))?))}
 fn u128_at(d:&[u8],off:usize)->Res<u128>{Ok(u128::from_le_bytes(part(d,off,16)?.try_into().map_err(|_|fail(7025))?))}
 pub fn verify_binding()->ProgramResult{verify_binding_data(&p::PROCESSING_PREIMAGE)}
 fn verify_binding_data(b:&[u8])->ProgramResult{
  check!(b.len()==1282&&hash(b).to_bytes()==p::PROCESSING_COMMITMENT,7018);
+ #[cfg(not(feature = "production-volume-policy"))]
  check!(&b[..16]==b"HTFP_TAX_DEV_V01"&&u16_at(b,16)?==1&&b[18..50]==COMMITMENT&&u16_at(b,50)?==25,7018);
+ #[cfg(feature = "production-volume-policy")]
+ check!(&b[..16]==b"HTFP_TAX_PRD_V02"&&u16_at(b,16)?==2&&b[18..50]==COMMITMENT&&u16_at(b,50)?==25,7018);
  for(i,k)in p::ORDERED_KEYS.iter().enumerate(){check!(part(b,52+i*32,32)?==k.as_ref(),7018);}
  check!(p::PROGRAM==PROGRAM&&p::MINT==MINT&&p::CONFIG==CONFIG&&p::INVENTORY==INVENTORY&&p::TOKEN2022==TOKEN2022&&p::RESERVE==RESERVE&&p::TAX_AUTHORITY==TAX_AUTHORITY&&p::CUSTODY==CUSTODY&&p::GENESIS_OWNER==GENESIS_OWNER&&p::INITIALIZER==INITIALIZER&&p::GENESIS_HOLDING==GENESIS_HOLDING&&p::SYSTEM==SYSTEM&&p::LEGACY_TOKEN==LEGACY,7018);
+ #[cfg(not(feature = "production-volume-policy"))]
+ {
  check!(part(b,852,32)?==[48, 169, 39, 61, 218, 23, 215, 179, 81, 56, 137, 175, 29, 171, 17, 133, 217, 250, 204, 71, 86, 166, 237, 243, 108, 66, 243, 11, 162, 40, 216, 209],7018);
  check!(part(b,884,4)?==[240, 244, 26, 0],7018);
  check!(part(b,888,8)?==[9, 163, 38, 31, 0, 0, 0, 0],7018);
@@ -56,6 +62,26 @@ fn verify_binding_data(b:&[u8])->ProgramResult{
  check!(p::C_BASE.checked_mul(p::SCALE_D)==Some(p::CAPACITY_SCALED)&&p::INITIAL_CREDIT_SCALED==p::CAPACITY_SCALED,7018);
  check!(u64_at(b,1144)?==p::TRADE_PPM&&u64_at(b,1152)?==p::CREATOR_PPM&&u64_at(b,1160)?==p::PROTOCOL_PPM&&u64_at(b,1168)?==p::FUND_PPM,7018);
  check!(u16_at(b,1264)?==p::ACTIVE_BPS as u16&&u64_at(b,1266)?==p::ACTIVE_EPOCH&&p::ACTIVE_EPOCH==ACTIVATION_EPOCH&&p::ACTIVE_BPS==800&&p::ALPHA_DEN>0&&p::SCALE_D>0,7018);
+ }
+ #[cfg(feature = "production-volume-policy")]
+ {
+     // The preimage hash binds the exact local CPI tuple, provenance pins and
+     // account layouts. Also compare the fields that the handler applies.
+     check!(b[1048..1080] == p::CONFIG_HASH, 7018);
+     check!(u64_at(b, 1080)? == 1 && u64_at(b, 1088)? == PRODUCTION_RESERVE_DIVISOR, 7018);
+     check!(b[1096..1128].iter().all(|&byte| byte == 0), 7018);
+     check!(u64_at(b, 1128)? == SUPPLY / 100 * 35 && u64_at(b, 1136)? > 0, 7018);
+     check!(p::TRADE_PPM == 2500 && p::CREATOR_PPM == 500
+         && p::PROTOCOL_PPM == 120_000 && p::FUND_PPM == 40_000, 7018);
+     for (offset, rate) in [(1144, p::TRADE_PPM), (1152, p::CREATOR_PPM),
+         (1160, p::PROTOCOL_PPM), (1168, p::FUND_PPM)]
+     {
+         check!(u64_at(b, offset)? == rate, 7018);
+     }
+     check!(p::ACTIVE_BPS == 800 && u16_at(b, 1264)? == p::ACTIVE_BPS as u16
+         && u64_at(b, 1266)? == p::ACTIVE_EPOCH && p::ACTIVE_EPOCH == ACTIVATION_EPOCH
+         && u64_at(b, 1274)? == u64::MAX, 7018);
+ }
  Ok(())
 }
 fn canonical(seed:&[u8],expected:&Pubkey)->Res<u8>{let(k,b)=Pubkey::find_program_address(&[seed,MINT.as_ref()],&PROGRAM);check!(k==*expected,7018);Ok(b)}
@@ -64,17 +90,54 @@ fn bookkeeping(cfg:&AccountInfo,inv:&AccountInfo)->Res<(u64,u8)>{
  check!(&**cfg.try_borrow_data()?==config_data(1)?.as_slice(),7002);let d=inv.try_borrow_data()?;
  check!(d.len()==20&&&d[..8]==b"HTFPINV1"&&u16_at(&d,8)?==1&&d[10]==bumps()?[1]&&d[11]<=3,7002);Ok((u64_at(&d,12)?,d[11]))
 }
+#[cfg(not(feature = "production-volume-policy"))]
+const VOLUME_HEADER: (&[u8; 8], u16) = (b"HTFPVOL1", 1);
+#[cfg(feature = "production-volume-policy")]
+const VOLUME_HEADER: (&[u8; 8], u16) = (b"HTFPVOL2", 2);
+
 #[derive(Clone)]
-struct Volume{credit:u64,last:i64,seq:u64,active:u8,origin:u16,cleanup:u16,nonce:u64}
+struct Volume {
+    #[cfg(not(feature = "production-volume-policy"))]
+    credit: u64,
+    #[cfg(not(feature = "production-volume-policy"))]
+    last: i64,
+    seq: u64,
+    active: u8,
+    origin: u16,
+    cleanup: u16,
+    nonce: u64,
+}
 fn volume(a:&AccountInfo)->Res<Volume>{
  identity(a,&p::VOLUME)?;required(a,true,false)?;check!(a.owner==&PROGRAM&&!a.executable&&a.data_len()==89,7019);let d=a.try_borrow_data()?;
- check!(&d[..8]==b"HTFPVOL1"&&u16_at(&d,8)?==1&&d[10]==canonical(b"htfp-volume",&p::VOLUME)? ,7019);check!(d[11..43]==p::PROCESSING_COMMITMENT,7018);
- let v=Volume{credit:u64_at(&d,43)?,last:i64_at(&d,51)?,seq:u64_at(&d,59)?,active:d[67],origin:u16_at(&d,68)?,cleanup:u16_at(&d,70)?,nonce:u64_at(&d,72)?};
- check!(v.credit<=p::CAPACITY_SCALED&&v.active<=1&&d[80..].iter().all(|x|*x==0),7019);Ok(v)
+ check!(&d[..8] == VOLUME_HEADER.0 && u16_at(&d, 8)? == VOLUME_HEADER.1
+     && d[10] == canonical(b"htfp-volume", &p::VOLUME)?, 7019);
+ check!(d[11..43] == p::PROCESSING_COMMITMENT, 7018);
+ let v = Volume {
+     #[cfg(not(feature = "production-volume-policy"))]
+     credit: u64_at(&d, 43)?,
+     #[cfg(not(feature = "production-volume-policy"))]
+     last: i64_at(&d, 51)?,
+     seq: u64_at(&d, 59)?,
+     active: d[67],
+     origin: u16_at(&d, 68)?,
+     cleanup: u16_at(&d, 70)?,
+     nonce: u64_at(&d, 72)?,
+ };
+ #[cfg(not(feature = "production-volume-policy"))]
+ check!(v.credit <= p::CAPACITY_SCALED, 7019);
+ #[cfg(feature = "production-volume-policy")]
+ check!(d[43..59].iter().all(|&byte| byte == 0), 7019);
+ check!(v.active <= 1 && d[80..].iter().all(|&byte| byte == 0), 7019);
+ Ok(v)
 }
 fn write_volume(a:&AccountInfo,v:&Volume)->ProgramResult{
- let mut d=a.try_borrow_mut_data()?;check!(d.len()==89&&a.owner==&PROGRAM,7019);d.fill(0);d[..8].copy_from_slice(b"HTFPVOL1");d[8..10].copy_from_slice(&1u16.to_le_bytes());d[10]=canonical(b"htfp-volume",&p::VOLUME)?;d[11..43].copy_from_slice(&p::PROCESSING_COMMITMENT);
- put(&mut d,43,v.credit);d[51..59].copy_from_slice(&v.last.to_le_bytes());put(&mut d,59,v.seq);d[67]=v.active;d[68..70].copy_from_slice(&v.origin.to_le_bytes());d[70..72].copy_from_slice(&v.cleanup.to_le_bytes());put(&mut d,72,v.nonce);Ok(())
+ let mut d=a.try_borrow_mut_data()?;check!(d.len()==89&&a.owner==&PROGRAM,7019);d.fill(0);d[..8].copy_from_slice(VOLUME_HEADER.0);d[8..10].copy_from_slice(&VOLUME_HEADER.1.to_le_bytes());d[10]=canonical(b"htfp-volume",&p::VOLUME)?;d[11..43].copy_from_slice(&p::PROCESSING_COMMITMENT);
+ #[cfg(not(feature = "production-volume-policy"))]
+ {
+     put(&mut d, 43, v.credit);
+     d[51..59].copy_from_slice(&v.last.to_le_bytes());
+ }
+ put(&mut d,59,v.seq);d[67]=v.active;d[68..70].copy_from_slice(&v.origin.to_le_bytes());d[70..72].copy_from_slice(&v.cleanup.to_le_bytes());put(&mut d,72,v.nonce);Ok(())
 }
 fn idle(v:&Volume)->ProgramResult{check!(v.active==0&&v.origin==0&&v.cleanup==0&&v.nonce==0,7021);Ok(())}
 fn active(v:&Volume,current:u16,last:u16,nonce:u64)->ProgramResult{check!(v.active==1&&v.origin<=current&&v.origin<last&&v.cleanup==last&&v.nonce==nonce&&nonce>0&&nonce<=v.seq,7021);Ok(())}
@@ -89,8 +152,23 @@ fn tail(a:&AccountInfo,finishing:bool)->Res<(u16,u16,u64)>{
 pub fn initialize_processing(a:&[AccountInfo])->ProgramResult{
  check!(a.len()==5,7000);unique(a)?;let[cfg,inv,vol,payer,sys]=a else{return Err(fail(7000));};let(r,g)=bookkeeping(cfg,inv)?;check!(g&1==0,7012);check!(g==0,7021);identity(vol,&p::VOLUME)?;program(sys,&SYSTEM)?;required(payer,true,true)?;required(vol,true,false)?;check!(system_zero(payer),7001);check!(system_zero(vol),7017);
  inventory_write(inv,r,1)?;bootstrap(vol,payer,sys,89,&PROGRAM,b"htfp-volume",canonical(b"htfp-volume",&p::VOLUME)?)?;
- let v=Volume{credit:p::INITIAL_CREDIT_SCALED,last:p::START_TIMESTAMP,seq:0,active:0,origin:0,cleanup:0,nonce:0};write_volume(vol,&v)?;inventory_write(inv,r,0)?;
- let mut e=Vec::with_capacity(120);e.extend_from_slice(MINT.as_ref());e.extend_from_slice(p::VOLUME.as_ref());e.extend_from_slice(&p::PROCESSING_COMMITMENT);e.extend_from_slice(&v.credit.to_le_bytes());e.extend_from_slice(&v.last.to_le_bytes());e.extend_from_slice(&v.seq.to_le_bytes());event(4,&e);Ok(())
+ let v = Volume {
+     #[cfg(not(feature = "production-volume-policy"))]
+     credit: p::INITIAL_CREDIT_SCALED,
+     #[cfg(not(feature = "production-volume-policy"))]
+     last: p::START_TIMESTAMP,
+     seq: 0, active: 0, origin: 0, cleanup: 0, nonce: 0,
+ };
+ write_volume(vol,&v)?;inventory_write(inv,r,0)?;
+ let mut e=Vec::with_capacity(120);e.extend_from_slice(MINT.as_ref());e.extend_from_slice(p::VOLUME.as_ref());e.extend_from_slice(&p::PROCESSING_COMMITMENT);
+ #[cfg(not(feature = "production-volume-policy"))]
+ {
+     e.extend_from_slice(&v.credit.to_le_bytes());
+     e.extend_from_slice(&v.last.to_le_bytes());
+ }
+ #[cfg(feature = "production-volume-policy")]
+ e.extend_from_slice(&[0; 16]); // Reserved legacy quota positions.
+ e.extend_from_slice(&v.seq.to_le_bytes());event(4,&e);Ok(())
 }
 pub fn finalize(a:&[AccountInfo],data:&[u8])->ProgramResult{
  check!(data.len()==14&&a.len()==4,7000);unique(a)?;let[cfg,inv,vol,iv]=a else{return Err(fail(7000));};let(r,g)=bookkeeping(cfg,inv)?;let mut v=volume(vol)?;check!(g&1==0,7012);let(cur,last,nonce)=tail(iv,true)?;check!(nonce==u64_at(data,6)?,7022);
@@ -122,6 +200,7 @@ fn temporary_wsol_amount(a: &AccountInfo, owner: &Pubkey, rent: u64) -> Res<u64>
 fn split(q:u64,r:u64)->Res<(u64,u64)>{
  check!(q>0&&q%8==0&&q<=r,7006);Ok(((q/8)*3,(q/8)*5))
 }
+#[cfg(not(feature = "production-volume-policy"))]
 fn volume_admission(f:u64,x:u64,credit:u64,last:i64,now:i64)->Res<(i64,u64,u64)>{
  check!(credit<=p::CAPACITY_SCALED,7019);
  check!(u128::from(f)<=u128::from(x).checked_mul(u128::from(p::ALPHA_NUM)).ok_or(fail(7010))?/u128::from(p::ALPHA_DEN),7020);
@@ -130,6 +209,15 @@ fn volume_admission(f:u64,x:u64,credit:u64,last:i64,now:i64)->Res<(i64,u64,u64)>
  let used=u128::from(f).checked_mul(u128::from(p::SCALE_D)).ok_or(fail(7010))?;check!(used<=u128::from(available),7020);
  Ok((time,available,sub(available,used as u64)?))
 }
+#[cfg(feature = "production-volume-policy")]
+const PRODUCTION_RESERVE_DIVISOR: u64 = 100;
+
+#[cfg(feature = "production-volume-policy")]
+fn production_sale_admission(gross_sale: u64, effective_htfp: u64) -> ProgramResult {
+    check!(gross_sale <= effective_htfp / PRODUCTION_RESERVE_DIVISOR, 7020);
+    Ok(())
+}
+
 fn ceil(n:u128,d:u128)->Res<u64>{u64::try_from(n.checked_add(d-1).ok_or(fail(7010))?/d).map_err(|_|fail(7010))}
 fn quote(f:u64,x:u64,y:u64,epoch:u64)->Res<(u64,u64,u64,u64,u64)>{
  let tax=if epoch>=p::ACTIVE_EPOCH{ceil(u128::from(f).checked_mul(u128::from(p::ACTIVE_BPS)).ok_or(fail(7010))?,10000)?}else{0};let input=sub(f,tax)?;
@@ -176,7 +264,11 @@ pub fn process(a:&[AccountInfo],data:&[u8])->ProgramResult{
     let x = effective(&expected_pool, hin.amount, 1)?;
     let y = effective(&expected_pool, vault_wsol_before.amount, 0)?;
  check!(ms.supply>0,7007);let q=u64_at(data,6)?;let(b,f)=split(q,r)?;
- let clock=Clock::get()?;let(time,available,remaining_credit)=volume_admission(f,x,v.credit,v.last,clock.unix_timestamp)?;
+ let clock = Clock::get()?;
+ #[cfg(not(feature = "production-volume-policy"))]
+ let (time, available, remaining_credit) = volume_admission(f, x, v.credit, v.last, clock.unix_timestamp)?;
+ #[cfg(feature = "production-volume-policy")]
+ production_sale_admission(f, x)?;
  let next=v.seq.checked_add(1).ok_or(fail(7026))?;let sequence=v.seq.to_le_bytes();let(tkey,tb)=Pubkey::find_program_address(&[b"htfp-tmp-wsol",MINT.as_ref(),&sequence],&PROGRAM);identity(temp,&tkey)?;check!(system_zero(temp),7023);
  let(current,last,nonce)=tail(iv,false)?;if prior==0{idle(&v)?;check!(nonce==next,7021);v.active=1;v.origin=current;v.cleanup=last;v.nonce=nonce;}else{active(&v,current,last,nonce)?;}
  let p0=temp.lamports();let l=Rent::get()?.minimum_balance(165);let d=l.saturating_sub(p0);let w0=p0.saturating_sub(l);let res0=res.lamports();let payer0=payer.lamports();check!(payer0>=d,7023);
@@ -213,12 +305,26 @@ pub fn process(a:&[AccountInfo],data:&[u8])->ProgramResult{
  check!(payer.lamports()==payer0&&res.lamports()==checked_add(checked_add(res0,p0)?,output)?,7013);
  if p0>0{msg!("HTFP Process restore P");invoke_signed(&system_instruction::transfer(res.key,temp.key,p0),&[res.clone(),temp.clone(),sys.clone()],&[reserve_seeds])?;}
  check!(system_zero(temp)&&temp.lamports()==p0&&res.lamports()==checked_add(res0,output)?&&custody(cust)?==cend&&mint(m)?==burned&&hash(&wsol.try_borrow_data()?).to_bytes()==wsol_hash,7013);
- v.credit=remaining_credit;v.last=time;v.seq=next;write_volume(vol,&v)?;inventory_write(inv,sub(r,q)?,2)?;
+ #[cfg(not(feature = "production-volume-policy"))]
+ {
+     v.credit = remaining_credit;
+     v.last = time;
+ }
+ v.seq=next;write_volume(vol,&v)?;inventory_write(inv,sub(r,q)?,2)?;
  let mut e=Vec::with_capacity(352);for k in [MINT,p::POOL,tkey,*payer.key,RESERVE]{e.extend_from_slice(k.as_ref());}e.extend_from_slice(&p::PROCESSING_COMMITMENT);
- for n in [before_v.seq,next,q,b,f,native_tax,sub(f,native_tax)?,x,output,p0,l,d,r,sub(r,q)?,before_v.credit,available,v.credit]{e.extend_from_slice(&n.to_le_bytes());}e.extend_from_slice(&before_v.last.to_le_bytes());e.extend_from_slice(&v.last.to_le_bytes());e.extend_from_slice(&nonce.to_le_bytes());event(3,&e);Ok(())
+ for n in [before_v.seq,next,q,b,f,native_tax,sub(f,native_tax)?,x,output,p0,l,d,r,sub(r,q)?]{e.extend_from_slice(&n.to_le_bytes());}
+ #[cfg(not(feature = "production-volume-policy"))]
+ {
+     for n in [before_v.credit, available, v.credit] { e.extend_from_slice(&n.to_le_bytes()); }
+     e.extend_from_slice(&before_v.last.to_le_bytes());
+     e.extend_from_slice(&v.last.to_le_bytes());
+ }
+ #[cfg(feature = "production-volume-policy")]
+ e.extend_from_slice(&[0; 40]); // Reserved legacy quota positions.
+ e.extend_from_slice(&nonce.to_le_bytes());event(3,&e);Ok(())
 }
 
-#[cfg(test)]
+#[cfg(all(test, not(feature = "production-volume-policy")))]
 mod host_tests {
  use super::*;
  #[test]
@@ -267,4 +373,49 @@ mod host_tests {
    put(&mut data,341+8*side,u64::MAX);put(&mut data,357+8*side,u64::MAX);assert_eq!(effective(&data,u64::MAX,side),Err(fail(7025)));
   }
  }
+}
+
+#[cfg(all(test, feature = "production-volume-policy"))]
+mod production_policy_tests {
+    use super::*;
+
+    #[test]
+    fn exact_gross_limit_and_floor() {
+        for reserve in [1, 99, 100, 499, 500, 999, 1_000, 3_500_000_000_000_000_000, u64::MAX] {
+            let maximum = reserve / 100;
+            assert_eq!(production_sale_admission(maximum, reserve), Ok(()));
+            assert_eq!(production_sale_admission(maximum + 1, reserve), Err(fail(7020)));
+        }
+        assert_eq!(production_sale_admission(u64::MAX, u64::MAX), Err(fail(7020)));
+        assert_eq!(production_sale_admission(5, 499), Err(fail(7020)));
+        assert_eq!(production_sale_admission(5, 500), Ok(()));
+    }
+
+    #[test]
+    fn gross_admission_precedes_native_fee_and_preserves_inventory_split() {
+        let booked = 16_000;
+        let (burn, gross) = split(booked, booked).unwrap();
+        assert_eq!((burn, gross), (6_000, 10_000));
+        let (tax, ..) = quote(gross, 1_000_000, 1_000_000, p::ACTIVE_EPOCH).unwrap();
+        assert_eq!(tax, 800);
+        assert_eq!(production_sale_admission(gross, 1_000_000), Ok(()));
+        assert_eq!(production_sale_admission(gross, 999_999), Err(fail(7020)));
+        assert_eq!(production_sale_admission(gross - tax, 999_999), Ok(()));
+        assert_eq!(split(booked, booked - 1), Err(fail(7006)));
+        assert_eq!(split(0, booked), Err(fail(7006)));
+        let maximum = u64::MAX & !7;
+        let (burn, gross) = split(maximum, maximum).unwrap();
+        assert_eq!(burn.checked_add(gross), Some(maximum));
+    }
+
+    #[test]
+    fn retained_binding_is_distinct_and_valid() {
+        assert_eq!(verify_binding(), Ok(()));
+        assert_eq!(VOLUME_HEADER, (b"HTFPVOL2", 2));
+        for offset in [0usize, 16, 18, 84, 1048, 1088, 1096, 1144, 1152, 1266] {
+            let mut invalid = p::PROCESSING_PREIMAGE;
+            invalid[offset] ^= 1;
+            assert_eq!(verify_binding_data(&invalid), Err(fail(7018)));
+        }
+    }
 }

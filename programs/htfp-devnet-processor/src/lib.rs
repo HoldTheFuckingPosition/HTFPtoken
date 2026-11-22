@@ -17,9 +17,22 @@ macro_rules! check {
     ($condition:expr, $code:expr) => { if !($condition) { return Err(ProgramError::Custom($code)); } };
 }
 mod metadata_mint;
-#[cfg(feature="devnet-tax-processor")]
+#[cfg(feature = "production-volume-policy")]
+mod reserve_storage;
+#[cfg(all(feature = "devnet-tax-processor", feature = "production-volume-policy"))]
+compile_error!("Select either the installed Devnet profile or the isolated production volume policy");
+
+#[cfg(feature = "devnet-tax-processor")]
 mod processing_profile;
-#[cfg(feature="devnet-tax-processor")]
+
+#[cfg(all(feature = "production-volume-policy", not(feature = "devnet-tax-processor")))]
+mod processing_profile {
+    // The genesis side still uses the retained local fixture. A real production
+    // release requires its own reviewed mint/genesis and processing bindings.
+    include!(env!("HTFP_PRODUCTION_POLICY_PROFILE"));
+}
+
+#[cfg(any(feature = "devnet-tax-processor", feature = "production-volume-policy"))]
 mod processing;
 fn fail(code: u32) -> ProgramError { ProgramError::Custom(code) }
 fn part(d: &[u8], p: usize, n: usize) -> Res<&[u8]> { d.get(p..p.checked_add(n).ok_or(fail(7010))?).ok_or(fail(7002)) }
@@ -70,7 +83,7 @@ fn verify_profile(id:&Pubkey)->ProgramResult {
     check!(&PREIMAGE[553..578]==b"\x17\x00htfp-devnet1-holding-v1" && PREIMAGE[578..583]==bumps()? && PREIMAGE[583..585]==[1,0],7016);
     check!(Pubkey::create_with_seed(&INITIALIZER,"htfp-devnet1-holding-v1",&TOKEN2022).map_err(|_|fail(7016))?==GENESIS_HOLDING,7016);
     check!(Pubkey::create_with_seed(&INITIALIZER,"htfp-devnet1-mint-v1",&TOKEN2022).map_err(|_|fail(7016))?==MINT,7016);
-    #[cfg(feature="devnet-tax-processor")]
+    #[cfg(any(feature = "devnet-tax-processor", feature = "production-volume-policy"))]
     processing::verify_binding()?;
     Ok(())
 }
@@ -139,7 +152,7 @@ fn common(cfg:&AccountInfo,inv:&AccountInfo,m:&AccountInfo,t:&AccountInfo)->Res<
     required(inv,true,false)?;check!(cfg.owner==&PROGRAM && inv.owner==&PROGRAM && !cfg.executable && !inv.executable,7001);
     check!(&**cfg.try_borrow_data()?==config_data(1)?.as_slice(),7002);
     let d=inv.try_borrow_data()?;check!(d.len()==20 && &d[..8]==b"HTFPINV1" && u16_at(&d,8)?==1 && d[10]==bumps()?[1],7002);
-    check!(d[11]<=if cfg!(feature="devnet-tax-processor"){3}else{1},7002);check!(d[11]&1==0,7012);u64_at(&d,12)
+    check!(d[11]<=if cfg!(any(feature = "devnet-tax-processor", feature = "production-volume-policy")){3}else{1},7002);check!(d[11]&1==0,7012);u64_at(&d,12)
 }
 fn event(tag:u8,body:&[u8]){let mut d=b"HTFPEVT1".to_vec();d.extend_from_slice(&[1,tag]);d.extend_from_slice(body);sol_log_data(&[&d]);}
 fn native_ix(data:Vec<u8>,accounts:Vec<AccountMeta>)->Instruction{Instruction{program_id:TOKEN2022,accounts,data}}
@@ -153,8 +166,8 @@ fn bootstrap<'a>(ai:&AccountInfo<'a>,payer:&AccountInfo<'a>,sys:&AccountInfo<'a>
     check!(ai.owner==owner && ai.data_len()==len && ai.lamports()==checked_add(before,top)?,7013);Ok(())
 }
 fn initialize(a:&[AccountInfo])->ProgramResult{
-    check!(a.len()==10,7000);
-    let [cfg,inv,m,cust,tax,res,g,i,t,sys]=a else{return Err(fail(7000));};
+    check!(a.len()==10 + usize::from(cfg!(feature = "production-volume-policy")),7000);
+    let [cfg,inv,m,cust,tax,res,g,i,t,sys]=&a[..10] else{return Err(fail(7000));};
     for (ai,k) in [(cfg,CONFIG),(inv,INVENTORY),(m,MINT),(cust,CUSTODY),(tax,TAX_AUTHORITY),(res,RESERVE),(g,GENESIS_HOLDING),(i,INITIALIZER)]{identity(ai,&k)?;}
     unique(a)?;check!(a.iter().all(|x|x.key!=&PROGRAM && x.owner!=&sysvar::id()),7003);
     program(t,&TOKEN2022)?;program(sys,&SYSTEM)?;
@@ -168,9 +181,20 @@ fn initialize(a:&[AccountInfo])->ProgramResult{
         gs.owner==GENESIS_OWNER && gs.delegate.is_none() && gs.close.is_none() && gs.allowance==0 && gs.state==1,7016);
     let m_before=hash(&m.try_borrow_data()?).to_bytes();
     let g_before=g.try_borrow_data()?.to_vec();
-    let immutable_balances=[m.lamports(),g.lamports(),res.lamports(),tax.lamports()];
+    let immutable_balances=[m.lamports(),g.lamports(),tax.lamports()];
+    let reserve_before = res.lamports();
     let b=bumps()?;let payer_before=i.lamports();
-    let storage=checked_add(checked_add(Rent::get()?.minimum_balance(175).saturating_sub(cfg.lamports()),Rent::get()?.minimum_balance(20).saturating_sub(inv.lamports()))?,Rent::get()?.minimum_balance(178).saturating_sub(cust.lamports()))?;
+    let rent = Rent::get()?;
+    let storage=checked_add(checked_add(rent.minimum_balance(175).saturating_sub(cfg.lamports()),rent.minimum_balance(20).saturating_sub(inv.lamports()))?,rent.minimum_balance(178).saturating_sub(cust.lamports()))?;
+    #[cfg(feature = "production-volume-policy")]
+    let reserve_plan = reserve_storage::Funding::prepare(&a[10], res, &rent)?;
+    #[cfg(feature = "production-volume-policy")]
+    let (storage, expected_reserve) = (
+        checked_add(storage, reserve_plan.payer_cost()?)?,
+        checked_add(reserve_before, reserve_plan.technical_lamports())?,
+    );
+    #[cfg(not(feature = "production-volume-policy"))]
+    let expected_reserve = reserve_before;
     // Reviewed fresh-init exception: only Config then Inventory System CPIs precede guard.
     bootstrap(cfg,i,sys,175,&PROGRAM,DOMAINS[0],b[0])?;
     bootstrap(inv,i,sys,20,&PROGRAM,DOMAINS[1],b[1])?;
@@ -182,10 +206,12 @@ fn initialize(a:&[AccountInfo])->ProgramResult{
     let mut data=vec![18];data.extend_from_slice(TAX_AUTHORITY.as_ref());
     msg!("HTFP CPI initialize custody");
     invoke(&native_ix(data,vec![AccountMeta::new(CUSTODY,false),AccountMeta::new_readonly(MINT,false)]),&[cust.clone(),m.clone(),t.clone()])?;
+    #[cfg(feature = "production-volume-policy")]
+    reserve_plan.fund(&a[10], res, i, sys)?;
     let cs=custody(cust)?;check!(cs.amount==0 && cs.withheld==0,7013);
     check!(mint(m)?==ms && token(g,true)?==gs && *g.try_borrow_data()?==g_before.as_slice(),7013);
     check!(hash(&m.try_borrow_data()?).to_bytes()==m_before,7013);
-    check!([m.lamports(),g.lamports(),res.lamports(),tax.lamports()]==immutable_balances,7013);
+    check!([m.lamports(),g.lamports(),tax.lamports()]==immutable_balances && res.lamports()==expected_reserve,7013);
     check!(payer_before.checked_sub(i.lamports())==Some(storage),7013);
     cfg.try_borrow_mut_data()?.copy_from_slice(&config_data(1)?);inventory_write(inv,0,0)?;
     let mut out=vec![5];out.extend_from_slice(&COMMITMENT);out.extend_from_slice(MINT.as_ref());out.extend_from_slice(RESERVE.as_ref());event(0,&out);Ok(())
@@ -194,7 +220,7 @@ fn recover(a:&[AccountInfo],data:&[u8])->ProgramResult{
     check!(data.len()==8,7000);let n=u16_at(data,6)? as usize;check!(n<=32 && a.len()==6+n,7000);
     let (fixed,sources)=a.split_at(6);let [cfg,inv,m,cust,tax,t]=fixed else{return Err(fail(7000));};
     let r=common(cfg,inv,m,t)?;
-    #[cfg(feature="devnet-tax-processor")]
+    #[cfg(any(feature = "devnet-tax-processor", feature = "production-volume-policy"))]
     check!(inv.try_borrow_data()?[11]&2==0,7021);
     identity(cust,&CUSTODY)?;identity(tax,&TAX_AUTHORITY)?;
     unique(fixed)?;required(m,true,false)?;required(cust,true,false)?;check!(system_zero(tax),7001);
@@ -253,8 +279,9 @@ fn authorize(source:&Token,authority:&AccountInfo,signers:&[AccountInfo],kind:u8
 }
 fn redeem(a:&[AccountInfo],data:&[u8])->ProgramResult{
     check!(data.len()==56,7000);let amount=u64_at(data,6)?;let minimum=u64_at(data,14)?;let recipient=key(data,22)?;let kind=data[54];let n=data[55] as usize;
-    check!(kind<=1 && (kind!=0 || n==0) && n<=11 && a.len()==9+n,7000);
-    let (fixed,signers)=a.split_at(9);let [cfg,inv,m,source,res,payee,authority,t,sys]=fixed else{return Err(fail(7000));};
+    let fixed_count = 9 + usize::from(cfg!(feature = "production-volume-policy"));
+    check!(kind<=1 && (kind!=0 || n==0) && n<=11 && a.len()==fixed_count+n,7000);
+    let (fixed,signers)=a.split_at(fixed_count);let [cfg,inv,m,source,res,payee,authority,t,sys]=&fixed[..9] else{return Err(fail(7000));};
     let r=common(cfg,inv,m,t)?;let prior_guard=inv.try_borrow_data()?[11];identity(res,&RESERVE)?;program(sys,&SYSTEM)?;
     check!(system_zero(res),7001);for ai in [m,source,res,payee]{required(ai,true,false)?;}
     check!(!protected(source) && !protected(payee) && !protected(authority),7003);
@@ -264,7 +291,14 @@ fn redeem(a:&[AccountInfo],data:&[u8])->ProgramResult{
     check!(src.state==1 && !src.guard,7004);
     check!(recipient==*payee.key,7005);authorize(&src,authority,signers,kind)?;
     check!(ms.supply>0,7007);check!(amount>0 && amount<=src.amount && src.amount<=ms.supply,7006);
-    let maintenance=Rent::get()?.minimum_balance(0);let reserve_before=res.lamports();let v=reserve_before.saturating_sub(maintenance);
+    let live_rent = Rent::get()?.minimum_balance(0);
+    let reserve_before=res.lamports();
+    #[cfg(feature = "production-volume-policy")]
+    let maintenance = reserve_storage::read(&fixed[9])?;
+    #[cfg(feature = "production-volume-policy")]
+    let v = reserve_storage::backing(reserve_before, maintenance, live_rent)?;
+    #[cfg(not(feature = "production-volume-policy"))]
+    let (maintenance, v) = (live_rent, reserve_before.saturating_sub(live_rent));
     let payout=(u128::from(v).checked_mul(u128::from(amount)).ok_or(fail(7010))?/u128::from(ms.supply)) as u64;
     check!(payout>0,7008);check!(payout>=minimum,7009);
     let payee_before=payee.lamports();let source_lamports=source.lamports();inventory_write(inv,r,prior_guard|1)?;
@@ -285,6 +319,8 @@ fn redeem(a:&[AccountInfo],data:&[u8])->ProgramResult{
     invoke_signed(&system_instruction::transfer(&RESERVE,payee.key,payout),&[res.clone(),payee.clone(),sys.clone()],&[seeds])?;
     check!(reserve_before.checked_sub(res.lamports())==Some(payout) && payee.lamports().checked_sub(payee_before)==Some(payout) && res.lamports()>=maintenance,7013);
     check!(mint(m)?==after_mint && token(source,false)?==after_source,7013);
+    #[cfg(feature = "production-volume-policy")]
+    check!(reserve_storage::read(&fixed[9])? == maintenance,7013);
     if source.key!=payee.key{check!(source.lamports()==source_lamports,7013);}
     inventory_write(inv,r,prior_guard)?;
     let mut out=Vec::new();for k in [MINT,*source.key,*authority.key,*payee.key]{out.extend_from_slice(k.as_ref());}
@@ -296,24 +332,27 @@ fn assert_bootstrap_epoch(actual_epoch:u64)->ProgramResult {
 }
 entrypoint!(process_instruction);
 pub fn process_instruction(id:&Pubkey,accounts:&[AccountInfo],data:&[u8])->ProgramResult {
-    check!(data.len()>=6 && &data[..4]==b"HTFP" && data[4]==1 && data[5]<=6,7000);
+    let max_opcode = 6 + u8::from(cfg!(feature = "production-volume-policy"));
+    check!(data.len()>=6 && &data[..4]==b"HTFP" && data[4]==1 && data[5]<=max_opcode,7000);
     verify_profile(id)?;
     match data[5] {
         0=>{check!(data.len()==6,7000);initialize(accounts)},
         1=>recover(accounts,data),
         2=>redeem(accounts,data),
-        #[cfg(feature="devnet-tax-processor")]
+        #[cfg(any(feature = "devnet-tax-processor", feature = "production-volume-policy"))]
         3=>processing::process(accounts,data),
-        #[cfg(feature="devnet-tax-processor")]
+        #[cfg(any(feature = "devnet-tax-processor", feature = "production-volume-policy"))]
         4=>{check!(data.len()==6,7000);processing::initialize_processing(accounts)},
-        #[cfg(feature="devnet-tax-processor")]
+        #[cfg(any(feature = "devnet-tax-processor", feature = "production-volume-policy"))]
         5=>processing::finalize(accounts,data),
-        #[cfg(not(feature="devnet-tax-processor"))]
+        #[cfg(not(any(feature = "devnet-tax-processor", feature = "production-volume-policy")))]
         3|4|5=>Err(fail(7015)),
         6=>{
             check!(data.len()==6 && accounts.is_empty(),7000);
             assert_bootstrap_epoch(Clock::get()?.epoch)
         },
+        #[cfg(feature = "production-volume-policy")]
+        7=>reserve_storage::top_up(accounts,data),
         _=>Err(fail(7000)),
     }
 }

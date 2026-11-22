@@ -71,14 +71,9 @@
   },
   "schema": "HTFP_LAUNCH_DOSSIER_V1",
   "volume": {
-    "alpha": null,
-    "capacity_gross_base_units": null,
-    "global_control": true,
-    "initial_credit_gross_base_units": null,
+    "alpha": {"numerator": "1", "denominator": "100"},
+    "global_control": false,
     "per_call_control": true,
-    "prestart_policy_reference": null,
-    "refill_gross_base_units_per_second": null,
-    "refill_start_timestamp": null,
-    "structure": null
+    "structure": "PER_CALL_GROSS_EFFECTIVE_RESERVE_ONLY"
   }
 }

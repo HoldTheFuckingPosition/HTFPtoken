@@ -1,8 +1,9 @@
-"""Documentary launch rules with the D38 and D39 allocation corrections.
+"""Documentary launch rules for allocations, final metadata and tax sales.
 
 Base: revision-001 REQUIREMENTS SHA256
 b3e4c89de4be1923527b51ca437f2274d7f73c11fe02a362c9fbdf098d49e3f9.
-The current decision register incorporates S141's confirmed token tranches.
+The current decision register incorporates S141's token tranches, D43's final
+metadata requirement, and D48's gross 1% per-operation limit.
 """
 
 GROUPS = {'allocation': {'complete': 'bool',
@@ -87,6 +88,9 @@ EXPECTED = {'allocation.final_distribution_wallet_remaining_base_units': {'code'
  'allocation.team_base_units': {'code': 'POLICY_MISMATCH',
                                 'expected': '500000000000000000',
                                 'source_ids': ['D38']},
+ 'identity.metadata_mutability': {'code': 'POLICY_MISMATCH',
+                                  'expected': 'IMMUTABLE',
+                                  'source_ids': ['D43']},
  'identity.program_id': {'code': 'POLICY_MISMATCH',
                          'expected': 'CseQKCWvi4EA2o3oa11Age4p4xKWSLuzjWCzitASrPJu',
                          'source_ids': ['D33']},
@@ -149,21 +153,23 @@ EXPECTED = {'allocation.final_distribution_wallet_remaining_base_units': {'code'
  'mint.token_standard': {'code': 'POLICY_MISMATCH',
                          'expected': 'Token-2022',
                          'source_ids': ['D03']},
- 'volume.global_control': {'code': 'POLICY_MISMATCH', 'expected': True, 'source_ids': ['D14']},
- 'volume.per_call_control': {'code': 'POLICY_MISMATCH', 'expected': True, 'source_ids': ['D14']}}
+ 'volume.global_control': {'code': 'POLICY_MISMATCH', 'expected': False, 'source_ids': ['D48']},
+ 'volume.per_call_control': {'code': 'POLICY_MISMATCH', 'expected': True, 'source_ids': ['D48']},
+ 'volume.structure': {'code': 'POLICY_MISMATCH',
+                      'expected': 'PER_CALL_GROSS_EFFECTIVE_RESERVE_ONLY',
+                      'source_ids': ['D48']}}
 
 GROUP_SOURCES = {'allocation': ['D18', 'D21', 'D38', 'O02', 'O18'],
  'funding': ['D39', 'O03'],
- 'identity': ['D33', 'D34', 'O13'],
+ 'identity': ['D33', 'D34', 'D43', 'O13'],
  'market': ['D06', 'D35', 'D36', 'D37', 'D40', 'O09', 'O15', 'O19'],
  'mint': ['D01', 'D02', 'D03', 'D04', 'D05', 'D17', 'D20'],
- 'volume': ['D14', 'D30', 'O04']}
+ 'volume': ['D48', 'O04']}
 
 OPEN_PATHS = ['identity.mint',
  'identity.initializer',
  'identity.genesis_sha256',
  'identity.metadata_reference',
- 'identity.metadata_mutability',
  'identity.extensions_description',
  'allocation.recipients_reference',
  'allocation.entitlement_reference',
@@ -175,8 +181,7 @@ OPEN_PATHS = ['identity.mint',
  'market.config_reference',
  'market.locker_reference']
 
-PROVISIONAL_PATHS = ['volume.structure',
- 'volume.alpha',
+RETIRED_VOLUME_PATHS = [
  'volume.capacity_gross_base_units',
  'volume.refill_gross_base_units_per_second',
  'volume.initial_credit_gross_base_units',
@@ -193,7 +198,7 @@ RELATIONSHIPS = [{'id': 'ALLOCATION_TOTAL',
   'report_path': 'market.initial_received_lp_lock_fraction',
   'source_ids': ['D35']},
  {'id': 'PERSONAL_WALLET_MATCH', 'report_path': 'market', 'source_ids': ['D37']},
- {'id': 'INITIAL_CREDIT_CAPACITY', 'report_path': 'volume', 'source_ids': ['D30', 'O04']}]
+ {'id': 'GROSS_PER_OPERATION_FRACTION', 'report_path': 'volume.alpha', 'source_ids': ['D48']}]
 
 ERRORS = {'CLI_USAGE': 'Pass exactly one local JSON dossier path.',
  'COLLECTION_LIMIT': 'Dossier collection exceeds the supported bound.',
@@ -230,8 +235,6 @@ MESSAGES = {'ACTIVATION_EPOCH_MISMATCH': 'Supplied activation epoch differs from
                            'confirmed share.',
  'FUNDING_TOTAL_MISMATCH': 'Intended pool and reserve lamports do not sum to gross raised '
                            'lamports.',
- 'INITIAL_CREDIT_EXCEEDS_CAPACITY': 'Candidate initial gross-sale credit exceeds candidate shared '
-                                    'capacity.',
  'LP_LOCK_FRACTION_MISMATCH': 'Intended lock fraction is not100% of actually received initial LP.',
  'MISSING_INPUT': 'Dossier field is missing; no value is inferred.',
  'OPEN_CHOICE': 'Supplied candidate remains an unresolved production choice under the frozen '
@@ -240,7 +243,6 @@ MESSAGES = {'ACTIVATION_EPOCH_MISMATCH': 'Supplied activation epoch differs from
                        'assigned.',
  'PERSONAL_WALLET_MISMATCH': 'The two intended personal revenue wallet keys differ.',
  'POLICY_MISMATCH': 'Supplied intent contradicts a confirmed policy value.',
- 'PROVISIONAL_CHOICE': 'Supplied candidate remains provisional under the frozen sources.',
  'ROUNDING_UNRESOLVED': 'Exact 80/20 integer lamport shares are impossible; no rounding decision '
                         'is inferred.'}
 
