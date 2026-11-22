@@ -71,7 +71,7 @@ fn verify_binding_data(b:&[u8])->ProgramResult{
      check!(u64_at(b, 1080)? == 1 && u64_at(b, 1088)? == PRODUCTION_RESERVE_DIVISOR, 7018);
      check!(b[1096..1128].iter().all(|&byte| byte == 0), 7018);
      check!(u64_at(b, 1128)? == SUPPLY / 100 * 35 && u64_at(b, 1136)? > 0, 7018);
-     check!(p::TRADE_PPM == 2500 && p::CREATOR_PPM == 500
+     check!(p::TRADE_PPM == 2500 && p::CREATOR_PPM == 2500
          && p::PROTOCOL_PPM == 120_000 && p::FUND_PPM == 40_000, 7018);
      for (offset, rate) in [(1144, p::TRADE_PPM), (1152, p::CREATOR_PPM),
          (1160, p::PROTOCOL_PPM), (1168, p::FUND_PPM)]
