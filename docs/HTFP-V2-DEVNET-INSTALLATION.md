@@ -1,0 +1,7 @@
+# Isolated HTFP V2 Devnet installation
+
+**Confirmed Loader V3 installation on Devnet.** Program `EhBgdnHGhqpis7RruUvfo65yYFMTwsQE2i2K7ZrL1Svt` installed at finalized slot **525,194,904**. The finalized 237,904-byte executable read back from ProgramData `7fiXo2ekC835cQqYgxHdppFkCURzvcNJdPSVkXv74WZz` has SHA-256 `924ca1e2c7a6921c751a6549bf66bc1f2da76d88ea633b351fef480a160e7898`. The authority remains the dedicated Devnet signer `13XK1QBzZGXfVZ26CEseVVzGcV5LtfFt2q4eMVWAMDpc`. The Buffer closed and returned **1,209,390,520 lamports**. [Finalized installation](https://explorer.solana.com/tx/EFcaUbiNa54veVdFHitcBM7T8Kiy9Smadw37ZXzsCUt9Er27qhHnKnDgCMeWJzLKAMSUAg2hbWQdGLwXBoPPQHc?cluster=devnet)
+
+The build uses the isolated official Raydium Devnet tier 0 at `5MxLgy9oPdTC3YgkiePHqr3EoCRD9uLVYRQS2ANAs7wy`, with 2,500 ppm trade and 2,500 ppm creator fees. [Source, binding and build](HTFP-V2-DEVNET-VALIDATION.md)
+
+The application campaign remains held before mint creation and fee scheduling. The reserved mint `CEBdMYWyxAQDA7DsntZbqunriZW2TarGyLL4rnZvYYah`, reserve `2p6pnV9C7PvemJTdezWVGBGqouFhXxJsgU6B3ow6edU1` and pool `9DVKa2Sd8kSrhaVLwzXowgQ5JNAeooxcDrqS8XqV8Zuf` were absent at finalized readback. Economic transactions require the exact coupled fee schedule and admitted Devnet opening proof. The historical processor and Volume V1 remain separate. The reviewed Mainnet-intent fee selection remains 2,500/500 ppm.
